@@ -8,7 +8,7 @@
     width: 100vw;
 
     display: grid;
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 50px 1fr;
     grid-template-columns: 225px 1fr;
 }
 
@@ -40,10 +40,6 @@
 .logo-container, .logo-title, .logo{
     display: flex;
     align-items: center;
-}
-
-.logo {
-
 }
 
 .logo-title {
