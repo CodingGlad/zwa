@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    font-family: 'Mukta', sans-serif;
+}
+
+.page-container {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.login-container {
+    border: 1px solid #acacac;
+    border-radius: 20px;
+
+    width: 375px;
+    height: 450px;
+    
+    display: grid;
+    grid-template-rows: 100px 1fr;
+}
+
+.login-title {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    padding: 45px;
+
+    display: flex;
+    flex-flow: column;
+}
+
+input {
+    margin-bottom: 20px;
+}
