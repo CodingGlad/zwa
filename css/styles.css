@@ -115,3 +115,21 @@ div.logo > img {
     font-weight: bold;
 }
 /* CALENDAR CSS */
+
+/* GENERAL CSS */
+
+.css-button {
+    background-color: white;
+    border: none;
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.css-button:visited {
+    color: black;
+}
