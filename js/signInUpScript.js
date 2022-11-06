@@ -4,6 +4,7 @@ function signInCheck(event) {
 
     if (email.value !== "") {
         console.log("Email existuje takze chill zatim" + email.value);
+        email.classList.remove("input-error");
     } else {
         console.log("Kokotko zapis si jmeno vole");
         email.classList.add("input-error");
@@ -12,6 +13,7 @@ function signInCheck(event) {
 
     if (password.value !== "") {
         console.log("No nejake heslo tam mas takze asi dobry" + password.value);
+        email.classList.remove("input-error");
     } else {
         console.log("More a helso jako nechces???")
         password.classList.add("input-error");
