@@ -37,9 +37,18 @@
     padding-right: 10px;
 }
 
+.profile > img, .settings > img {
+    padding-right: 5px;
+}
+
 .logo-container, .logo-title, .logo{
     display: flex;
     align-items: center;
+}
+
+div.logo > img {
+    height: 35px;
+    width: 35px;
 }
 
 .logo-title {
@@ -99,5 +108,10 @@
 .calendar-item {
     border-right: 1px solid #acacac;
     border-bottom: 1px solid #acacac;
+}
+
+.date {
+    color: #818181;
+    font-weight: bold;
 }
 /* CALENDAR CSS */

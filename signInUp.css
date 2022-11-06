@@ -18,15 +18,30 @@
     border-radius: 20px;
 
     width: 375px;
-    height: 450px;
+    height: 400px;
     
     display: grid;
     grid-template-rows: 100px 1fr;
 }
 
-.login-title {
+.login-top {
     height: 100%;
+    padding-top: 10px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+div.login-top > img {
+    height: 50px;
+    width: 50px;
+}
+
+.login-text {
     display: flex;
     justify-content: center;
     align-items: center;
