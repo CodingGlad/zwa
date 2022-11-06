@@ -1,11 +1,12 @@
 function signInCheck(event) {
-    let username = document.querySelector("[id=username]");
+    let email = document.querySelector("[id=email]");
     let password = document.querySelector("[id=password]");
 
-    if (username.value !== "") {
-        console.log("Jmeno existuje takze chill zatim" + username.value);
+    if (email.value !== "") {
+        console.log("Email existuje takze chill zatim" + email.value);
     } else {
         console.log("Kokotko zapis si jmeno vole");
+        email.classList.add("input-error");
         event.preventDefault();
     }
 
@@ -13,6 +14,7 @@ function signInCheck(event) {
         console.log("No nejake heslo tam mas takze asi dobry" + password.value);
     } else {
         console.log("More a helso jako nechces???")
+        password.classList.add("input-error");
         event.preventDefault();
     }
 
