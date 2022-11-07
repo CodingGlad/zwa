@@ -37,9 +37,7 @@
     padding-right: 10px;
 }
 
-.profile > img, .settings > img {
-    padding-right: 5px;
-}
+
 
 .logo-container, .logo-title, .logo{
     display: flex;
@@ -96,6 +94,18 @@ div.logo > img {
     padding: 5px 23px 0;
 }
 
+.habit-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.habit-color {
+    height: 10px;
+    width: 10px;
+    background-color: aquamarine;
+}
+
 /* SIDE BAR CSS */
 
 /* CALENDAR CSS */
@@ -133,10 +143,11 @@ div.logo > img {
 
     display: flex;
     align-items: center;
+    gap: 5px;
 
     cursor: pointer;
 }
 
-.css-button:visited {
+.css-button:visited, .css-button:link {
     color: black;
 }
