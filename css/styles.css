@@ -133,6 +133,36 @@ div.logo > img {
 }
 /* CALENDAR CSS */
 
+/* HABIT LIST CSS*/
+
+.habit-list-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 20px;
+}
+
+.habit-flex-item {
+    height: 160px;
+    width: 160px;
+
+    border: 1px solid #acacac;
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.habit-wide-color {
+    height: 10px;
+    width: 45px;
+
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+/* HABIT LIST CSS*/
+
 /* GENERAL CSS */
 
 .css-button {
