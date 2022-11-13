@@ -104,6 +104,7 @@ div.logo > img {
     height: 10px;
     width: 10px;
     background-color: aquamarine;
+    border-radius: 3px;
 }
 
 /* SIDE BAR CSS */
@@ -174,7 +175,7 @@ div.logo > img {
     justify-content: center;
 }
 
-.habit-detail-heading {
+.habit-detail-heading, .profile-heading {
     display: flex;
     justify-content: center;
 
@@ -202,6 +203,17 @@ div.logo > img {
 }
 
 /* HABIT DETAIL CSS */
+
+/* HABIT PROFILE CSS */
+
+.profile-container, .profile-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+/* HABIT PROFILE CSS */
 
 /* GENERAL CSS */
 
