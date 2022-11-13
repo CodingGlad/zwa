@@ -163,6 +163,43 @@ div.logo > img {
 
 /* HABIT LIST CSS*/
 
+/* HABIT DETAIL CSS */
+
+.habit-detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.habit-detail-heading {
+    display: flex;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.habit-detail {
+    border: 1px solid #acacac;
+    border-radius: 20px;
+
+    width: 375px;
+    height: 400px;
+
+    padding: 20px;
+}
+
+.habit-detail form {
+    display: flex;
+    flex-flow: column;
+}
+
+.habit-detail input {
+    margin-bottom: 20px;
+}
+
+/* HABIT DETAIL CSS */
+
 /* GENERAL CSS */
 
 .css-button {

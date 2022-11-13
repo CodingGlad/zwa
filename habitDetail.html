@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Habit Journal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page-container">
+  <div class="top-bar">
+    <a class="css-button" href="index.html">
+      <div class="logo-container">
+        <div class="logo">
+          <img src="img/logoZwa2.png" alt="Habit Journal Logo">
+        </div>
+        <div class="logo-title">
+          Test Habit Journal
+        </div>
+      </div>
+    </a>
+    <div class="profile-settings">
+      <div class="profile">
+        <a href="signin.html" class="css-button">
+          <img src="img/user.png" alt="user-icon">
+          Profile
+        </a>
+      </div>
+      <div class="settings">
+        <a href="signin.html" class="css-button">
+          <img src="img/gear.png" alt="gear-icon">
+        </a>
+      </div>
+    </div>
+  </div><!-- TODO add redirects to list and addition -->
+  <div class="side-bar">
+    <div class="habit-top-bar">
+      <div class="habit-heading">
+        List of habits
+      </div>
+      <div class="sidebar-buttons">
+        <div class="list-button">
+          <a class="css-button" href="habitList.html">
+            <img src="img/list.png" alt="...">
+          </a>
+        </div>
+        <div class="plus-button">
+          <a class="css-button">
+            <img src="img/plus.png" alt="+">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="habit-list">
+      <div class="habit-item">
+        <div class="habit-color">
+        </div>
+        Test habit lol kys
+      </div>
+    </div>
+  </div>
+  <div class="habit-detail-container">
+    <div class="habit-detail">
+      <div class="habit-detail-heading">
+        Habit Detail
+      </div>
+      <form method="post">
+        <label for="habit-name">Habit name</label>
+        <input type="text" id="habit-name" name="habit-name" required>
+        <label for="habit-abbrev">Habit abbreviation</label>
+        <input type="text" id="habit-abbrev" name="habit-abbrev" maxlength="4">
+        <label for="habit-desc">Habit description</label>
+        <input type="text" id="habit-desc" name="habit-desc">
+        <label for="habit-color">Habit color</label>
+        <input type="color" id="habit-color" name="habit-color">
+        <input type="submit" value="Save Habit">
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
