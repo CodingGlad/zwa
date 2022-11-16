@@ -17,9 +17,6 @@
     border: 1px solid #acacac;
     border-radius: 20px;
 
-    width: 375px;
-    height: 400px;
-
     display: flex;
     flex-flow: column;
 }
@@ -52,10 +49,13 @@ form {
 
     display: flex;
     flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
 
 input {
     margin-bottom: 20px;
+    width: 300px;
 }
 
 .input-error {
