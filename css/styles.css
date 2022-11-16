@@ -233,3 +233,35 @@ div.logo > img {
 .css-button:visited, .css-button:link {
     color: black;
 }
+
+@media screen and (max-width: 460px){
+    aside, .profile-text {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+
+@media print {
+    aside {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .profile-settings {
+        display: none;
+    }
+
+    .top-bar {
+        justify-content: center;
+    }
+}

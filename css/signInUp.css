@@ -19,14 +19,14 @@
 
     width: 375px;
     height: 400px;
-    
-    display: grid;
-    grid-template-rows: 100px 1fr;
+
+    display: flex;
+    flex-flow: column;
 }
 
 .login-top {
-    height: 100%;
-    padding-top: 10px;
+    padding-top: 40px;
+    padding-bottom: 30px;
 
     display: flex;
     justify-content: center;
@@ -37,8 +37,8 @@
 }
 
 div.login-top > img {
-    height: 50px;
     width: 50px;
+    height: 50px;
 }
 
 .login-text {
@@ -48,7 +48,7 @@ div.login-top > img {
 }
 
 form {
-    padding: 45px;
+    padding: 30px;
 
     display: flex;
     flex-flow: column;
@@ -61,3 +61,24 @@ input {
 .input-error {
     border: 1px solid red;
 }
+
+@media screen and (max-width: 460px) {
+    .login-container {
+        border: none;
+        width: 100%;
+    }
+
+    .login-top{
+        font-size: 40px;
+    }
+
+    div.login-top > img {
+        height: 60px;
+        width: 60px;
+    }
+
+    form input {
+        height: 35px;
+    }
+}
+
