@@ -188,7 +188,7 @@ div.logo > img {
     border-radius: 20px;
 
     width: 375px;
-    height: 400px;
+    height: 430px;
 
     padding: 20px;
 }
@@ -198,7 +198,7 @@ div.logo > img {
     flex-flow: column;
 }
 
-.habit-detail input {
+.habit-detail input, textarea {
     margin-bottom: 20px;
 }
 
@@ -232,6 +232,10 @@ div.logo > img {
 
 .css-button:visited, .css-button:link {
     color: black;
+}
+
+textarea{
+    resize: none;
 }
 
 @media screen and (max-width: 460px){
