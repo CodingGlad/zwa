@@ -19,18 +19,18 @@
                 <div class="login-text">
                     Log in to use your Habit Journal profile.
                 </div>
-                <form method="post">
+                <form method="post" action="signin.html">
                     <label for="email">E-mail</label>
                     <input id="email" name="email" type="email" required>
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password" required>
-                    <input id="submit" type="submit" value="Log In">
+                    <input class="validateE validateP" id="submit" type="submit" value="Log In" disabled>
                 </form>
             </main>
             <div class="register-redirect">
-                <a href="signup.html">Register</a> or kys lol
+                <a href="signup.html">Register</a>
             </div>
         </div>
-        <script src="js/signInUpScript.js"></script>
+        <script src="js/singInValidation.js"></script>
     </body>
 </html>

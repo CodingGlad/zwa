@@ -56,10 +56,30 @@ form {
 input {
     margin-bottom: 20px;
     width: 300px;
+    border-radius: 10px;
+    border: 2px solid #acacac;
+}
+
+input#submit {
+    background-color: #09ce00;
+    color: white;
+    border: none;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+input:disabled {
+    background-color: #b2fcb0 !important;
+    cursor: default !important;
 }
 
 .input-error {
-    border: 1px solid red;
+    border: 2px solid red;
+}
+
+.input-correct {
+    border: 2px solid #09ce00;
 }
 
 @media screen and (max-width: 460px) {
