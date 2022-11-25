@@ -169,13 +169,13 @@ div.logo > img {
 
 /* HABIT DETAIL CSS */
 
-.habit-detail-container {
+.detail-container, .profile-info {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.habit-detail-heading, .profile-heading {
+.detail-heading, .profile-heading {
     display: flex;
     justify-content: center;
 
@@ -183,37 +183,25 @@ div.logo > img {
     font-size: 35px;
 }
 
-.habit-detail {
+.detail {
     border: 1px solid #acacac;
     border-radius: 20px;
 
     width: 375px;
-    height: 430px;
 
     padding: 20px;
 }
 
-.habit-detail form {
+.detail form {
     display: flex;
     flex-flow: column;
 }
 
-.habit-detail input, textarea {
+.detail input, textarea {
     margin-bottom: 20px;
 }
 
 /* HABIT DETAIL CSS */
-
-/* HABIT PROFILE CSS */
-
-.profile-container, .profile-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-}
-
-/* HABIT PROFILE CSS */
 
 /* GENERAL CSS */
 
@@ -236,6 +224,19 @@ div.logo > img {
 
 textarea{
     resize: none;
+}
+
+span label {
+    margin-right: 10px;
+}
+
+span input {
+    margin-bottom: 0 !important;
+}
+
+form span {
+    display: flex;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 460px){
