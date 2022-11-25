@@ -1,9 +1,13 @@
+/**
+ * Method used for validation of email in input.
+ *
+ * Changes inputs color to green if it's correct, otherwise it colors the border red.
+ */
 function validateEmail() {
     let email = document.querySelector("input[id=email]");
     const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
     if (email.value.match(regex)) {
-        console.log("dik");
         email.classList.remove("input-error");
         email.classList.add("input-correct");
     } else {
@@ -11,9 +15,14 @@ function validateEmail() {
         email.classList.remove("input-correct");
     }
 
-    enableButton(email);
+    enableButton();
 }
 
+/**
+ * Method used for validation of password in sign in input.
+ *
+ * Changes inputs color to green if it's correct, otherwise it colors the border red.
+ */
 function validatePasswordIn() {
     let passwd = document.querySelector("input[id=password]");
 
@@ -26,9 +35,14 @@ function validatePasswordIn() {
         passwd.classList.remove("input-correct");
     }
 
-    enableButton(passwd);
+    enableButton();
 }
 
+/**
+ * Method used for validation of email in sign up input.
+ *
+ * Changes inputs color to green if it's correct, otherwise it colors the border red.
+ */
 function validatePasswordUp() {
     let passwd = document.querySelector("input[id=password]");
     let regex = /(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*/;
@@ -42,9 +56,14 @@ function validatePasswordUp() {
     }
 
     passwordCheck();
-    enableButton(passwd);
+    enableButton();
 }
 
+/**
+ * Method used for equality between typed and retyped password.
+ *
+ * Changes inputs color to green if it's correct, otherwise it colors the border red.
+ */
 function passwordCheck() {
     let passwd = document.querySelector("input[id=password]");
     let passwdCheck = document.querySelector("input[id=password_check]");
@@ -55,28 +74,49 @@ function passwordCheck() {
         passwdCheck.classList.add("input-error");
         passwdCheck.classList.remove("input-correct");
     }
+
+    enableButton()
 }
 
-function enableButton(element1) {
+/**
+ * Method used for enabling and disabling submit button.
+ *
+ * Enables submit button based on the state of inputs and their classes.
+ */
+function enableButton() {
     let button = document.querySelector("input[type=submit]");
-    let element2;
+    let email = document.querySelector("input[id=email]")
+    let passwd = document.querySelector("input[id=password]")
+    let retype = document.querySelector("input[id=password_check]");
 
-    if (element1.id === "password") {
-        element2 = document.querySelector("input[id=email]");
+    if (retype) {
+        if (email.classList.contains("input-correct") && passwd.classList.contains("input-correct") &&
+            retype.classList.contains("input-correct")) {
+            button.removeAttribute("disabled");
+        } else {
+            button.setAttribute("disabled", "");
+        }
     } else {
-        element2 = document.querySelector("input[id=password]");
+        if (email.classList.contains("input-correct") && passwd.classList.contains("input-correct")) {
+            button.removeAttribute("disabled");
+        } else {
+            button.setAttribute("disabled", "");
+        }
     }
+}
 
-    if (element1.classList.contains("input-correct") && element2.classList.contains("input-correct")) {
-        button.removeAttribute("disabled");
-    } else {
-        button.setAttribute("disabled", "");
-    }
+/**
+ * Method that checks the existence of retype password input.
+ *
+ * Returns true if this element exists, otherwise false.
+ */
+function isRetypePresent() {
+    return !!document.querySelector("input[id=password_check]");
 }
 
 document.querySelector("input[id=email]").addEventListener("blur", validateEmail);
 
-if (document.querySelector("input[id=password_check]")) {
+if (isRetypePresent()) {
     document.querySelector("input[id=password]").addEventListener("blur", validatePasswordUp);
     document.querySelector("input[id=password_check]").addEventListener("blur", passwordCheck);
 } else {
