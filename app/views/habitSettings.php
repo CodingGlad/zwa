@@ -12,7 +12,7 @@
 <body>
 <div class="page-container">
   <header class="top-bar">
-    <a class="css-button" href="index.html">
+    <a class="css-button" href="calendar">
       <div class="logo-container">
         <div class="logo">
           <img src="img/logoZwa2.png" alt="Habit Journal Logo">
@@ -24,7 +24,7 @@
     </a>
     <div class="profile-settings">
       <div class="profile">
-        <a href="habitProfile.html" class="css-button">
+        <a href="profile" class="css-button">
           <img src="img/user.png" alt="user-icon">
           <div class="profile-text">
             Profile
@@ -32,7 +32,7 @@
         </a>
       </div>
       <div class="settings">
-        <a href="habitSettings.html" class="css-button">
+        <a href="settings" class="css-button">
           <img src="img/gear.png" alt="gear-icon">
         </a>
       </div>
@@ -45,12 +45,12 @@
       </div>
       <div class="sidebar-buttons">
         <div class="list-button">
-          <a class="css-button" href="habitList.html">
+          <a class="css-button" href="habitlist">
             <img src="img/list.png" alt="...">
           </a>
         </div>
         <div class="plus-button">
-          <a class="css-button" href="habitDetail.html">
+          <a class="css-button" href="detail">
             <img src="img/plus.png" alt="+">
           </a>
         </div>

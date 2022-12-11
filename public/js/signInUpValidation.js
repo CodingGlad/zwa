@@ -115,7 +115,6 @@ function isRetypePresent() {
 }
 
 document.querySelector("input[id=email]").addEventListener("blur", validateEmail);
-
 if (isRetypePresent()) {
     document.querySelector("input[id=password]").addEventListener("blur", validatePasswordUp);
     document.querySelector("input[id=password_check]").addEventListener("blur", passwordCheck);

@@ -12,7 +12,7 @@
 <body>
 <div class="page-container">
   <header class="top-bar">
-    <a class="css-button" href="index.html">
+    <a class="css-button" href="calendar">
       <div class="logo-container">
         <div class="logo">
           <img src="img/logoZwa2.png" alt="Habit Journal Logo">
@@ -24,7 +24,7 @@
     </a>
     <div class="profile-settings">
       <div class="profile">
-        <a href="habitProfile.html" class="css-button">
+        <a href="profile" class="css-button">
           <img src="img/user.png" alt="user-icon">
           <div class="profile-text">
             Profile
@@ -32,7 +32,7 @@
         </a>
       </div>
       <div class="settings">
-        <a href="habitSettings.html" class="css-button">
+        <a href="settings" class="css-button">
           <img src="img/gear.png" alt="gear-icon">
         </a>
       </div>
@@ -45,12 +45,12 @@
       </div>
       <div class="sidebar-buttons">
         <div class="list-button">
-          <a class="css-button" href="habitList.html">
+          <a class="css-button" href="habitlist">
             <img src="img/list.png" alt="...">
           </a>
         </div>
         <div class="plus-button">
-          <a class="css-button" href="habitDetail.html">
+          <a class="css-button" href="detail">
             <img src="img/plus.png" alt="+">
           </a>
         </div>
@@ -67,27 +67,18 @@
   <main class="detail-container">
     <div class="detail">
       <div class="detail-heading">
-        Your Habit Profile
+        Habit Detail
       </div>
-      <form method="post" action="habitProfile.html">
-        <label for="first-name">First Name</label>
-        <input id="first-name" name="first-name" type="text" required>
-        <label for="last-name">Last name</label>
-        <input id="last-name" name="last-name" type="text" required>
-        <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" required>
-        <label for="birthdate">Date of birth</label>
-        <input id="birthdate" name="birthdate" type="date">
-        <p>
-          Gender
-        </p>
-        <span>
-          <input type="radio" id="male" name="gender"><label for="male">Male</label>
-          <input type="radio" id="female" name="gender"><label for="female">Female</label>
-          <input type="radio" id="other" name="gender"><label for="other">Other</label>
-          <input type="radio" id="none" name="gender"><label for="none">Do not specify</label>
-        </span>
-        <input type="submit" value="Save Changes">
+      <form method="post" action="detail">
+        <label for="habit-name">Habit name</label>
+        <input type="text" id="habit-name" name="habit-name" required>
+        <label for="habit-abbrev">Habit abbreviation</label>
+        <input type="text" id="habit-abbrev" name="habit-abbrev" maxlength="4">
+        <label for="habit-desc">Habit description</label>
+        <textarea id="habit-desc" name="habit-desc"></textarea>
+        <label for="habit-color">Habit color</label>
+        <input type="color" id="habit-color" name="habit-color">
+        <input type="submit" value="Save Habit">
       </form>
     </div>
   </main>

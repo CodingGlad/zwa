@@ -30,8 +30,11 @@
         </form>
     </main>
     <div class="login-redirect">
-        <a href="signin.html">Login</a>
+        <a href="signin">Login</a>
     </div>
+    <script>
+        document.getElementById("submit").disabled = true;
+    </script>
     <script src="js/signInUpValidation.js"></script>
 </div>
 </body>
