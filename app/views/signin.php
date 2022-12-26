@@ -4,7 +4,7 @@
         <title>Habit Journal</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/signInUp.css">
+        <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/signInUp.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
         <div class="page-container">
             <main class="login-container">
                 <div class="login-top">
-                    <img src="img/logoZwa2.png" alt="Logo">
+                    <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Logo">
                     Habit Journal
                 </div>
                 <div class="login-text">
@@ -34,6 +34,6 @@
         <script>
             document.getElementById("submit").disabled = true;
         </script>
-        <script src="js/signInUpValidation.js"></script>
+        <script src="http://localhost/MojeProjekty/HabitJournal/public/js/signInUpValidation.js"></script>
     </body>
 </html>
