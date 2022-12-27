@@ -4,7 +4,7 @@
     <title>Habit Journal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
@@ -12,10 +12,10 @@
 <body>
 <div class="page-container">
     <header class="top-bar">
-        <a class="css-button" href="index.html">
+        <a class="css-button" href="calendar">
             <div class="logo-container">
                 <div class="logo">
-                    <img src="img/logoZwa2.png" alt="Habit Journal Logo">
+                    <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Habit Journal Logo">
                 </div>
                 <div class="logo-title">
                     Habit Journal
@@ -24,16 +24,16 @@
         </a>
         <div class="profile-settings">
             <div class="profile">
-                <a href="habitProfile.html" class="css-button">
-                    <img src="img/user.png" alt="user-icon">
+                <a href="profile" class="css-button">
+                    <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
                     <div class="profile-text">
                         Profile
                     </div>
                 </a>
             </div>
             <div class="settings">
-                <a href="habitSettings.html" class="css-button">
-                    <img src="img/gear.png" alt="gear-icon">
+                <a href="settings" class="css-button">
+                    <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
                 </a>
             </div>
         </div>
@@ -45,13 +45,13 @@
             </div>
             <div class="sidebar-buttons">
                 <div class="list-button">
-                    <a class="css-button" href="habitList.html">
-                        <img src="img/list.png" alt="...">
+                    <a class="css-button" href="habitlist">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/list.png" alt="...">
                     </a>
                 </div>
                 <div class="plus-button">
-                    <a class="css-button" href="habitDetail.html">
-                        <img src="img/plus.png" alt="+">
+                    <a class="css-button" href="detail">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/plus.png" alt="+">
                     </a>
                 </div>
             </div>
