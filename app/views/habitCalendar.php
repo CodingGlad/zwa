@@ -4,7 +4,7 @@
         <title>Habit Journal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/styles.css">
+        <link rel="stylesheet" href="https://habitjournal.azurewebsites.net/public/css/styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
                 <a class="css-button" href="calendar">
                     <div class="logo-container">
                         <div class="logo">
-                            <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Habit Journal Logo">
+                            <img src="https://habitjournal.azurewebsites.net/public/img/logoZwa2.png" alt="Habit Journal Logo">
                         </div>
                         <div class="logo-title">
                             Habit Journal
@@ -25,7 +25,7 @@
                 <div class="profile-settings">
                     <div class="profile">
                         <a href="profile" class="css-button">
-                            <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
+                            <img src="https://habitjournal.azurewebsites.net/public/img/user.png" alt="user-icon">
                             <div class="profile-text">
                                 Profile
                             </div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="settings">
                         <a href="settings" class="css-button">
-                            <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
+                            <img src="https://habitjournal.azurewebsites.net/public/img/gear.png" alt="gear-icon">
                         </a>
                     </div>
                 </div>
@@ -46,12 +46,12 @@
                     <div class="sidebar-buttons">
                         <div class="list-button">
                             <a class="css-button" href="habitlist">
-                                <img src="http://localhost/MojeProjekty/HabitJournal/public/img/list.png" alt="...">
+                                <img src="https://habitjournal.azurewebsites.net/public/img/list.png" alt="...">
                             </a>
                         </div>
                         <div class="plus-button">
                             <a class="css-button" href="detail">
-                                <img src="http://localhost/MojeProjekty/HabitJournal/public/img/plus.png" alt="+">
+                                <img src="https://habitjournal.azurewebsites.net/public/img/plus.png" alt="+">
                             </a>
                         </div>
                     </div>
