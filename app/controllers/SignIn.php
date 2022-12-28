@@ -22,9 +22,19 @@ class SignIn extends Controller
             $result = $conn->query($sql);
 
             if ($result->num_rows == 1) {
-                $this->view('habitcalendar');
+                $user = $result->fetch_assoc();
+
+                file_put_contents('help.txt', print_r($user, true));
+                if (password_verify($_POST['password'], $user['password']))
+                {
+                    $this->view('habitcalendar');
+                } else
+                {
+                    $this->view('signin', ['message' => 'Password is incorrect.']);
+                }
+
             } else {
-                $this->view('signin');
+                $this->view('signin', ['message' => 'This account does not exist']);
             }
         } else
         {
