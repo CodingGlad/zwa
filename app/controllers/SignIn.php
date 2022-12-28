@@ -24,7 +24,6 @@ class SignIn extends Controller
             if ($result->num_rows == 1) {
                 $user = $result->fetch_assoc();
 
-                file_put_contents('help.txt', print_r($user, true));
                 if (password_verify($_POST['password'], $user['password']))
                 {
                     $this->view('habitcalendar');

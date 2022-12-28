@@ -6,4 +6,9 @@ class Profile extends Controller
     {
         $this->view('habitprofile');
     }
+
+    public function save()
+    {
+        $this->view('habitprofile');
+    }
 }

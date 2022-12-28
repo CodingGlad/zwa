@@ -69,7 +69,7 @@
       <div class="detail-heading">
         Your Habit Profile
       </div>
-      <form method="post" action="habitProfile.php">
+      <form method="post" action="profile/save">
         <label for="first-name">First Name</label>
         <input id="first-name" name="first-name" type="text" required>
         <label for="last-name">Last name</label>
