@@ -53,6 +53,13 @@ form {
     align-items: center;
 }
 
+main .message {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
 input {
     margin-bottom: 20px;
     width: 300px;
