@@ -44,7 +44,7 @@ class SignUp extends Controller
 
             if ($data['emailValid'] && $data['passwordValid'])
             {
-                $insertSql = "INSERT INTO users VALUES ('" . uniqid() . "', '" . $_POST['email'] ."', '" . $_POST['password'] . "')";
+                $insertSql = "INSERT INTO users VALUES ('" . uniqid() . "', '" . $_POST['email'] ."', '" . password_hash($_POST['password'], PASSWORD_DEFAULT) . "')";
 
                 if ($conn->query($insertSql) === TRUE)
                 {
