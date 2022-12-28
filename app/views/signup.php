@@ -22,13 +22,27 @@
         </div>
         <form method="post">
             <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" required>
+            <input id="email" name="email" type="email" value="<?=(isset($data['email']))?($data['email']):("")?>" class="<?php
+            if (isset($data['emailValid']))
+            {
+                echo ($data['emailValid'])?("input-correct"):("input-error");
+            }
+
+            ?>">
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" required>
+            <input id="password" name="password" type="password" required value="<?=(isset($data['password']))?($data['password']):("")?>" class="<?php
+            if (isset($data['passwordValid']))
+            {
+                echo ($data['passwordValid'])?("input-correct"):("input-error");
+            }
+            ?>">
             <label for="password_check">Retype password</label>
-            <input id="password_check" name="password" type="password" required>
+            <input id="password_check" name="password_check" type="password" required>
             <input id="submit" type="submit" value="Sign Up" disabled>
         </form>
+        <?php
+            echo ((isset($data['message']) && $data['message'] != ""))?("<div class='message'>" . $data['message'] . "</div>"):("");
+        ?>
     </main>
     <div class="login-redirect">
         <a href="signin">Login</a>
