@@ -71,21 +71,21 @@
       </div>
       <form method="post" action="profile/save">
         <label for="first-name">First Name</label>
-        <input id="first-name" name="first-name" type="text" required>
+        <input id="first-name" name="first-name" type="text" value="<?=$data['first_name']?>">
         <label for="last-name">Last name</label>
-        <input id="last-name" name="last-name" type="text" required>
+        <input id="last-name" name="last-name" type="text" value="<?=$data['last_name']?>">
         <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" required>
+        <input id="email" name="email" type="email" required  value="<?=$data['email']?>">
         <label for="birthdate">Date of birth</label>
-        <input id="birthdate" name="birthdate" type="date">
+        <input id="birthdate" name="birthdate" type="date"  value="<?=$data['date_of_birth']?>">
         <p>
           Gender
         </p>
         <span>
-          <input type="radio" id="male" name="gender"><label for="male">Male</label>
-          <input type="radio" id="female" name="gender"><label for="female">Female</label>
-          <input type="radio" id="other" name="gender"><label for="other">Other</label>
-          <input type="radio" id="none" name="gender"><label for="none">Do not specify</label>
+          <input type="radio" id="male" value="M" name="gender" <?php if ($data['gender'] == 'M') echo "checked"?>><label for="male">Male</label>
+          <input type="radio" id="female" value="F" name="gender" <?php if ($data['gender'] == 'F') echo "checked"?>><label for="female">Female</label>
+          <input type="radio" id="other" value="O" name="gender" <?php if ($data['gender'] == 'O') echo "checked"?>><label for="other">Other</label>
+          <input type="radio" id="none" value="N" name="gender" <?php if ($data['gender'] == 'N') echo "checked"?>><label for="none">Do not specify</label>
         </span>
         <input type="submit" value="Save Changes">
       </form>

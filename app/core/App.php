@@ -8,7 +8,11 @@ class App
     protected $params = [];
 
     public function __construct() {
+        session_start();
+
         $url = $this->parseUrl();
+
+        //TODO handle session id
 
         if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];

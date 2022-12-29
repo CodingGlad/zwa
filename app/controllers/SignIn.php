@@ -26,6 +26,7 @@ class SignIn extends Controller
 
                 if (password_verify($_POST['password'], $user['password']))
                 {
+                    $_SESSION['id'] = $user['id'];
                     $this->view('habitcalendar');
                 } else
                 {
