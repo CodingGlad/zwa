@@ -7,14 +7,22 @@ class App
     protected $method = 'index';
     protected $params = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         session_start();
 
         $url = $this->parseUrl();
 
         //TODO handle session id
 
-        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')) {
+        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
+        {
+            if (($url[0] == 'signin' || $url[0] == 'signup') && isset($_SESSION['id']))
+            {
+                $this->controller = 'calendar';
+                unset($url[0]);
+            }
+        } else {
             $this->controller = $url[0];
             unset($url[0]);
         }
@@ -23,7 +31,13 @@ class App
 
         $this->controller = new $this->controller;
 
-        if (isset($url[1]) && method_exists($this->controller, $url[1])) {
+        if (isset($url[1]) && method_exists($this->controller, $url[1]))
+        {
+            if (($this->controller == 'signin' || $this->controller == 'signup') && isset($_SESSION['id']))
+            {
+                $this->controller = 'index';
+                unset($url[1]);
+            }
             $this->method = $url[1];
             unset($url[1]);
         }
@@ -33,10 +47,13 @@ class App
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    public function parseUrl() {
-        if (isset($_GET['url'])) {
+    public function parseUrl()
+    {
+        if (isset($_GET['url']))
+        {
             return explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
-        } else {
+        } else
+        {
             return [];
         }
     }
