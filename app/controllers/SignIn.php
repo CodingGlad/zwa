@@ -36,6 +36,7 @@ class SignIn extends Controller
             } else {
                 $this->view('signin', ['message' => 'This account does not exist']);
             }
+            $conn->close();
         } else
         {
             $this->view('signin');
