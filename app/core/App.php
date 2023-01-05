@@ -18,7 +18,13 @@ class App
         if (isset($_SESSION['id'])) {
             if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
             {
-                $this->controller = $url[0];
+                if ($url[0] == 'signin' || $url[0] == 'signup')
+                {
+                    $this->controller = 'calendar';
+                } else
+                {
+                    $this->controller = $url[0];
+                }
                 unset($url[0]);
             }
         } else
