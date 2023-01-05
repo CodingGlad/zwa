@@ -15,15 +15,15 @@ class App
 
         //TODO handle session id
 
-        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
-        {
-            if (($url[0] == 'signin' || $url[0] == 'signup') && isset($_SESSION['id']))
+        if (isset($_SESSION['id'])) {
+            if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
             {
-                $this->controller = 'calendar';
+                $this->controller = $url[0];
                 unset($url[0]);
             }
-        } else {
-            $this->controller = $url[0];
+        } else
+        {
+            $this->controller = 'signin';
             unset($url[0]);
         }
 
