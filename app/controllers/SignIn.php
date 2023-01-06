@@ -18,7 +18,7 @@ class SignIn extends Controller
                 die();
             }
 
-            $sql = "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'"; //TODO sanitize
+            $sql = "SELECT * FROM users WHERE email = '" . htmlspecialchars($_POST['email']) . "'"; //TODO sanitize
             $result = $conn->query($sql);
 
             if ($result->num_rows == 1) {

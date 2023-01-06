@@ -4,7 +4,7 @@ class Profile extends Controller
 {
     private $servername = "localhost";
     private $username = "root";
-    private $password = ""; //TODO create another user with certain permissions
+    private $password = "";
     private $db = "habitjournal";
 
     public function index()
@@ -16,7 +16,6 @@ class Profile extends Controller
             die();
         }
 
-        //todo IMPLEMENT PDO
         $profileSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "'";
 
         $result = $conn->query($profileSql);
@@ -26,7 +25,6 @@ class Profile extends Controller
         $conn->close();
     }
 
-    //TODO save info and then call index function
     public function save()
     {
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
@@ -38,12 +36,11 @@ class Profile extends Controller
 
         //TODO validate email, same thing is in sign in/up
         //TODO date of birth
-        $saveSql = "UPDATE users SET first_name = '" . $_POST['first-name'] .
-            "', last_name = '" . $_POST['last-name'] . "', email = '" . $_POST['email'] .
-            "', date_of_birth = '" . $_POST['birthdate'] . "', gender = '" . $_POST['gender'] .
+        $saveSql = "UPDATE users SET first_name = '" . htmlspecialchars($_POST['first-name']) .
+            "', last_name = '" . htmlspecialchars($_POST['last-name']) . "', email = '" . htmlspecialchars($_POST['email']) .
+            "', date_of_birth = '" . htmlspecialchars($_POST['birthdate']) . "', gender = '" . htmlspecialchars($_POST['gender']) .
             "' WHERE id = '" . $_SESSION['id'] ."'";
 
-        file_put_contents('test.txt', $saveSql);
         //TODO alert??
         $conn->query($saveSql);
         $conn->close();

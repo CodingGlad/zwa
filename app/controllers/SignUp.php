@@ -11,7 +11,9 @@ class SignUp extends Controller
             $password = "";
             $db = "habitjournal";
 
-            $data = ['email' => $_POST['email'], 'password' => $_POST['password'], 'message' => ""];
+            $data = ['email' => htmlspecialchars($_POST['email']),
+                'password' => htmlspecialchars($_POST['password']),
+                'message' => ""];
 
             $conn = new mysqli($servername, $username, $password, $db);
 

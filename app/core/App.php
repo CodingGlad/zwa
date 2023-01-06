@@ -13,7 +13,7 @@ class App
 
         $url = $this->parseUrl();
 
-        //TODO handle session id
+        file_put_contents('mre.txt', count($url));
 
         if (isset($_SESSION['id'])) {
             if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
@@ -26,6 +26,9 @@ class App
                     $this->controller = $url[0];
                 }
                 unset($url[0]);
+            } else if (count($url) == 0)
+            {
+                $this->controller = 'calendar';
             }
         } else
         {
