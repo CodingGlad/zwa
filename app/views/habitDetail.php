@@ -69,7 +69,7 @@
       <div class="detail-heading">
         Habit Detail
       </div>
-      <form method="post" action="detail">
+      <form method="post" action="detail/add">
         <label for="habit-name">Habit name</label>
         <input type="text" id="habit-name" name="habit-name" required>
         <label for="habit-abbrev">Habit abbreviation</label>
