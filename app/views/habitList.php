@@ -24,7 +24,7 @@
         </a>
         <div class="profile-settings">
             <div class="profile">
-                <a href="profile" class="http://localhost/MojeProjekty/HabitJournal/public/css-button">
+                <a href="http://localhost/MojeProjekty/HabitJournal/public/profile" class="css-button">
                     <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
                     <div class="profile-text">
                         Profile
@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div class="settings">
-                <a href="settings" class="http://localhost/MojeProjekty/HabitJournal/public/css-button">
+                <a href="http://localhost/MojeProjekty/HabitJournal/public/settings" class="css-button">
                     <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
                 </a>
             </div>
@@ -69,7 +69,18 @@
             All Habits
         </div>
         <div class="habit-list-container">
-            <!-- TODO add redirects to each habit -->
+            <?php
+            while (($item = $data->fetch_assoc()) != null)
+            {
+                echo '<a class="css-button" href="http://localhost/Mojeprojekty/HabitJournal/public/detail/show/' . $item['name_abbr'] .'">
+                          <div class="habit-flex-item">
+                              <div class="habit-wide-color" style="background-color: ' . $item['color'] . '"></div> 
+                              ' . $item['name'] . '
+                          </div>
+                      </a>';
+            }
+            ?>
+            <!-- TODO add redirects to each habit
             <a class="css-button">
                 <div class="habit-flex-item">
                     <div class="habit-wide-color"></div> Test habit
@@ -84,7 +95,7 @@
                 <div class="habit-flex-item">
                     <div class="habit-wide-color"></div> Test habit
                 </div>
-            </a>
+            </a> -->
         </div>
     </main>
 </div>

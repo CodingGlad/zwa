@@ -13,8 +13,6 @@ class App
 
         $url = $this->parseUrl();
 
-        file_put_contents('mre.txt', count($url));
-
         if (isset($_SESSION['id'])) {
             if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
             {

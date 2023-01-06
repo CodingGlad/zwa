@@ -24,9 +24,10 @@ class Detail extends Controller
         $showSql = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] .
             "' AND name_abbr = '" . htmlspecialchars($habitAbbr) ."'";
 
-        file_put_contents('show.txt', $showSql);
+        $result = $conn->query($showSql);
 
         $conn->close();
+        $this->view('habitdetail', $result->fetch_assoc());
     }
 
     public function add()
