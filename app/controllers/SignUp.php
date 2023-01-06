@@ -22,6 +22,15 @@ class SignUp extends Controller
                 die();
             }
 
+            if ($this->checkEmail($_POST['email']))
+            {
+                $data['emailValid'] = true;
+            } else
+            {
+                $data['emailValid'] = false;
+                $data['message'] .= "Email is not valid.<br>";
+            }
+
             if ($_POST['password'] == $_POST['password_check'] && $this->checkPassword($_POST['password']))
             {
                 $data['passwordValid'] = true;
@@ -72,4 +81,8 @@ class SignUp extends Controller
         $regex = "/(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*/";
         return strlen($password) >= 8 && preg_match($regex, $password);
     } //TODO email validation
+
+    public function checkEmail($email) {
+        return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
+    }
 }

@@ -67,6 +67,6 @@ class Profile extends Controller
     }
 
     public function validateEmail($email) {
-        return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
+        return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);//TODO add for signup and close
     }
 }
