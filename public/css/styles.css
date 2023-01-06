@@ -243,6 +243,10 @@ form span {
     border: 2px solid red;
 }
 
+.mandatory {
+    color: red;
+}
+
 @media screen and (max-width: 460px){
     aside, .profile-text {
         display: none;
