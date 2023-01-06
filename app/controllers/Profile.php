@@ -44,8 +44,12 @@ class Profile extends Controller
 
         if ($data['date_of_birth'] >= date("Y-m-d"))
         {
-            file_put_contents("date.txt",$data['date_of_birth'] . "////" . date("Y-m-d"));
             $data['birth_invalid'] = true;
+        }
+
+        if ($this->validateEmail($data['email']) == 0)
+        {
+            $data['email_invalid'] = true;
         }
 
         if (!(isset($data['birth_invalid']) || isset($data['email_invalid'])))
@@ -57,9 +61,12 @@ class Profile extends Controller
 
             $conn->query($saveSql);
         }
-        //TODO alert??
 
         $conn->close();
         $this->view('habitprofile', $data);
+    }
+
+    public function validateEmail($email) {
+        return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
     }
 }
