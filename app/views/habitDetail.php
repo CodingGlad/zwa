@@ -69,15 +69,24 @@
       <div class="detail-heading">
         Habit Detail
       </div>
-      <form method="post" action="detail">
+      <form method="post" action="detail/add">
         <label for="habit-name">Habit name</label>
-        <input type="text" id="habit-name" name="habit-name" required>
-        <label for="habit-abbrev">Habit abbreviation</label>
-        <input type="text" id="habit-abbrev" name="habit-abbrev" maxlength="5" required>
+        <input type="text" id="habit-name" name="habit-name" required
+            <?php
+            if (isset($data['name']) && $data['name'] != '') echo 'value = "' . $data['name'] . '" ';
+            if (isset($data['name-invalid'])) echo 'class = "el_invalid"';?>>
+        <label for="habit-abbr">Habit abbreviation (Unique)</label>
+        <input type="text" id="habit-abbr" name="habit-abbr" maxlength="5" required
+            <?php
+            if (isset($data['name_abbr']) && $data['name_abbr'] != '') echo 'value = "' . $data['name_abbr'] . '" ';
+            if (isset($data['abbr-invalid'])) echo 'class = "el_invalid"';?>>
         <label for="habit-desc">Habit description</label>
         <textarea id="habit-desc" name="habit-desc"></textarea>
         <label for="habit-color">Habit color</label>
-        <input type="color" id="habit-color" name="habit-color" required>
+        <input type="color" id="habit-color" name="habit-color" required
+            <?php
+            if (isset($data['color']) && $data['color'] != '') echo 'value = "' . $data['color'] . '" ';
+            if (isset($data['color-invalid'])) echo 'class = "el_invalid"';?>>
         <input type="submit" value="Save Habit">
       </form>
     </div>

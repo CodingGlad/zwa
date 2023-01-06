@@ -71,6 +71,7 @@ class SignUp extends Controller
                 $this->view('signup', $data);
             }
 
+            $conn->close();
         } else {
             $this->view('signup');
         }
