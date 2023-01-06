@@ -75,9 +75,11 @@
         <label for="last-name">Last name</label>
         <input id="last-name" name="last-name" type="text" value="<?=$data['last_name']?>">
         <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" required  value="<?=$data['email']?>">
+        <input id="email" name="email" type="email" required value="<?=$data['email']?>"
+               <?php if (isset($data['email_invalid'])) echo 'class="el_invalid"'?>>
         <label for="birthdate">Date of birth</label>
-        <input id="birthdate" name="birthdate" type="date"  value="<?=$data['date_of_birth']?>">
+        <input id="birthdate" name="birthdate" type="date" value="<?=$data['date_of_birth']?>"
+               <?php if (isset($data['birth_invalid'])) echo 'class="el_invalid"'?>>
         <p>
           Gender
         </p>

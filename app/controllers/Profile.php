@@ -28,6 +28,11 @@ class Profile extends Controller
     public function save()
     {
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
+        $data = ['first_name' => htmlspecialchars($_POST['first-name']),
+                'last_name' => htmlspecialchars($_POST['last-name']),
+                'date_of_birth' => htmlspecialchars($_POST['birthdate']),
+                'email' => htmlspecialchars($_POST['email']),
+                'gender' => htmlspecialchars($_POST['gender'])];
 
         if ($conn->connect_error)
         {
@@ -35,15 +40,26 @@ class Profile extends Controller
         }
 
         //TODO validate email, same thing is in sign in/up
-        //TODO date of birth
-        $saveSql = "UPDATE users SET first_name = '" . htmlspecialchars($_POST['first-name']) .
-            "', last_name = '" . htmlspecialchars($_POST['last-name']) . "', email = '" . htmlspecialchars($_POST['email']) .
-            "', date_of_birth = '" . htmlspecialchars($_POST['birthdate']) . "', gender = '" . htmlspecialchars($_POST['gender']) .
-            "' WHERE id = '" . $_SESSION['id'] ."'";
 
+
+        if ($data['date_of_birth'] >= date("Y-m-d"))
+        {
+            file_put_contents("date.txt",$data['date_of_birth'] . "////" . date("Y-m-d"));
+            $data['birth_invalid'] = true;
+        }
+
+        if (!(isset($data['birth_invalid']) || isset($data['email_invalid'])))
+        {
+            $saveSql = "UPDATE users SET first_name = '" . $data['first_name'] .
+                "', last_name = '" . $data['last_name'] . "', email = '" . $data['email'] .
+                "', date_of_birth = '" . $data['date_of_birth'] . "', gender = '" . $data['gender'] .
+                "' WHERE id = '" . $_SESSION['id'] ."'";
+
+            $conn->query($saveSql);
+        }
         //TODO alert??
-        $conn->query($saveSql);
+
         $conn->close();
-        $this->index();
+        $this->view('habitprofile', $data);
     }
 }

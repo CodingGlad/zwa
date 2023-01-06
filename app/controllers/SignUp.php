@@ -71,5 +71,5 @@ class SignUp extends Controller
     {
         $regex = "/(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*/";
         return strlen($password) >= 8 && preg_match($regex, $password);
-    }
+    } //TODO email validation
 }
