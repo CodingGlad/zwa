@@ -30,6 +30,11 @@ class Detail extends Controller
         $this->view('habitdetail', $result->fetch_assoc());
     }
 
+    public function update()
+    {
+        //todo what to d when updating since the abbrev is going to be the same
+    }
+
     public function add()
     {
         $data = [
