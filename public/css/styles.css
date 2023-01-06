@@ -239,6 +239,10 @@ form span {
     margin-bottom: 20px;
 }
 
+.el_invalid {
+    border: 2px solid red;
+}
+
 @media screen and (max-width: 460px){
     aside, .profile-text {
         display: none;

@@ -73,11 +73,11 @@
         <label for="habit-name">Habit name</label>
         <input type="text" id="habit-name" name="habit-name" required>
         <label for="habit-abbrev">Habit abbreviation</label>
-        <input type="text" id="habit-abbrev" name="habit-abbrev" maxlength="4">
+        <input type="text" id="habit-abbrev" name="habit-abbrev" maxlength="5" required>
         <label for="habit-desc">Habit description</label>
         <textarea id="habit-desc" name="habit-desc"></textarea>
         <label for="habit-color">Habit color</label>
-        <input type="color" id="habit-color" name="habit-color">
+        <input type="color" id="habit-color" name="habit-color" required>
         <input type="submit" value="Save Habit">
       </form>
     </div>

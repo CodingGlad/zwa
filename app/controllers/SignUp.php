@@ -11,13 +11,24 @@ class SignUp extends Controller
             $password = "";
             $db = "habitjournal";
 
-            $data = ['email' => $_POST['email'], 'password' => $_POST['password'], 'message' => ""];
+            $data = ['email' => htmlspecialchars($_POST['email']),
+                'password' => htmlspecialchars($_POST['password']),
+                'message' => ""];
 
             $conn = new mysqli($servername, $username, $password, $db);
 
             if ($conn->connect_error)
             {
                 die();
+            }
+
+            if ($this->checkEmail($_POST['email']))
+            {
+                $data['emailValid'] = true;
+            } else
+            {
+                $data['emailValid'] = false;
+                $data['message'] .= "Email is not valid.<br>";
             }
 
             if ($_POST['password'] == $_POST['password_check'] && $this->checkPassword($_POST['password']))
@@ -69,5 +80,9 @@ class SignUp extends Controller
     {
         $regex = "/(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*/";
         return strlen($password) >= 8 && preg_match($regex, $password);
+    } //TODO email validation
+
+    public function checkEmail($email) {
+        return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
     }
 }

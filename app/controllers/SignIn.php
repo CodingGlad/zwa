@@ -18,15 +18,15 @@ class SignIn extends Controller
                 die();
             }
 
-            $sql = "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'"; //TODO sanitize
+            $sql = "SELECT * FROM users WHERE email = '" . htmlspecialchars($_POST['email']) . "'"; //TODO sanitize
             $result = $conn->query($sql);
 
             if ($result->num_rows == 1) {
                 $user = $result->fetch_assoc();
 
-                file_put_contents('help.txt', print_r($user, true));
                 if (password_verify($_POST['password'], $user['password']))
                 {
+                    $_SESSION['id'] = $user['id'];
                     $this->view('habitcalendar');
                 } else
                 {
@@ -36,6 +36,7 @@ class SignIn extends Controller
             } else {
                 $this->view('signin', ['message' => 'This account does not exist']);
             }
+            $conn->close();
         } else
         {
             $this->view('signin');
