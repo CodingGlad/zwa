@@ -12,7 +12,7 @@
     <body>
         <div class="page-container">
             <header class="top-bar">
-                <a class="css-button" href="calendar">
+                <a class="css-button" href="http://localhost/MojeProjekty/HabitJournal/public/calendar">
                     <div class="logo-container">
                         <div class="logo">
                             <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Habit Journal Logo">
@@ -24,7 +24,7 @@
                 </a>
                 <div class="profile-settings">
                     <div class="profile">
-                        <a href="profile" class="css-button">
+                        <a href="http://localhost/MojeProjekty/HabitJournal/public/profile" class="css-button">
                             <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
                             <div class="profile-text">
                                 Profile
@@ -32,7 +32,7 @@
                         </a>
                     </div>
                     <div class="settings">
-                        <a href="settings" class="css-button">
+                        <a href="http://localhost/MojeProjekty/HabitJournal/public/settings" class="css-button">
                             <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
                         </a>
                     </div>
@@ -45,12 +45,12 @@
                     </div>
                     <div class="sidebar-buttons">
                         <div class="list-button">
-                            <a class="css-button" href="habitlist">
+                            <a class="css-button" href="http://localhost/MojeProjekty/HabitJournal/public/habitlist">
                                 <img src="http://localhost/MojeProjekty/HabitJournal/public/img/list.png" alt="...">
                             </a>
                         </div>
                         <div class="plus-button">
-                            <a class="css-button" href="detail">
+                            <a class="css-button" href="http://localhost/MojeProjekty/HabitJournal/public/detail">
                                 <img src="http://localhost/MojeProjekty/HabitJournal/public/img/plus.png" alt="+">
                             </a>
                         </div>

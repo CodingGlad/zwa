@@ -69,9 +69,9 @@
       <div class="detail-heading">
         Habit Detail
       </div>
-      <form method="post" action="detail/add">
+      <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/detail/add">
         <label for="habit-name">Habit name</label>
-        <input type="text" id="habit-name" name="habit-name" required
+        <input type="text" id="habit-name" name="habit-name"
             <?php
             if (isset($data['name']) && $data['name'] != '') echo 'value = "' . $data['name'] . '" ';
             if (isset($data['name-invalid'])) echo 'class = "el_invalid"';?>>

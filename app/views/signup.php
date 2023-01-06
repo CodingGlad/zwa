@@ -4,7 +4,6 @@
     <title>Habit Journal</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link rel="stylesheet" href="css/signInUp.css">-->
     <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/signInUp.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +20,7 @@
             Sign up to use Habit Journal.
         </div>
         <form method="post">
-            <label for="email">E-mail</label>
+            <label for="email">E-mail</label><!-- todo sign up wtff -->
             <input id="email" name="email" type="email" value="<?=(isset($data['email']))?($data['email']):("")?>" class="<?php
             if (isset($data['emailValid']))
             {
@@ -45,7 +44,7 @@
         ?>
     </main>
     <div class="login-redirect">
-        <a href="signin">Login</a>
+        <a href="http://localhost/MojeProjekty/HabitJournal/public/signin">Login</a>
     </div>
     <script>
         document.getElementById("submit").disabled = true;

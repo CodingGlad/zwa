@@ -19,7 +19,7 @@
                 <div class="login-text">
                     Log in to use your Habit Journal profile.
                 </div>
-                <form method="post" action="signin">
+                <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signin">
                     <label for="email">E-mail</label>
                     <input id="email" name="email" type="email" required>
                     <label for="password">Password</label>
@@ -31,7 +31,7 @@
                 ?>
             </main>
             <div class="register-redirect">
-                <a href="signup">Register</a>
+                <a href="http://localhost/MojeProjekty/HabitJournal/public/signup">Register</a>
             </div>
         </div>
         <script>
