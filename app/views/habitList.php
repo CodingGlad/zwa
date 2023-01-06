@@ -70,14 +70,17 @@
         </div>
         <div class="habit-list-container">
             <?php
-            while (($item = $data->fetch_assoc()) != null)
+            if (isset($data))
             {
-                echo '<a class="css-button" href="http://localhost/Mojeprojekty/HabitJournal/public/detail/show/' . $item['name_abbr'] .'">
+                while (($item = $data->fetch_assoc()) != null)
+                {
+                    echo '<a class="css-button" href="http://localhost/Mojeprojekty/HabitJournal/public/detail/show/' . $item['name_abbr'] .'">
                           <div class="habit-flex-item">
                               <div class="habit-wide-color" style="background-color: ' . $item['color'] . '"></div> 
                               ' . $item['name'] . '
                           </div>
                       </a>';
+                }
             }
             ?>
             <!-- TODO add redirects to each habit

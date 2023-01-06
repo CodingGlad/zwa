@@ -81,7 +81,8 @@
             if (isset($data['name_abbr']) && $data['name_abbr'] != '') echo 'value = "' . $data['name_abbr'] . '" ';
             if (isset($data['abbr-invalid'])) echo 'class = "el_invalid"';?>>
         <label for="habit-desc">Habit description</label>
-        <textarea id="habit-desc" name="habit-desc"></textarea>
+        <textarea id="habit-desc" name="habit-desc"><?php
+            if (isset($data['description']) && $data['description'] != '') echo $data['description'];?></textarea>
         <label for="habit-color">Habit color</label>
         <input type="color" id="habit-color" name="habit-color" required
             <?php

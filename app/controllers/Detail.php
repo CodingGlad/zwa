@@ -65,13 +65,16 @@ class Detail extends Controller
                 $this->view('habitdetail', $data);
             } else
             {
-
                 $saveSql = "INSERT INTO habits VALUES ('". $data['id'] . "', '" .
                     $data['name'] . "', '" . $data['name_abbr'] . "', '" . $data['color'] . "', '" .
                     $data['description'] . "')";
 
                 $conn->query($saveSql);
-                $this->view('habitlist');
+
+                $listSelect = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] . "'";
+                $result = $conn->query($listSelect);
+
+                $this->view('habitlist', $result);
             }
         } else
         {
