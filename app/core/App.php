@@ -2,7 +2,6 @@
 
 class App
 {
-
     protected $controller = 'signin';
     protected $method = 'index';
     protected $params = [];
@@ -13,7 +12,7 @@ class App
 
         $url = $this->parseUrl();
 
-        if (isset($_SESSION['id'])) {
+        if (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id'])) {
             if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
             {
                 if ($url[0] == 'signin' || $url[0] == 'signup')
@@ -60,7 +59,7 @@ class App
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    public function parseUrl()
+    private function parseUrl()
     {
         if (isset($_GET['url']))
         {
@@ -68,6 +67,34 @@ class App
         } else
         {
             return [];
+        }
+    }
+
+    private function isIdValid($id)
+    {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $db = "habitjournal";
+
+        $conn = new mysqli($servername, $username, $password, $db);
+
+        if ($conn->connect_error)
+        {
+            die();
+        }
+
+        $idCheckSql = "SELECT * FROM users WHERE id = '" . $id . "'";
+
+        $result = $conn->query($idCheckSql);
+        $conn->close();
+
+        if ($result->num_rows == 1)
+        {
+            return true;
+        } else
+        {
+            return false;
         }
     }
 }
