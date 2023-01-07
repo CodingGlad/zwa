@@ -127,6 +127,8 @@ div.logo > img {
 }
 
 .calendar-item {
+    padding: 5px;
+
     border-right: 1px solid #acacac;
     border-bottom: 1px solid #acacac;
 }
