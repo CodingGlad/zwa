@@ -69,9 +69,18 @@
                     &lt; &gt; November 2022
                 </div>
                 <div class="calendar-container">
+                    <?php
+                        foreach($data as $key=>$dt)
+                        {
+                            echo '<div class="calendar-item">
+                                    <div class="date">' . $key . '</div>
+                                  </div>';
+                        }
+                    ?>
+                    <!--
                     <div class="calendar-item">
                         <div class="date">Po 1. 11.</div>
-                    </div>
+                    </div>-->
                 </div>
             </main>
         </div>

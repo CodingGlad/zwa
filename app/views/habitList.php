@@ -83,22 +83,6 @@
                 }
             }
             ?>
-            <!-- TODO add redirects to each habit
-            <a class="css-button">
-                <div class="habit-flex-item">
-                    <div class="habit-wide-color"></div> Test habit
-                </div>
-            </a>
-            <a class="css-button">
-                <div class="habit-flex-item">
-                    <div class="habit-wide-color"></div> Test habit
-                </div>
-            </a>
-            <a class="css-button">
-                <div class="habit-flex-item">
-                    <div class="habit-wide-color"></div> Test habit
-                </div>
-            </a> -->
         </div>
     </main>
 </div>
