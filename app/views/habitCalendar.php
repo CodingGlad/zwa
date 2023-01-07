@@ -66,7 +66,23 @@
             </aside>
             <main class="calendar-body">
                 <div class="calendar-heading">
-                    &lt; &gt; November 2022
+                    <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/calendar">
+                        <?php if (isset($data['newDate']))
+                            echo '<input type="hidden" name="currentDate" value="' . $data['newDate'] . '">';
+                            ?>
+                        <input type="submit" name="dateSubmit" value="Previous">
+                        <div><?php
+                        if (isset($data['newDate']))
+                        {
+                            echo $data['newDate'];
+                            unset($data['newDate']);
+                        } else
+                        {
+                            echo date('F Y');
+                        }
+                        ?></div>
+                        <input type="submit" name="dateSubmit" value="Next">
+                    </form>
                 </div>
                 <div class="calendar-container">
                     <?php

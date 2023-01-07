@@ -65,7 +65,6 @@ class SignUp extends Controller
                 $userId = uniqid();
                 $insertSql = "INSERT INTO users (id, email, password) VALUES ('" . $userId . "', '" . $data['email'] ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "')";
 
-                file_put_contents('validdd.txt', $insertSql);
                 if ($conn->query($insertSql))
                 {
                     $_SESSION['id'] = $userId;
