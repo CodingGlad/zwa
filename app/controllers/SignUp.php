@@ -62,12 +62,13 @@ class SignUp extends Controller
 
             if ($data['emailValid'] && $data['passwordValid'])
             {
-                $insertSql = "INSERT INTO users (id, email, password) VALUES ('" . uniqid() . "', '" . $data['email'] ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "')";
+                $userId = uniqid();
+                $insertSql = "INSERT INTO users (id, email, password) VALUES ('" . $userId . "', '" . $data['email'] ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "')";
 
                 file_put_contents('validdd.txt', $insertSql);
                 if ($conn->query($insertSql))
                 {
-                    file_put_contents('validdd.txt', 'completed');
+                    $_SESSION['id'] = $userId;
                     $this->view('habitcalendar');
                 } else
                 {
