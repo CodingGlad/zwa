@@ -13,8 +13,6 @@ class App
 
         $url = $this->parseUrl();
 
-        file_put_contents('mre.txt', count($url));
-
         if (isset($_SESSION['id'])) {
             if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
             {
@@ -32,8 +30,14 @@ class App
             }
         } else
         {
-            $this->controller = 'signin';
-            unset($url[0]);
+            if (isset($url[0]) && ($url[0] == 'signin' || $url[0] == 'signup'))
+            {
+                $this->controller = $url[0];
+                unset($url[0]);
+            } else
+            {
+                $this->controller = 'signin';
+            }
         }
 
         require_once '../app/controllers/' . $this->controller . '.php';

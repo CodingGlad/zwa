@@ -2,23 +2,41 @@
 
 class Detail extends Controller
 {
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $db = "habitjournal";
+
     public function index()
     {
         $this->view('habitDetail');
     }
 
-    public function show()
+    public function show($habitAbbr)
     {
+        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
 
+        if ($conn->connect_error)
+        {
+            die();
+        }
+
+        $showSql = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] .
+            "' AND name_abbr = '" . htmlspecialchars($habitAbbr) ."'";
+
+        $result = $conn->query($showSql);
+
+        $conn->close();
+        $this->view('habitdetail', $result->fetch_assoc());
+    }
+
+    public function update()
+    {
+        //todo what to d when updating since the abbrev is going to be the same
     }
 
     public function add()
     {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $db = "habitjournal";
-
         $data = [
             'id' => $_SESSION['id'],
             'name' => htmlspecialchars($_POST['habit-name']),
@@ -28,7 +46,7 @@ class Detail extends Controller
             ];
         $invalid = $this->validateInput($data);
 
-        $conn = new mysqli($servername, $username, $password, $db);
+        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
 
         if ($conn->connect_error)
         {
@@ -37,7 +55,7 @@ class Detail extends Controller
 
         if (count($invalid) == 0)
         {
-            $checkSql = "SELECT * FROM habits WHERE name_abbr = '" . $data['habit-abbr'] ."'";
+            $checkSql = "SELECT * FROM habits WHERE name_abbr = '" . $data['name_abbr'] ."'";
 
             $results = $conn->query($checkSql);
 
@@ -47,13 +65,16 @@ class Detail extends Controller
                 $this->view('habitdetail', $data);
             } else
             {
-
                 $saveSql = "INSERT INTO habits VALUES ('". $data['id'] . "', '" .
                     $data['name'] . "', '" . $data['name_abbr'] . "', '" . $data['color'] . "', '" .
                     $data['description'] . "')";
 
                 $conn->query($saveSql);
-                $this->view('habitlist');
+
+                $listSelect = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] . "'";
+                $result = $conn->query($listSelect);
+
+                $this->view('habitlist', $result);
             }
         } else
         {

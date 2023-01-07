@@ -12,7 +12,7 @@
 <body>
 <div class="page-container">
     <header class="top-bar">
-        <a class="css-button" href="calendar">
+        <a class="css-button" href="http://localhost/MojeProjekty/HabitJournal/public/calendar">
             <div class="logo-container">
                 <div class="logo">
                     <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Habit Journal Logo">
@@ -24,7 +24,7 @@
         </a>
         <div class="profile-settings">
             <div class="profile">
-                <a href="profile" class="css-button">
+                <a href="http://localhost/MojeProjekty/HabitJournal/public/profile" class="css-button">
                     <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
                     <div class="profile-text">
                         Profile
@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div class="settings">
-                <a href="settings" class="css-button">
+                <a href="http://localhost/MojeProjekty/HabitJournal/public/settings" class="css-button">
                     <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
                 </a>
             </div>
@@ -45,12 +45,12 @@
             </div>
             <div class="sidebar-buttons">
                 <div class="list-button">
-                    <a class="css-button" href="habitlist">
+                    <a class="css-button" href="http://localhost/MojeProjekty/HabitJournal/public/habitlist">
                         <img src="http://localhost/MojeProjekty/HabitJournal/public/img/list.png" alt="...">
                     </a>
                 </div>
                 <div class="plus-button">
-                    <a class="css-button" href="detail">
+                    <a class="css-button" href="http://localhost/MojeProjekty/HabitJournal/public/detail">
                         <img src="http://localhost/MojeProjekty/HabitJournal/public/img/plus.png" alt="+">
                     </a>
                 </div>
@@ -69,9 +69,9 @@
       <div class="detail-heading">
         Habit Detail
       </div>
-      <form method="post" action="detail/add">
+      <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/detail/add">
         <label for="habit-name">Habit name</label>
-        <input type="text" id="habit-name" name="habit-name" required
+        <input type="text" id="habit-name" name="habit-name"
             <?php
             if (isset($data['name']) && $data['name'] != '') echo 'value = "' . $data['name'] . '" ';
             if (isset($data['name-invalid'])) echo 'class = "el_invalid"';?>>
@@ -81,7 +81,8 @@
             if (isset($data['name_abbr']) && $data['name_abbr'] != '') echo 'value = "' . $data['name_abbr'] . '" ';
             if (isset($data['abbr-invalid'])) echo 'class = "el_invalid"';?>>
         <label for="habit-desc">Habit description</label>
-        <textarea id="habit-desc" name="habit-desc"></textarea>
+        <textarea id="habit-desc" name="habit-desc"><?php
+            if (isset($data['description']) && $data['description'] != '') echo $data['description'];?></textarea>
         <label for="habit-color">Habit color</label>
         <input type="color" id="habit-color" name="habit-color" required
             <?php
