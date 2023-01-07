@@ -19,8 +19,8 @@
         <div class="login-text">
             Sign up to use Habit Journal.
         </div>
-        <form method="post">
-            <label for="email">E-mail</label><!-- todo sign up wtff -->
+        <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signup">
+            <label for="email">E-mail</label>
             <input id="email" name="email" type="email" value="<?=(isset($data['email']))?($data['email']):("")?>" class="<?php
             if (isset($data['emailValid']))
             {
