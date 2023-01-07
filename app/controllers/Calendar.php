@@ -5,8 +5,6 @@ class Calendar extends Controller
     //TODO first return calendar for current month, then figure out a way of getting desired month
     public function index() {
 
-        $data = [];
-
         if (isset($_GET['dateSubmit']))
         {
             if (isset($_GET['currentDate']))
@@ -40,7 +38,7 @@ class Calendar extends Controller
         $period = new DatePeriod($begin, $interval, $end);
 //        file_put_contents('dateTest.txt', date('Y d m', strtotime('January 2023')));
 
-        $datesWithHabits = [];
+        $datesWithHabits = ['newDate' => $begin->format('F Y')];
 
         foreach($period as $date)
         {
