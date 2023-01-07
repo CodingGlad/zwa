@@ -70,19 +70,19 @@
                         <?php if (isset($data['newDate']))
                             echo '<input type="hidden" name="currentDate" value="' . $data['newDate'] . '">';
                             ?>
-                        <input type="submit" name="dateSubmit" value="backwards">
-                        <input type="submit" name="dateSubmit" value="forwards">
-                    </form> <?php
+                        <input type="submit" name="dateSubmit" value="Previous">
+                        <div><?php
                         if (isset($data['newDate']))
-                            {
-                                echo $data['newDate'];
-                                unset($data['newDate']);
-                            } else
-                            {
-                                echo date('F Y');
-                            }
-                            ?>
-<!--                    &lt; &gt; November 2022-->
+                        {
+                            echo $data['newDate'];
+                            unset($data['newDate']);
+                        } else
+                        {
+                            echo date('F Y');
+                        }
+                        ?></div>
+                        <input type="submit" name="dateSubmit" value="Next">
+                    </form>
                 </div>
                 <div class="calendar-container">
                     <?php

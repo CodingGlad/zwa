@@ -116,6 +116,9 @@ div.logo > img {
 
     padding-left: 7px;
     padding-right: 7px;
+
+    display: flex;
+    gap: 5px;
 }
 
 .calendar-container {
@@ -136,6 +139,17 @@ div.logo > img {
 .date {
     color: #818181;
     font-weight: bold;
+}
+
+div.calendar-heading form input {
+    border: none;
+}
+
+div.calendar-heading form{
+    display: flex;
+    flex-direction: row;
+
+    gap: 5px;
 }
 /* CALENDAR CSS */
 
