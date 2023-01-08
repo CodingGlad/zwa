@@ -81,18 +81,38 @@
             <div class="detail-heading">
                 Add Habit Occurence
             </div>
+            <?php
+                if (isset($data['message_valid']))
+                {
+                    echo '<span class="message_valid">' . $data['message_valid'] . '</span>';
+                    unset($data['message_valid']);
+                } elseif (isset($data['message_invalid']))
+                {
+                    echo '<span class="message_invalid">' . $data['message_invalid'] . '</span>';
+                    unset($data['message_invalid']);
+                }
+            ?>
             <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/occurence/add">
                 <label for="selected-habit">Choose habit</label>
                 <select name="selected-habit" id="selected-habit" required>
-                    <option value="test habit">
-                        Test habit
-                    </option>
-                    <option value="test habit2">
-                        Cau
-                    </option>
+                    <?php
+                        if (isset($data))
+                        {
+                            foreach ($data as $habit)
+                            {
+                                echo '<option value="' . $habit['name_abbr'] . '">' . $habit['name_abbr'] .
+                                    '</option>';
+                            }
+//                            while(($habit = $data->fetch_assoc()) != null)
+//                            {
+//                                echo '<option value="' . $habit['name_abbr'] . '">' . $habit['name_abbr'] .
+//                                    '</option>';
+//                            }
+                        }
+                    ?>
                 </select>
-                <label for="habit-abbr">Set date</label>
-                <input type="date" id="habit-abbr" name="habit-abbr" required value="<?php echo date('Y-m-d')?>">
+                <label for="habit-date">Set date</label>
+                <input type="date" id="habit-date" name="habit-date" required value="<?php echo date('Y-m-d')?>">
                 <input type="submit" value="Save Habit">
             </form>
         </div>
