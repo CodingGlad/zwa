@@ -4,12 +4,7 @@ class Profile extends Controller
 {
     public function index()
     {
-        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-
-        if ($conn->connect_error)
-        {
-            die();
-        }
+        $conn = $this->connectDb();
 
         $profileSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "'";
 

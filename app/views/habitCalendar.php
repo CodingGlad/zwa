@@ -76,7 +76,7 @@
                     </a>
                 </div>
             </aside>
-            <main class="calendar-body">
+            <main>
                 <div class="calendar-heading">
                     <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/calendar">
                         <?php if (isset($data['newDate']))

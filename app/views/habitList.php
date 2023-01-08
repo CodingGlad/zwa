@@ -76,7 +76,7 @@
             </a>
         </div>
     </aside>
-    <main class="calendar-body">
+    <main>
         <h1>
             All Habits
         </h1>

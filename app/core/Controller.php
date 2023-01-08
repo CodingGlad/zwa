@@ -14,4 +14,15 @@ class Controller {
     public function view($view, $data = []) {
         require_once '../app/views/' . $view . '.php';
     }
+
+    public function connectDb() {
+        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
+
+        if ($conn->connect_error)
+        {
+            die();
+        }
+
+        return $conn;
+    }
 }

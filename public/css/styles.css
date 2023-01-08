@@ -59,6 +59,10 @@ div.logo > img {
     justify-content: right;
 }
 
+.calendar-heading {
+    border-bottom: 1px solid #acacac;
+}
+
 /* TOP BAR CSS */
 
 /* SIDE BAR CSS */
