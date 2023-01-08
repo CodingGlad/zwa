@@ -6,12 +6,7 @@ class SignIn extends Controller
     {
         if (isset($_POST['email']))
         {
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $db = "habitjournal";
-
-            $conn = new mysqli($servername, $username, $password, $db);
+            $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
 
             if ($conn->connect_error)
             {

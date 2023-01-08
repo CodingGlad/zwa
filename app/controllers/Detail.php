@@ -2,11 +2,6 @@
 
 class Detail extends Controller
 {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $db = "habitjournal";
-
     public function index()
     {
         $this->view('habitDetail');
