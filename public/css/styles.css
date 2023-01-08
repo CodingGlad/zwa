@@ -65,7 +65,7 @@ div.logo > img {
 
 /* SIDE BAR CSS */
 
-.side-bar {
+aside {
     padding-bottom: 10px;
     border-right: 1px solid #acacac;
     grid-row: 2;

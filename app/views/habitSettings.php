@@ -38,7 +38,7 @@
       </div>
     </div>
   </header>
-    <aside class="side-bar">
+    <aside>
         <div class="habit-top-bar">
             <div class="habit-heading">
                 List of habits

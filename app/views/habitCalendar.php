@@ -26,7 +26,7 @@
                     <div class="profile">
                         <a href="http://localhost/MojeProjekty/HabitJournal/public/profile" class="css-button">
                             <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
-                            <div class="profile-text">
+                            <div class="profile-text"> <!-- TODO logout icon -->
                                 Profile
                             </div>
                         </a>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </header>
-            <aside class="side-bar">
+            <aside>
                 <div class="habit-top-bar">
                     <div class="habit-heading">
                         List of habits
