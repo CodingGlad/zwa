@@ -16,8 +16,6 @@ class Occurence extends Controller
             $rows[] = $row;
         }
 
-        file_put_contents('messaeg.txt', print_r($message, true));
-
         if (isset($message['message_valid']) || isset($message['message_invalid']))
         {
             $result = array_merge($rows, $message);
@@ -25,8 +23,6 @@ class Occurence extends Controller
         {
             $result = $rows;
         }
-
-        file_put_contents('test.txt', print_r($result, true));
 
         $this->view('habitoccurence', $result);
         $conn->close();
@@ -42,9 +38,6 @@ class Occurence extends Controller
                 mysqli_real_escape_string($conn, $_POST['habit-date']) . "', '" .
                 mysqli_real_escape_string($conn, $_POST['selected-habit']) . "', '" .
                 mysqli_real_escape_string($conn, $_SESSION['id']) . "')";
-
-            file_put_contents('occurence.txt', $occurenceInsertSql);
-
 
             if ($conn->query($occurenceInsertSql) === true)
             {
