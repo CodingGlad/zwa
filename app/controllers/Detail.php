@@ -2,11 +2,6 @@
 
 class Detail extends Controller
 {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $db = "habitjournal";
-
     public function index()
     {
         $this->view('habitDetail');
@@ -14,12 +9,7 @@ class Detail extends Controller
 
     public function show($habitAbbr)
     {
-        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-
-        if ($conn->connect_error)
-        {
-            die();
-        }
+        $conn = $this->connectDb();
 
         $showSql = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] .
             "' AND name_abbr = '" . htmlspecialchars($habitAbbr) ."'";
@@ -46,12 +36,7 @@ class Detail extends Controller
             ];
         $invalid = $this->validateInput($data);
 
-        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-
-        if ($conn->connect_error)
-        {
-            die();
-        }
+        $conn = $this->connectDb();
 
         if (count($invalid) == 0)
         {

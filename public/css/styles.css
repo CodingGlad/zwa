@@ -59,6 +59,10 @@ div.logo > img {
     justify-content: right;
 }
 
+.calendar-heading {
+    border-bottom: 1px solid #acacac;
+}
+
 /* TOP BAR CSS */
 
 /* SIDE BAR CSS */
@@ -174,12 +178,20 @@ div.calendar-heading form{
     justify-content: center;
 }
 
-.detail-heading, .profile-heading {
+.detail-heading, .profile-heading{
     display: flex;
     justify-content: center;
 
     font-weight: bold;
     font-size: 35px;
+}
+
+.message_invalid, .message_valid {
+    font-weight: bold;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
 }
 
 .detail {
@@ -196,7 +208,7 @@ div.calendar-heading form{
     flex-flow: column;
 }
 
-.detail input, textarea {
+.detail input, textarea, select {
     margin-bottom: 20px;
 }
 
@@ -238,8 +250,21 @@ form span {
     margin-bottom: 20px;
 }
 
+.color {
+    background-color: red;
+    size: 5px 5px;
+}
+
 .el_invalid {
     border: 2px solid red;
+}
+
+.message_valid {
+    color: #09ce00;
+}
+
+.message_invalid {
+    color: red;
 }
 
 .mandatory {

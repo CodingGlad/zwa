@@ -24,20 +24,20 @@
                 </a>
                 <div class="logout">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/logout" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
-                        <div class="menu-item-text"> <!-- TODO logout icon -->
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/out.png" alt="gear-icon">
+                        <div class="menu-item-text">
                             Log Out
                         </div>
                     </a>
                 </div>
             </header>
             <aside>
-                    <h1>
-                        Menu
-                    </h1>
+                <h1>
+                    Menu
+                </h1>
                 <div class="menu-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/habitlist" class="css-button">
-                        <img src="">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png">
                         <div class="menu-item-text">
                             Habit List
                         </div>
@@ -45,15 +45,15 @@
                 </div>
                 <div class="menu-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/detail" class="css-button">
-                        <img src="">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/add.png">
                         <div class="menu-item-text">
                             Add Habit
                         </div>
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a href="" class="css-button"> <!--TODO occurence form-->
-                        <img src="">
+                    <a href="http://localhost/MojeProjekty/HabitJournal/public/occurence" class="css-button">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/calendar.png">
                         <div class="menu-item-text">
                             Add Occurence
                         </div>
@@ -76,7 +76,7 @@
                     </a>
                 </div>
             </aside>
-            <main class="calendar-body">
+            <main>
                 <div class="calendar-heading">
                     <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/calendar">
                         <?php if (isset($data['newDate']))

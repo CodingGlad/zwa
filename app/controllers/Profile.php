@@ -2,19 +2,9 @@
 
 class Profile extends Controller
 {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $db = "habitjournal";
-
     public function index()
     {
-        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-
-        if ($conn->connect_error)
-        {
-            die();
-        }
+        $conn = $this->connectDb();
 
         $profileSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "'";
 
