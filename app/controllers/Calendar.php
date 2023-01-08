@@ -14,7 +14,7 @@ class Calendar extends Controller
                 $visibleDate = date('Y-m-') . '1';
             }
 
-            if($_GET['dateSubmit'] == 'forwards')
+            if($_GET['dateSubmit'] == 'next')
             {
                 $begin = date_add(new DateTime($visibleDate),
                     date_interval_create_from_date_string('1 month'));
