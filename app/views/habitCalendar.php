@@ -70,7 +70,7 @@
                         <?php if (isset($data['newDate']))
                             echo '<input type="hidden" name="currentDate" value="' . $data['newDate'] . '">';
                             ?>
-                        <input type="submit" name="dateSubmit" value="previous">
+                        <input type="submit" name="dateSubmit" value="Previous">
                         <div><?php
                         if (isset($data['newDate']))
                         {
@@ -81,7 +81,7 @@
                             echo date('F Y');
                         }
                         ?></div>
-                        <input type="submit" name="dateSubmit" value="next">
+                        <input type="submit" name="dateSubmit" value="Next">
                     </form>
                 </div>
                 <div class="calendar-container">
