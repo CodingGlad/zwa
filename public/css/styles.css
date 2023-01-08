@@ -196,7 +196,7 @@ div.calendar-heading form{
     flex-flow: column;
 }
 
-.detail input, textarea {
+.detail input, textarea, select {
     margin-bottom: 20px;
 }
 
