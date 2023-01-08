@@ -81,13 +81,18 @@
             <div class="detail-heading">
                 Add Habit Occurence
             </div>
-            <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/detail/add">
-                <label for="habit-name">Choose habit</label> <!-- TODO set appropriate names -->
-                <select>
-
+            <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/occurence/add">
+                <label for="selected-habit">Choose habit</label>
+                <select name="selected-habit" id="selected-habit" required>
+                    <option value="test habit">
+                        Test habit
+                    </option>
+                    <option value="test habit2">
+                        Cau
+                    </option>
                 </select>
                 <label for="habit-abbr">Set date</label>
-                <input type="date" id="habit-abbr" name="habit-abbr" required>
+                <input type="date" id="habit-abbr" name="habit-abbr" required value="<?php echo date('Y-m-d')?>">
                 <input type="submit" value="Save Habit">
             </form>
         </div>

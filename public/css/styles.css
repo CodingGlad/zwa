@@ -238,6 +238,11 @@ form span {
     margin-bottom: 20px;
 }
 
+.color {
+    background-color: red;
+    size: 5px 5px;
+}
+
 .el_invalid {
     border: 2px solid red;
 }
