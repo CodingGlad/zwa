@@ -113,12 +113,6 @@ div.logo > img {
 
 .calendar-heading {
     border-bottom: 1px solid #acacac;
-
-    padding-left: 7px;
-    padding-right: 7px;
-
-    display: flex;
-    gap: 5px;
 }
 
 .calendar-container {
@@ -143,6 +137,7 @@ div.logo > img {
 
 div.calendar-heading form input {
     border: none;
+    background-color: #d6d6d6;
 }
 
 div.calendar-heading form{

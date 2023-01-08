@@ -35,6 +35,15 @@
                 echo ($data['passwordValid'])?("input-correct"):("input-error");
             }
             ?>">
+            <div>
+                Password rules:<br>
+                <ul>
+                    <li>At least 8 characters</li>
+                    <li>At least 1 lower case letter</li>
+                    <li>At least 1 upper case letter</li>
+                    <li>At least 1 number</li>
+                </ul><br>
+            </div>
             <label for="password_check">Retype password</label>
             <input id="password_check" name="password_check" type="password" required>
             <input id="submit" type="submit" value="Sign Up" disabled>

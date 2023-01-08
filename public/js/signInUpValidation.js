@@ -5,7 +5,7 @@
  */
 function validateEmail() {
     let email = document.querySelector("input[id=email]");
-    const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    const regex = /^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
     if (email.value.match(regex)) {
         email.classList.remove("input-error");

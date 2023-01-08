@@ -33,10 +33,8 @@ class Calendar extends Controller
                 date_interval_create_from_date_string("1 month"));
         }
 
-//        file_put_contents('finalTest.txt', $begin->format('F Y') . ' ' . $end->format('F Y'));
         $interval = DateInterval::createFromDateString('1 day');
         $period = new DatePeriod($begin, $interval, $end);
-//        file_put_contents('dateTest.txt', date('Y d m', strtotime('January 2023')));
 
         $datesWithHabits = ['newDate' => $begin->format('F Y')];
 
@@ -46,7 +44,6 @@ class Calendar extends Controller
             $datesWithHabits[$formatted] = [];
         }
 
-//        $this->view('habitCalendar', array_merge($data, $datesWithHabits));
         $this->view('habitCalendar', $datesWithHabits);
     }
 
