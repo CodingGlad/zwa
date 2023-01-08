@@ -105,10 +105,6 @@
                                   </div>';
                         }
                     ?>
-                    <!--
-                    <div class="calendar-item">
-                        <div class="date">Po 1. 11.</div>
-                    </div>-->
                 </div>
             </main>
         </div>

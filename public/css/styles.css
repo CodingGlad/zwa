@@ -37,8 +37,6 @@
     padding-right: 10px;
 }
 
-
-
 .logo-container, .logo-title, .logo{
     display: flex;
     align-items: center;
@@ -98,8 +96,12 @@ aside h1 {
 
 /* CALENDAR CSS */
 
-.calendar-heading {
+main h1 {
     border-bottom: 1px solid #acacac;
+
+    padding-left: 5px;
+
+    font-size: 20px;
 }
 
 .calendar-container {
