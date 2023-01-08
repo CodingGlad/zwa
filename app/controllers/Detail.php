@@ -32,7 +32,7 @@ class Detail extends Controller
 
     public function update()
     {
-        //todo what to d when updating since the abbrev is going to be the same
+        //TODO what to d when updating since the abbrev is going to be the same
     }
 
     public function add()

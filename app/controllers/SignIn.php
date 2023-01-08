@@ -8,7 +8,7 @@ class SignIn extends Controller
         {
             $servername = "localhost";
             $username = "root";
-            $password = ""; //TODO create another user with certain permissions
+            $password = "";
             $db = "habitjournal";
 
             $conn = new mysqli($servername, $username, $password, $db);
@@ -18,7 +18,7 @@ class SignIn extends Controller
                 die();
             }
 
-            $sql = "SELECT * FROM users WHERE email = '" . htmlspecialchars($_POST['email']) . "'"; //TODO sanitize
+            $sql = "SELECT * FROM users WHERE email = '" . htmlspecialchars($_POST['email']) . "'";
             $result = $conn->query($sql);
 
             if ($result->num_rows == 1) {
@@ -27,7 +27,7 @@ class SignIn extends Controller
                 if (password_verify($_POST['password'], $user['password']))
                 {
                     $_SESSION['id'] = $user['id'];
-                    $this->view('habitcalendar');
+                    $this->view('habitcalendar', $this->getPresentMonthCalendar($conn));
                 } else
                 {
                     $this->view('signin', ['message' => 'Password is incorrect.']);
@@ -41,5 +41,26 @@ class SignIn extends Controller
         {
             $this->view('signin');
         }
+    }
+
+    //TODO get calendar with habits
+    private function getPresentMonthCalendar($conn)
+    {
+        $begin = new DateTime(date('Y-m-') . '1');
+        $end = date_add(new DateTime(date('Y-m-') . '1'),
+                date_interval_create_from_date_string("1 month"));
+
+        $interval = DateInterval::createFromDateString('1 day');
+        $period = new DatePeriod($begin, $interval, $end);
+
+        $datesWithHabits = ['newDate' => $begin->format('F Y')];
+
+        foreach($period as $date)
+        {
+            $formatted = $date->format('d. m. D');
+            $datesWithHabits[$formatted] = [];
+        }
+
+        return $datesWithHabits;
     }
 }
