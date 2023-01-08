@@ -26,12 +26,12 @@
             <div class="profile">
                 <a href="http://localhost/MojeProjekty/HabitJournal/public/profile" class="css-button">
                     <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
-                    <div class="profile-text">
+                    <div class="menu-item-text">
                         Profile
                     </div>
                 </a>
             </div>
-            <div class="settings">
+            <div class="logout">
                 <a href="http://localhost/MojeProjekty/HabitJournal/public/settings" class="css-button">
                     <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
                 </a>
@@ -54,13 +54,6 @@
                         <img src="http://localhost/MojeProjekty/HabitJournal/public/img/plus.png" alt="+">
                     </a>
                 </div>
-            </div>
-        </div>
-        <div class="habit-list">
-            <div class="habit-item">
-                <div class="habit-color">
-                </div>
-                Test habit
             </div>
         </div>
     </aside>

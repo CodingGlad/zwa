@@ -26,7 +26,7 @@
     padding-left: 15px;
 }
 
-.profile, .settings {
+.logout {
     height: 100%;
 
     display: flex;
@@ -72,39 +72,26 @@ aside {
     grid-column: 1;
 }
 
-.habit-top-bar {
+aside h1 {
     display: flex;
     justify-content: space-between;
 
-    padding: 5px 10px 5px;
+    padding: 3px 10px 3px;
 
+    font-size: 20px;
     font-weight: bold;
 
     border-bottom: 1px solid #d9d9d9;
 }
 
-.sidebar-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 10px;
+.menu-item {
+    padding: 5px 20px 5px;
+
+    border-bottom: 1px solid #d9d9d9;
 }
 
-.habit-list {
-    padding: 5px 23px 0;
-}
-
-.habit-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.habit-color {
-    height: 10px;
-    width: 10px;
-    background-color: aquamarine;
-    border-radius: 3px;
+.menu-item a div {
+    font-size: 18px;
 }
 
 /* SIDE BAR CSS */
@@ -258,7 +245,7 @@ form span {
 }
 
 @media screen and (max-width: 460px){
-    aside, .profile-text {
+    aside, .menu-item-text {
         display: none;
     }
 
