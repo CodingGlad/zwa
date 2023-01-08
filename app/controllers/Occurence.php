@@ -6,7 +6,7 @@ class Occurence extends Controller
     {
         $conn = $this->connectDb();
 
-        $
+
 
         $this->view('habitoccurence');
     }
