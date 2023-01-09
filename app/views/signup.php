@@ -29,7 +29,7 @@
 
             ?>">
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" required value="<?=(isset($data['password']))?($data['password']):("")?>" class="<?php
+            <input id="password" name="password" type="password" required class="<?php
             if (isset($data['passwordValid']))
             {
                 echo ($data['passwordValid'])?("input-correct"):("input-error");

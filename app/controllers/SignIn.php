@@ -13,7 +13,7 @@ class SignIn extends Controller
                 die();
             }
 
-            $sql = "SELECT * FROM users WHERE email = '" . htmlspecialchars($_POST['email']) . "'";
+            $sql = "SELECT * FROM users WHERE email = '" . mysqli_real_escape_string($conn, $_POST['email']) . "'";
             $result = $conn->query($sql);
 
             if ($result->num_rows == 1) {
@@ -25,11 +25,11 @@ class SignIn extends Controller
                     $this->view('habitcalendar', $this->getPresentMonthCalendar($conn));
                 } else
                 {
-                    $this->view('signin', ['message' => 'Password is incorrect.']);
+                    $this->view('signin', ['message' => 'Password is incorrect.', 'email' => htmlspecialchars($_POST['email'])]);
                 }
 
             } else {
-                $this->view('signin', ['message' => 'This account does not exist']);
+                $this->view('signin', ['message' => 'This account does not exist', 'email' => htmlspecialchars($_POST['email'])]);
             }
             $conn->close();
         } else

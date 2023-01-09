@@ -33,16 +33,10 @@ class SignUp extends Controller
             } else
             {
                 $data['passwordValid'] = false;
-                $data['message'] .= "Passwords do not match or do not fulfill our rules:<br>
-                    <ul>
-                        <li>At least 8 characters</li>
-                        <li>At least 1 lower case letter</li>
-                        <li>At least 1 upper case letter</li>
-                        <li>At least 1 number</li>
-                    </ul><br>";
+                $data['message'] .= "Passwords do not match or do not fulfill our rules";
             }
 
-            $emailSql = "SELECT email FROM users WHERE email = '" . $data['email'] . "'";
+            $emailSql = "SELECT email FROM users WHERE email = '" . mysqli_real_escape_string($conn,$data['email']) . "'";
             $result = $conn->query($emailSql);
 
             if ($result->num_rows == 0)
@@ -58,7 +52,9 @@ class SignUp extends Controller
             if ($data['emailValid'] && $data['passwordValid'])
             {
                 $userId = uniqid();
-                $insertSql = "INSERT INTO users (id, email, password) VALUES ('" . $userId . "', '" . $data['email'] ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "')";
+                $insertSql = "INSERT INTO users (id, email, password) VALUES ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
+                    mysqli_real_escape_string($conn, $data)['email'] ."', '" . password_hash(mysqli_real_escape_string($conn,$data['password'])
+                        , PASSWORD_DEFAULT) . "')";
 
                 if ($conn->query($insertSql))
                 {

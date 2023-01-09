@@ -21,7 +21,7 @@
                 </div>
                 <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signin">
                     <label for="email">E-mail</label>
-                    <input id="email" name="email" type="email" required>
+                    <input id="email" name="email" type="email" required value="<?=(isset($data['email']))?($data['email']):("")?>">
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password" required>
                     <input id="submit" type="submit" value="Log In">
