@@ -116,7 +116,12 @@
             if (isset($data['color']) && $data['color'] != '') echo 'value = "' . $data['color'] . '" ';
             if (isset($data['color-invalid'])) echo 'class = "el_invalid"';?>>
         <input type="submit" value="Save Habit">
-        <input type="submit" value="Delete habit" name="deletion">
+          <?php
+            if (isset($data['submit_result']) && $data['submit_result'] == 'update')
+            {
+                echo '<input type="submit" value="Delete habit" name="deletion">';
+            }
+          ?>
       </form>
     </div>
   </main>
