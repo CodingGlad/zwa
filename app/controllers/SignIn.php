@@ -22,7 +22,7 @@ class SignIn extends Controller
                 if (password_verify($_POST['password'], $user['password']))
                 {
                     $_SESSION['id'] = $user['id'];
-                    $this->view('habitcalendar', $this->getPresentMonthCalendar($conn));
+                    $this->view('habitwelcome');
                 } else
                 {
                     $this->view('signin', ['message' => 'Password is incorrect.', 'email' => htmlspecialchars($_POST['email'])]);
@@ -36,26 +36,5 @@ class SignIn extends Controller
         {
             $this->view('signin');
         }
-    }
-
-    //TODO get calendar with habits
-    private function getPresentMonthCalendar($conn)
-    {
-        $begin = new DateTime(date('Y-m-') . '1');
-        $end = date_add(new DateTime(date('Y-m-') . '1'),
-                date_interval_create_from_date_string("1 month"));
-
-        $interval = DateInterval::createFromDateString('1 day');
-        $period = new DatePeriod($begin, $interval, $end);
-
-        $datesWithHabits = ['newDate' => $begin->format('F Y')];
-
-        foreach($period as $date)
-        {
-            $formatted = $date->format('d. m. D');
-            $datesWithHabits[$formatted] = [];
-        }
-
-        return $datesWithHabits;
     }
 }

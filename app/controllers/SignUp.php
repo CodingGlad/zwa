@@ -59,7 +59,7 @@ class SignUp extends Controller
                 if ($conn->query($insertSql))
                 {
                     $_SESSION['id'] = $userId;
-                    $this->view('habitcalendar', $this->getPresentMonthCalendar($conn));
+                    $this->view('habitwelcome', $this->getPresentMonthCalendar($conn));
                 } else
                 {
                     $data['message'] .= "Account couldn't be created due to a problem on our server.<br>";
@@ -85,26 +85,5 @@ class SignUp extends Controller
 
     public function checkEmail($email) {
         return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
-    }
-
-    //TODO get calendar with habits
-    private function getPresentMonthCalendar($conn)
-    {
-        $begin = new DateTime(date('Y-m-') . '1');
-        $end = date_add(new DateTime(date('Y-m-') . '1'),
-            date_interval_create_from_date_string("1 month"));
-
-        $interval = DateInterval::createFromDateString('1 day');
-        $period = new DatePeriod($begin, $interval, $end);
-
-        $datesWithHabits = ['newDate' => $begin->format('F Y')];
-
-        foreach($period as $date)
-        {
-            $formatted = $date->format('d. m. D');
-            $datesWithHabits[$formatted] = [];
-        }
-
-        return $datesWithHabits;
     }
 }
