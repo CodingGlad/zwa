@@ -4,25 +4,71 @@ class Detail extends Controller
 {
     public function index()
     {
-        $this->view('habitDetail');
+        $data['submit_result'] = 'add';
+
+        $this->view('habitDetail', $data);
     }
 
     public function show($habitAbbr)
     {
         $conn = $this->connectDb();
+        $data['submit_result'] = 'update';
 
         $showSql = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] .
-            "' AND name_abbr = '" . htmlspecialchars($habitAbbr) ."'";
+            "' AND name_abbr = '" . mysqli_real_escape_string($conn, $habitAbbr) ."'";
 
-        $result = $conn->query($showSql);
+        $result = $conn->query($showSql)->fetch_assoc();
 
         $conn->close();
-        $this->view('habitdetail', $result->fetch_assoc());
+        $this->view('habitdetail', array_merge($data, $result));
     }
 
-    public function update()
+    public function update($habit_abbr)
     {
-        //TODO what to d when updating since the abbrev is going to be the same
+        $data = [
+            'id' => $_SESSION['id'],
+            'name' => htmlspecialchars($_POST['habit-name']),
+            'name_abbr' => htmlspecialchars($habit_abbr),
+            'color' => htmlspecialchars($_POST['habit-color']),
+            'description' => htmlspecialchars($_POST['habit-desc'])
+        ];
+
+        if($data['name'] != '' && $data['color'] != '')
+        {
+            $conn = $this->connectDb();
+
+            $checkSql = "SELECT * FROM habits WHERE id_user = '" . $data['id'] . "' AND name_abbr = '" .
+                mysqli_real_escape_string($conn, $data['name_abbr']) . "'";
+
+            file_put_contents('test.txt', $checkSql);
+
+            if ($conn->query($checkSql)->num_rows == 1)
+            {
+                $updateSql = "UPDATE habits SET name = '" . mysqli_real_escape_string($conn, $data['name']) .
+                    "', color = '" . mysqli_real_escape_string($conn, $data['color']) . "', description = '" .
+                    mysqli_real_escape_string($conn, $data['description']) . "' WHERE id_user = '" . $data['id'] .
+                    "' AND name_abbr = '" . mysqli_real_escape_string($conn, $data['name_abbr']) . "'";
+
+                $conn->query($updateSql);
+                $listSelect = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] . "'";
+                $result = $conn->query($listSelect);
+
+                $this->view('habitlist', $result);
+
+                $conn->close();
+            } else {
+                $data['message_invalid'] = 'This habit does not exist anymore.';
+                $data['submit_result'] = 'update';
+
+                $this->view('habitdetail', $data);
+            }
+        } else
+        {
+            $data['message_invalid'] = 'Received values are not valid.';
+            $data['submit_result'] = 'update';
+
+            $this->view('habitdetail', $data);
+        }
     }
 
     public function add()
@@ -40,7 +86,7 @@ class Detail extends Controller
 
         if (count($invalid) == 0)
         {
-            $checkSql = "SELECT * FROM habits WHERE name_abbr = '" . $data['name_abbr'] ."'";
+            $checkSql = "SELECT * FROM habits WHERE name_abbr = '" . mysqli_real_escape_string($conn, $data['name_abbr']) ."'";
 
             $results = $conn->query($checkSql);
 
@@ -51,8 +97,8 @@ class Detail extends Controller
             } else
             {
                 $saveSql = "INSERT INTO habits VALUES ('". $data['id'] . "', '" .
-                    $data['name'] . "', '" . $data['name_abbr'] . "', '" . $data['color'] . "', '" .
-                    $data['description'] . "')";
+                    mysqli_real_escape_string($conn, $data['name']) . "', '" . mysqli_real_escape_string($conn, $data['name_abbr']) .
+                    "', '" . mysqli_real_escape_string($conn, $data['color']) . "', '" . mysqli_real_escape_string($conn, $data['description']) . "')";
 
                 $conn->query($saveSql);
 
