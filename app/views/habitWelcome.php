@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Habit Journal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+    <title>Habit Journal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="page-container">
@@ -84,19 +84,11 @@
             </a>
         </div>
     </aside>
-  <main class="profile-container">
-    <div class="profile-heading">
-      Your Habit Profile Settings
-    </div>
-    <div class="profile-info">
-      <div>
-        Settngs lol
-      </div>
-      <div>
-        I dunno prolly swithces gonna be here
-      </div>
-    </div>
-  </main>
+    <main class="detail-container">
+        <p>
+            Welcome to the Habit Journal!
+        </p>
+    </main>
 </div>
 </body>
 </html>

@@ -36,6 +36,14 @@
                     Menu
                 </h2>
                 <div class="menu-item">
+                    <a href="http://localhost/MojeProjekty/HabitJournal/public/calendar" class="css-button">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/calendar.png" alt="calendar-icon">
+                        <div class="menu-item-text">
+                            Habit Calendar
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/habitlist" class="css-button">
                         <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png" alt="menu-icon">
                         <div class="menu-item-text">
@@ -53,7 +61,7 @@
                 </div>
                 <div class="menu-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/occurence" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/calendar.png" alt="occurence-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/clock.png" alt="clock-icon">
                         <div class="menu-item-text">
                             Add Occurence
                         </div>

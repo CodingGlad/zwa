@@ -139,6 +139,12 @@ div.calendar-heading form{
 
     gap: 5px;
 }
+
+main p {
+    font-weight: bold;
+    font-size: 40px;
+}
+
 /* CALENDAR CSS */
 
 /* HABIT LIST CSS*/
