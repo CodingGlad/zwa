@@ -32,9 +32,9 @@
         </div>
     </header>
     <aside>
-        <h1>
+        <h2>
             Menu
-        </h1>
+        </h2>
         <div class="menu-item">
             <a href="http://localhost/MojeProjekty/HabitJournal/public/habitlist" class="css-button">
                 <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png" alt="menu-icon">
@@ -86,7 +86,7 @@
         <input id="first-name" name="first-name" type="text" value="<?=$data['first_name']?>">
         <label for="last-name">Last name</label>
         <input id="last-name" name="last-name" type="text" value="<?=$data['last_name']?>">
-        <label for="email">E-mail</label>
+        <label for="email">E-mail (Required)</label>
         <input id="email" name="email" type="email" required value="<?=$data['email']?>"
                <?php if (isset($data['email_invalid'])) echo 'class="el_invalid"'?>>
         <label for="birthdate">Date of birth</label>

@@ -32,9 +32,9 @@
         </div>
     </header>
     <aside>
-        <h1>
+        <h2>
             Menu
-        </h1>
+        </h2>
         <div class="menu-item">
             <a href="http://localhost/MojeProjekty/HabitJournal/public/habitlist" class="css-button">
                 <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png" alt="menu-icon">
@@ -93,7 +93,7 @@
                 }
             ?>
             <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/occurence/add">
-                <label for="selected-habit">Choose habit</label>
+                <label for="selected-habit">Choose habit (Required)</label>
                 <select name="selected-habit" id="selected-habit" required>
                     <?php
                         if (isset($data))
@@ -103,15 +103,10 @@
                                 echo '<option value="' . $habit['name_abbr'] . '">' . $habit['name_abbr'] .
                                     '</option>';
                             }
-//                            while(($habit = $data->fetch_assoc()) != null)
-//                            {
-//                                echo '<option value="' . $habit['name_abbr'] . '">' . $habit['name_abbr'] .
-//                                    '</option>';
-//                            }
                         }
                     ?>
                 </select>
-                <label for="habit-date">Set date</label>
+                <label for="habit-date">Set date (Required)</label>
                 <input type="date" id="habit-date" name="habit-date" required value="<?php echo date('Y-m-d')?>">
                 <input type="submit" value="Save Habit">
             </form>

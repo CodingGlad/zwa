@@ -32,9 +32,9 @@
         </div>
     </header>
     <aside>
-        <h1>
+        <h2>
             Menu
-        </h1>
+        </h2>
         <div class="menu-item">
             <a href="http://localhost/MojeProjekty/HabitJournal/public/habitlist" class="css-button">
                 <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png" alt="menu-icon">
@@ -77,9 +77,9 @@
         </div>
     </aside>
     <main>
-        <h1>
+        <h2>
             All Habits
-        </h1>
+        </h2>
         <div class="habit-list-container">
             <?php
             if (isset($data))

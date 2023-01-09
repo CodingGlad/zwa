@@ -46,7 +46,7 @@
             </div>
             <label for="password_check">Retype password</label>
             <input id="password_check" name="password_check" type="password" required>
-            <input id="submit" type="submit" value="Sign Up" disabled>
+            <input id="submit" type="submit" value="Sign Up">
         </form>
         <?php
             echo ((isset($data['message']) && $data['message'] != ""))?("<div class='message'>" . $data['message'] . "</div>"):("");
