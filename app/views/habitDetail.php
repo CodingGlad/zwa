@@ -81,15 +81,30 @@
       <div class="detail-heading">
         Habit Detail
       </div>
-      <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/detail/add">
+        <?php
+        if (isset($data['message_invalid']))
+        {
+            echo '<span class="message_invalid">' . $data['message_invalid'] . '</span>';
+            unset($data['message_invalid']);
+        }
+        ?>
+      <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/detail/<?php
+            if (isset($data['submit_result'])) {
+              echo $data['submit_result'];
+              if ($data['submit_result'] == 'update')
+              {
+                  echo '/'.$data['name_abbr'];
+              }
+            }?>">
         <label for="habit-name">Habit name</label>
-        <input type="text" id="habit-name" name="habit-name"
+        <input type="text" id="habit-name" name="habit-name" required
             <?php
             if (isset($data['name']) && $data['name'] != '') echo 'value = "' . $data['name'] . '" ';
             if (isset($data['name-invalid'])) echo 'class = "el_invalid"';?>>
         <label for="habit-abbr">Habit abbreviation (Unique)</label>
         <input type="text" id="habit-abbr" name="habit-abbr" maxlength="5" required
             <?php
+            if (isset($data['submit_result']) && $data['submit_result'] == 'update') echo "disabled ";
             if (isset($data['name_abbr']) && $data['name_abbr'] != '') echo 'value = "' . $data['name_abbr'] . '" ';
             if (isset($data['abbr-invalid'])) echo 'class = "el_invalid"';?>>
         <label for="habit-desc">Habit description</label>
