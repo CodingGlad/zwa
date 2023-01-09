@@ -212,10 +212,6 @@ div.calendar-heading form{
     margin-bottom: 20px;
 }
 
-.requirement_asterisk {
-    color: red;
-}
-
 /* HABIT DETAIL CSS */
 
 /* GENERAL CSS */
@@ -254,9 +250,8 @@ form span {
     margin-bottom: 20px;
 }
 
-label {
-    display: flex;
-    gap: 3px;
+input:required {
+    ;
 }
 
 .color {

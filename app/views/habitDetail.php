@@ -96,12 +96,12 @@
                   echo '/'.$data['name_abbr'];
               }
             }?>">
-        <label for="habit-name">Habit name<div class="requirement_asterisk">*</div></label>
+        <label for="habit-name">Habit name (Required)</label>
         <input type="text" id="habit-name" name="habit-name" required
             <?php
             if (isset($data['name']) && $data['name'] != '') echo 'value = "' . $data['name'] . '" ';
             if (isset($data['name-invalid'])) echo 'class = "el_invalid"';?>>
-        <label for="habit-abbr">Habit abbreviation (Unique)<div class="requirement_asterisk">*</div></label>
+        <label for="habit-abbr">Habit abbreviation (Unique) (Required)</label>
         <input type="text" id="habit-abbr" name="habit-abbr" maxlength="5" required
             <?php
             if (isset($data['submit_result']) && $data['submit_result'] == 'update') echo "disabled ";
@@ -110,8 +110,8 @@
         <label for="habit-desc">Habit description</label>
         <textarea id="habit-desc" name="habit-desc"><?php
             if (isset($data['description']) && $data['description'] != '') echo $data['description'];?></textarea>
-        <label for="habit-color">Habit color<div class="requirement_asterisk">*</div></label>
-        <input type="color" id="habit-color" name="habit-color" required
+        <label for="habit-color">Habit color (Required)</label>
+        <input type="color" id="habit-color" name="habit-color"
             <?php
             if (isset($data['color']) && $data['color'] != '') echo 'value = "' . $data['color'] . '" ';
             if (isset($data['color-invalid'])) echo 'class = "el_invalid"';?>>
