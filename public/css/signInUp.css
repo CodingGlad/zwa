@@ -91,6 +91,10 @@ input:disabled {
     border: 2px solid #09ce00;
 }
 
+.requirement_asterisk {
+    color: red;
+}
+
 @media screen and (max-width: 460px) {
     .login-container {
         border: none;
