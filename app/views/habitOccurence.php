@@ -95,6 +95,7 @@
             <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/occurence/add">
                 <label for="selected-habit">Choose habit (Required)</label>
                 <select name="selected-habit" id="selected-habit" required>
+                    <option value="">Choose habit...</option>
                     <?php
                         if (isset($data))
                         {
