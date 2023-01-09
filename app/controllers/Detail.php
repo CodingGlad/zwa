@@ -44,8 +44,6 @@ class Detail extends Controller
                 $checkSql = "SELECT * FROM habits WHERE id_user = '" . $data['id'] . "' AND name_abbr = '" .
                     mysqli_real_escape_string($conn, $data['name_abbr']) . "'";
 
-                file_put_contents('test.txt', $checkSql);
-
                 if ($conn->query($checkSql)->num_rows == 1)
                 {
                     $updateSql = "UPDATE habits SET name = '" . mysqli_real_escape_string($conn, $data['name']) .

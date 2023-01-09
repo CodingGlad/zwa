@@ -29,10 +29,7 @@ class Profile extends Controller
             die();
         }
 
-        //TODO validate email, same thing is in sign in/up
-
-
-        if ($data['date_of_birth'] >= date("Y-m-d"))
+        if ($data['date_of_birth'] > date("Y-m-d") || $data['date_of_birth'] < date('Y-m-d', strtotime('1900-1-1')))
         {
             $data['birth_invalid'] = true;
         }
@@ -44,9 +41,9 @@ class Profile extends Controller
 
         if (!(isset($data['birth_invalid']) || isset($data['email_invalid'])))
         {
-            $saveSql = "UPDATE users SET first_name = '" . $data['first_name'] .
-                "', last_name = '" . $data['last_name'] . "', email = '" . $data['email'] .
-                "', date_of_birth = '" . $data['date_of_birth'] . "', gender = '" . $data['gender'] .
+            $saveSql = "UPDATE users SET first_name = '" . mysqli_real_escape_string($conn,$data['first_name']) .
+                "', last_name = '" . mysqli_real_escape_string($conn,$data['last_name']) . "', email = '" . mysqli_real_escape_string($conn,$data['email']) .
+                "', date_of_birth = '" . mysqli_real_escape_string($conn,$data['date_of_birth']) . "', gender = '" . mysqli_real_escape_string($conn,$data['gender']) .
                 "' WHERE id = '" . $_SESSION['id'] ."'";
 
             $conn->query($saveSql);
