@@ -55,4 +55,43 @@ class Occurence extends Controller
             $this->index();
         }
     }
+
+    public function show($id = [])
+    {
+        if (!is_array($id))
+        {
+            $conn = $this->connectDb();
+
+            $deleteSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+
+            $result = $conn->query($deleteSql);
+            $conn->close();
+
+            $this->view('habitoccurenceshow', $result->fetch_assoc());
+        } else
+        {
+            $this->view('habitoccurence', ['message_invalid' => 'Occurence was not found.']);
+        }
+
+
+//        $this->index(['message_valid' => 'Habit occurrence has been deleted.']);
+    }
+
+    public function remove($id = [])
+    {
+        if (!is_array($id))
+        {
+            $conn = $this->connectDb();
+
+            $deleteSql = "DELETE FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+
+            $conn->query($deleteSql);
+            $conn->close();
+
+            $this->index(['message_valid' => 'Habit occurrence has been deleted.']);
+        } else
+        {
+            $this->view('habitoccurence', ['message_invalid' => 'Occurence was not found.']);
+        }
+    }
 }

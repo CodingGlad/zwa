@@ -98,10 +98,20 @@
                 </div>
                 <div class="calendar-container">
                     <?php
-                        foreach($data as $key=>$dt)
+                        foreach($data as $key=>$habits)
                         {
                             echo '<div class="calendar-item">
                                     <div class="date">' . $key . '</div>
+                                    <div class="circle-container">';
+
+                            foreach ($habits as $habit)
+                            {
+                                echo '<a href="http://localhost/MojeProjekty/HabitJournal/public/occurence/show/' .
+                                 $habit['id'] . '" class="color-circle" style="background-color: ' . $habit['color'] .'"></a>';
+                            }
+
+                            echo '
+                                    </div>
                                   </div>';
                         }
                     ?>

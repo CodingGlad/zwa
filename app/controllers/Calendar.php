@@ -38,13 +38,39 @@ class Calendar extends Controller
 
         $datesWithHabits = ['newDate' => $begin->format('F Y')];
 
+        $conn = $this->connectDb();
+
         foreach($period as $date)
         {
             $formatted = $date->format('d. m. D');
-            $datesWithHabits[$formatted] = [];
+            $datesWithHabits[$formatted] = $this->getHabitsForDate($date->format('Y-m-d'), $conn);
         }
 
+        file_put_contents('calendar.txt', print_r($datesWithHabits, true));
+
+        $conn->close();
         $this->view('habitCalendar', $datesWithHabits);
+    }
+
+    private function getHabitsForDate($date, $conn) {
+        $getSql = "SELECT color, id FROM habits h INNER JOIN occurences o 
+            ON h.id_user = o.user_id AND h.name_abbr = o.habit_abbr WHERE o.date = '" . $date ."'";
+
+        $results =  $conn->query($getSql);
+
+        if ($results->num_rows == 0)
+        {
+            return [];
+        } else
+        {
+            $rows = [];
+            while($row = mysqli_fetch_array($results))
+            {
+                $rows[] = $row;
+            }
+
+            return $rows;
+        }
     }
 
 

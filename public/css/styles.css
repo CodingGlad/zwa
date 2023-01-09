@@ -168,6 +168,19 @@ div.calendar-heading form{
     border-radius: 10px;
 }
 
+.circle-container {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+}
+
+.color-circle {
+    height: 10px;
+    width: 10px;
+
+    border-radius: 10px;
+}
+
 /* HABIT LIST CSS*/
 
 /* HABIT DETAIL CSS */
