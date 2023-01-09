@@ -93,7 +93,7 @@
                 }
             ?>
             <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/occurence/add">
-                <label for="selected-habit">Choose habit</label>
+                <label for="selected-habit">Choose habit<div class="requirement_asterisk">*</div></label>
                 <select name="selected-habit" id="selected-habit" required>
                     <?php
                         if (isset($data))
@@ -103,15 +103,10 @@
                                 echo '<option value="' . $habit['name_abbr'] . '">' . $habit['name_abbr'] .
                                     '</option>';
                             }
-//                            while(($habit = $data->fetch_assoc()) != null)
-//                            {
-//                                echo '<option value="' . $habit['name_abbr'] . '">' . $habit['name_abbr'] .
-//                                    '</option>';
-//                            }
                         }
                     ?>
                 </select>
-                <label for="habit-date">Set date</label>
+                <label for="habit-date">Set date<div class="requirement_asterisk">*</div></label>
                 <input type="date" id="habit-date" name="habit-date" required value="<?php echo date('Y-m-d')?>">
                 <input type="submit" value="Save Habit">
             </form>

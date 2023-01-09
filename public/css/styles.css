@@ -254,6 +254,11 @@ form span {
     margin-bottom: 20px;
 }
 
+label {
+    display: flex;
+    gap: 3px;
+}
+
 .color {
     background-color: red;
     size: 5px 5px;

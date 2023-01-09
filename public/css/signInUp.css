@@ -69,6 +69,11 @@ input {
     border: 2px solid #acacac;
 }
 
+label {
+    display: flex;
+    gap: 3px;
+}
+
 input#submit {
     background-color: #09ce00;
     color: white;
