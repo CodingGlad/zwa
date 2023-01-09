@@ -24,7 +24,7 @@
                 </a>
                 <div class="logout">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/logout" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/out.png" alt="gear-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/out.png" alt="logout-icon">
                         <div class="menu-item-text">
                             Log Out
                         </div>
@@ -37,7 +37,7 @@
                 </h1>
                 <div class="menu-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/habitlist" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png" alt="menu-icon">
                         <div class="menu-item-text">
                             Habit List
                         </div>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="menu-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/detail" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/add.png">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/add.png" alt="add-icon">
                         <div class="menu-item-text">
                             Add Habit
                         </div>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="menu-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/occurence" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/calendar.png">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/calendar.png" alt="occurence-icon">
                         <div class="menu-item-text">
                             Add Occurence
                         </div>
