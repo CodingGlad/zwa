@@ -89,11 +89,11 @@
             <div class="detail-heading">
                 Habit Occurence detail
             </div>
-            <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/occurence/remove/<?php echo $data['id']?>">
+            <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/occurence/remove/<?php echo htmlspecialchars($data['id'])?>">
                 <label for="selected-habit">Chosen habit</label>
-                <input id="selected-habit" name="selected-habit" disabled value="<?php echo $data['habit_abbr']?>">
+                <input id="selected-habit" name="selected-habit" disabled value="<?php echo htmlspecialchars($data['habit_abbr'])?>">
                 <label for="habit-date">Date</label>
-                <input type="date" id="habit-date" name="habit-date" disabled value="<?php echo $data['date']?>">
+                <input type="date" id="habit-date" name="habit-date" disabled value="<?php echo htmlspecialchars($data['date'])?>">
                 <input type="submit" value="Delete Occurrence">
             </form>
         </div>

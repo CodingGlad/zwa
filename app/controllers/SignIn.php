@@ -33,11 +33,11 @@ class SignIn extends Controller
                     $this->view('habitwelcome');
                 } else
                 {
-                    $this->view('signin', ['message' => 'Password is incorrect.', 'email' => htmlspecialchars($_POST['email'])]);
+                    $this->view('signin', ['message' => 'Password is incorrect.', 'email' => $_POST['email']]);
                 }
 
             } else {
-                $this->view('signin', ['message' => 'This account does not exist', 'email' => htmlspecialchars($_POST['email'])]);
+                $this->view('signin', ['message' => 'This account does not exist', 'email' => $_POST['email']]);
             }
             $conn->close();
         } else

@@ -91,14 +91,14 @@
       </div>
       <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/profile/save">
         <label for="first-name">First Name</label>
-        <input id="first-name" name="first-name" type="text" value="<?=$data['first_name']?>">
+        <input id="first-name" name="first-name" type="text" value="<?=htmlspecialchars($data['first_name'])?>">
         <label for="last-name">Last name</label>
-        <input id="last-name" name="last-name" type="text" value="<?=$data['last_name']?>">
+        <input id="last-name" name="last-name" type="text" value="<?=htmlspecialchars($data['last_name'])?>">
         <label for="email">E-mail (Required)</label>
-        <input id="email" name="email" type="email" required value="<?=$data['email']?>"
+        <input id="email" name="email" type="email" required value="<?=htmlspecialchars($data['email'])?>"
                <?php if (isset($data['email_invalid'])) echo 'class="el_invalid"'?>>
         <label for="birthdate">Date of birth</label>
-        <input id="birthdate" name="birthdate" type="date" value="<?=$data['date_of_birth']?>"
+        <input id="birthdate" name="birthdate" type="date" value="<?=htmlspecialchars($data['date_of_birth'])?>"
                <?php if (isset($data['birth_invalid'])) echo 'class="el_invalid"'?>>
         <p>
           Gender

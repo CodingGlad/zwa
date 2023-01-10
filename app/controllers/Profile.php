@@ -29,11 +29,11 @@ class Profile extends Controller
     public function save()
     {
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-        $data = ['first_name' => htmlspecialchars($_POST['first-name']),
-                'last_name' => htmlspecialchars($_POST['last-name']),
-                'date_of_birth' => htmlspecialchars($_POST['birthdate']),
-                'email' => htmlspecialchars($_POST['email']),
-                'gender' => htmlspecialchars($_POST['gender'])];
+        $data = ['first_name' => $_POST['first-name'],
+                'last_name' => $_POST['last-name'],
+                'date_of_birth' => $_POST['birthdate'],
+                'email' => $_POST['email'],
+                'gender' => $_POST['gender']];
 
         if ($conn->connect_error)
         {

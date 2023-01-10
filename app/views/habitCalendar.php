@@ -88,13 +88,13 @@
                 <div class="calendar-heading">
                     <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/calendar">
                         <?php if (isset($data['newDate']))
-                            echo '<input type="hidden" name="currentDate" value="' . $data['newDate'] . '">';
+                            echo '<input type="hidden" name="currentDate" value="' . htmlspecialchars($data['newDate']) . '">';
                             ?>
                         <input type="submit" name="dateSubmit" value="Previous">
                         <div><?php
                         if (isset($data['newDate']))
                         {
-                            echo $data['newDate'];
+                            echo htmlspecialchars($data['newDate']);
                             unset($data['newDate']);
                         } else
                         {
@@ -109,13 +109,13 @@
                         foreach($data as $key=>$habits)
                         {
                             echo '<div class="calendar-item">
-                                    <div class="date">' . $key . '</div>
+                                    <div class="date">' . htmlspecialchars($key) . '</div>
                                     <div class="circle-container">';
 
                             foreach ($habits as $habit)
                             {
                                 echo '<a href="http://localhost/MojeProjekty/HabitJournal/public/occurence/show/' .
-                                 $habit['id'] . '" class="color-circle" style="background-color: ' . $habit['color'] .'"></a>';
+                                 htmlspecialchars($habit['id']) . '" class="color-circle" style="background-color: ' . htmlspecialchars($habit['color']) .'"></a>';
                             }
 
                             echo '

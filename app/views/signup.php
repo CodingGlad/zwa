@@ -21,7 +21,7 @@
         </div>
         <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signup">
             <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" value="<?=(isset($data['email']))?($data['email']):("")?>" class="<?php
+            <input id="email" name="email" type="email" value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>" class="<?php
             if (isset($data['emailValid']))
             {
                 echo ($data['emailValid'])?("input-correct"):("input-error");
@@ -49,7 +49,7 @@
             <input id="submit" type="submit" value="Sign Up">
         </form>
         <?php
-            echo ((isset($data['message']) && $data['message'] != ""))?("<div class='message'>" . $data['message'] . "</div>"):("");
+            echo ((isset($data['message']) && $data['message'] != ""))?("<div class='message'>" . htmlspecialchars($data['message']) . "</div>"):("");
         ?>
     </main>
     <div class="login-redirect">

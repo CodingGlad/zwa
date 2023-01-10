@@ -48,10 +48,10 @@ class Detail extends Controller
         {
             $data = [
                 'id' => $_SESSION['id'],
-                'name' => htmlspecialchars($_POST['habit-name']),
-                'name_abbr' => htmlspecialchars($habit_abbr),
-                'color' => htmlspecialchars($_POST['habit-color']),
-                'description' => htmlspecialchars($_POST['habit-desc'])
+                'name' => $_POST['habit-name'],
+                'name_abbr' => $habit_abbr,
+                'color' => $_POST['habit-color'],
+                'description' => $_POST['habit-desc']
             ];
 
             if($data['name'] != '' && $data['color'] != '')
@@ -98,10 +98,10 @@ class Detail extends Controller
     {
         $data = [
             'id' => $_SESSION['id'],
-            'name' => htmlspecialchars($_POST['habit-name']),
-            'name_abbr' => htmlspecialchars($_POST['habit-abbr']),
-            'color' => htmlspecialchars($_POST['habit-color']),
-            'description' => htmlspecialchars($_POST['habit-desc'])
+            'name' => $_POST['habit-name'],
+            'name_abbr' => $_POST['habit-abbr'],
+            'color' => $_POST['habit-color'],
+            'description' => $_POST['habit-desc']
             ];
         $invalid = $this->validateInput($data);
 
