@@ -6,7 +6,7 @@
 class HabitList extends Controller
 {
     /**
-     * This method is used for getting list of habits of certain user from DB.
+     * This method is used for getting list of habits of certain user from DB. Before quering for the results, sort or filter is applied.
      * @return void
      */
     public function index()
