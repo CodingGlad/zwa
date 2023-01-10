@@ -76,10 +76,10 @@
             </a>
         </div>
         <div class="menu-item">
-            <a href="http://localhost/MojeProjekty/HabitJournal/public/settings" class="css-button">
+            <a href="http://localhost/MojeProjekty/HabitJournal/public/switchthemes" class="css-button">
                 <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
                 <div class="menu-item-text">
-                    Settings
+                    Switch themes
                 </div>
             </a>
         </div>

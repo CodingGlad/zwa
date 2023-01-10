@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Habit Journal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+    <title>Habit Journal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://localhost/MojeProjekty/HabitJournal/public/css/stylesDark.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="page-container">
@@ -84,55 +84,47 @@
             </a>
         </div>
     </aside>
-  <main class="detail-container">
-    <div class="detail">
-      <div class="detail-heading">
-        Habit Detail
-      </div>
-        <?php
-        if (isset($data['message_invalid']))
-        {
-            echo '<span class="message_invalid">' . htmlspecialchars($data['message_invalid']) . '</span>';
-            unset($data['message_invalid']);
-        }
-        ?>
-      <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/detail/<?php
-            if (isset($data['submit_result'])) {
-              echo htmlspecialchars($data['submit_result']);
-              if ($data['submit_result'] == 'update')
-              {
-                  echo '/'.htmlspecialchars($data['name_abbr']);
-              }
-            }?>">
-        <label for="habit-name">Habit name (Required)</label>
-        <input type="text" id="habit-name" name="habit-name" required
+    <main>
+        <div class="calendar-heading">
+            <h2>
+                All Habits
+            </h2>
+            <div class="list-forms">
+                <div>
+                    Sort list:
+                    <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/habitlist">
+                        <input type="submit" name="sort" value="By name">
+                        <input type="submit" name="sort" value="By abbreviation">
+                        <input type="submit" name="sort" value="By name reverse">
+                        <input type="submit" name="sort" value="By abbreviation reverse">
+                    </form>
+                </div>
+                <div>
+                    Filter list:
+                    <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/habitlist">
+                        <input type="submit" name="filter" value="Show with description only">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="habit-list-container">
             <?php
-            if (isset($data['name']) && $data['name'] != '') echo 'value = "' . htmlspecialchars($data['name']) . '" ';
-            if (isset($data['name-invalid'])) echo 'class = "el_invalid"';?>>
-        <label for="habit-abbr">Habit abbreviation (Unique) (Required)</label>
-        <input type="text" id="habit-abbr" name="habit-abbr" maxlength="5" required
-            <?php
-            if (isset($data['submit_result']) && $data['submit_result'] == 'update') echo "disabled ";
-            if (isset($data['name_abbr']) && $data['name_abbr'] != '') echo 'value = "' . htmlspecialchars($data['name_abbr']) . '" ';
-            if (isset($data['abbr-invalid'])) echo 'class = "el_invalid"';?>>
-        <label for="habit-desc">Habit description</label>
-        <textarea id="habit-desc" name="habit-desc"><?php
-            if (isset($data['description']) && $data['description'] != '') echo htmlspecialchars($data['description']);?></textarea>
-        <label for="habit-color">Habit color (Required)</label>
-        <input type="color" id="habit-color" name="habit-color"
-            <?php
-            if (isset($data['color']) && $data['color'] != '') echo 'value = "' . htmlspecialchars($data['color']) . '" ';
-            if (isset($data['color-invalid'])) echo 'class = "el_invalid"';?>>
-        <input type="submit" value="Save Habit">
-          <?php
-            if (isset($data['submit_result']) && $data['submit_result'] == 'update')
+            if (isset($data))
             {
-                echo '<input type="submit" value="Delete habit" name="deletion">';
+                while (($item = $data->fetch_assoc()) != null)
+                {
+                    echo '<a class="css-button" href="http://localhost/Mojeprojekty/HabitJournal/public/detail/show/' . htmlspecialchars($item['name_abbr']) .'">
+                          <div class="habit-flex-item">
+                              <div class="habit-wide-color" style="background-color: ' . htmlspecialchars($item['color']) . '"></div> 
+                              ' . htmlspecialchars($item['name']) . '
+                              <div class="habit-abbrev"># ' . $item['name_abbr'] . '</div>
+                          </div>
+                      </a>';
+                }
             }
-          ?>
-      </form>
-    </div>
-  </main>
+            ?>
+        </div>
+    </main>
 </div>
 </body>
 </html>
