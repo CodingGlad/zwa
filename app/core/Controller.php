@@ -11,8 +11,25 @@ class Controller {
     protected $password = "";
     protected $db = "habitjournal";
 
+    /**
+     * This method handles viewing of selected view by the conroller.
+     * @param $view - to display
+     * @param $data - to insert
+     * @return void
+     */
     public function view($view, $data = []) {
-        require_once '../app/views/' . $view . '.php';
+        if (isset($_SESSION['theme']))
+        {
+            if ($_SESSION['theme'] == 'dark')
+            {
+                require_once '../app/views/dark/' . $view . '.php';
+            } elseif ($_SESSION['theme'] == 'light')
+            {
+                require_once '../app/views/' . $view . '.php';
+            }
+        } else {
+            require_once '../app/views/' . $view . '.php';
+        }
     }
 
     /**

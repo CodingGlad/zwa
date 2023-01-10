@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    font-family: 'Mukta', sans-serif;
+
+    color: #d6d6d6;
+    background-color: #292929;
+}
+
+.page-container {
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    grid-template-columns: 225px 1fr;
+}
+
+/* TOP BAR CSS */
+
+.top-bar {
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #acacac;
+    padding-left: 15px;
+}
+
+.logout {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    border-left: 1px solid #acacac;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.logo-container, .logo-title, .logo{
+    display: flex;
+    align-items: center;
+}
+
+div.logo > img {
+    height: 35px;
+    width: 35px;
+}
+
+.logo-title {
+    margin-left: 5px;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.profile-settings {
+    display: flex;
+    justify-content: right;
+}
+
+.calendar-heading {
+    border-bottom: 1px solid #acacac;
+}
+
+/* TOP BAR CSS */
+
+/* SIDE BAR CSS */
+
+aside {
+    padding-bottom: 10px;
+    border-right: 1px solid #acacac;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+aside h2 {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 3px 10px 3px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.menu-item {
+    padding: 5px 20px 5px;
+
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.menu-item a div {
+    font-size: 18px;
+}
+
+/* SIDE BAR CSS */
+
+/* CALENDAR CSS */
+
+main h2 {
+    border-bottom: 1px solid #acacac;
+
+    padding-left: 5px;
+
+    font-size: 20px;
+}
+
+.calendar-container {
+    height: calc(100vh - 50px - 28.2px);
+    display: grid;
+
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-item {
+    padding: 5px;
+
+    border-right: 1px solid #acacac;
+    border-bottom: 1px solid #acacac;
+}
+
+.date {
+    color: #d6d6d6;
+    font-weight: bold;
+}
+
+div.calendar-heading form input {
+    border: none;
+    background-color: #9c9c9c;
+}
+
+div.calendar-heading form{
+    display: flex;
+    flex-direction: row;
+
+    gap: 5px;
+}
+
+main > p {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+input {
+    border: 1px solid #acacac;
+}
+
+/* CALENDAR CSS */
+
+/* HABIT LIST CSS*/
+
+.habit-list-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    padding: 20px;
+}
+
+.habit-flex-item {
+    height: 160px;
+    width: 160px;
+
+    border: 1px solid #acacac;
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.habit-abbrev {
+    color: #818181;
+}
+
+.habit-wide-color {
+    height: 10px;
+    width: 45px;
+
+    border-radius: 10px;
+}
+
+.circle-container {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+}
+
+.color-circle {
+    height: 10px;
+    width: 10px;
+
+    border-radius: 10px;
+}
+
+.list-forms div {
+    display: flex;
+    gap: 5px;
+
+    padding-bottom: 3px;
+}
+
+/* HABIT LIST CSS*/
+
+/* HABIT DETAIL CSS */
+
+.detail-container, .profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-heading, .profile-heading{
+    display: flex;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.message_invalid, .message_valid {
+    font-weight: bold;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.detail {
+    border: 1px solid #acacac;
+    border-radius: 20px;
+
+    width: 375px;
+
+    padding: 20px;
+}
+
+.detail form {
+    display: flex;
+    flex-flow: column;
+}
+
+.detail input, textarea, select {
+    margin-bottom: 20px;
+}
+
+/* HABIT DETAIL CSS */
+
+/* GENERAL CSS */
+
+.css-button {
+    background-color: #292929;
+    border: none;
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+.css-button:visited, .css-button:link {
+    color: black;
+}
+
+textarea{
+    resize: none;
+}
+
+span label {
+    margin-right: 10px;
+}
+
+span input {
+    margin-bottom: 0 !important;
+}
+
+form span {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+input:required {
+    ;
+}
+
+.color {
+    background-color: red;
+    size: 5px 5px;
+}
+
+.el_invalid {
+    border: 2px solid red;
+}
+
+.message_valid {
+    color: #09ce00;
+}
+
+.message_invalid {
+    color: red;
+}
+
+.mandatory {
+    color: red;
+}
+
+@media screen and (max-width: 460px){
+    aside, .menu-item-text {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+
+@media print {
+    aside {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .profile-settings {
+        display: none;
+    }
+
+    .top-bar {
+        justify-content: center;
+    }
+}
