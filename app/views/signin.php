@@ -21,13 +21,13 @@
                 </div>
                 <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signin">
                     <label for="email">E-mail</label>
-                    <input id="email" name="email" type="email" required value="<?=(isset($data['email']))?($data['email']):("")?>">
+                    <input id="email" name="email" type="email" required value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>">
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password" required>
                     <input id="submit" type="submit" value="Log In">
                 </form>
                 <?php
-                    echo ((isset($data['message']) && $data['message'] != ""))?("<div class='message'>" . $data['message'] . "</div>"):("");
+                    echo ((isset($data['message']) && $data['message'] != ""))?("<div class='message'>" . htmlspecialchars($data['message']) . "</div>"):("");
                 ?>
             </main>
             <div class="register-redirect">

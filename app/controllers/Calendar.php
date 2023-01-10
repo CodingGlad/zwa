@@ -16,7 +16,7 @@ class Calendar extends Controller
         {
             if (isset($_GET['currentDate']))
             {
-                $visibleDate = date('Y-m-d', strtotime(htmlspecialchars($_GET['currentDate'])));
+                $visibleDate = date('Y-m-d', strtotime($_GET['currentDate']));
             } else {
                 $visibleDate = date('Y-m-') . '1';
             }

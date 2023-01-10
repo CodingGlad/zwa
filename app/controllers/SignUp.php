@@ -14,9 +14,9 @@ class SignUp extends Controller
     {
         if (isset($_POST['password_check']) && isset($_POST['password']) && isset($_POST['email']))
         {
-            $data = ['email' => htmlspecialchars($_POST['email']),
-                'password' => htmlspecialchars($_POST['password']),
-                'password_check' => htmlspecialchars($_POST['password_check']),
+            $data = ['email' => $_POST['email'],
+                'password' => $_POST['password'],
+                'password_check' => $_POST['password_check'],
                 'message' => ''];
 
             $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);

@@ -92,11 +92,11 @@
             <?php
                 if (isset($data['message_valid']))
                 {
-                    echo '<span class="message_valid">' . $data['message_valid'] . '</span>';
+                    echo '<span class="message_valid">' . htmlspecialchars($data['message_valid']) . '</span>';
                     unset($data['message_valid']);
                 } elseif (isset($data['message_invalid']))
                 {
-                    echo '<span class="message_invalid">' . $data['message_invalid'] . '</span>';
+                    echo '<span class="message_invalid">' . htmlspecialchars($data['message_invalid']) . '</span>';
                     unset($data['message_invalid']);
                 }
             ?>
@@ -109,7 +109,7 @@
                         {
                             foreach ($data as $habit)
                             {
-                                echo '<option value="' . $habit['name_abbr'] . '">' . $habit['name_abbr'] .
+                                echo '<option value="' . htmlspecialchars($habit['name_abbr']) . '">' . htmlspecialchars($habit['name_abbr']) .
                                     '</option>';
                             }
                         }

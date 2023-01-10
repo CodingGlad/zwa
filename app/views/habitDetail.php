@@ -92,36 +92,36 @@
         <?php
         if (isset($data['message_invalid']))
         {
-            echo '<span class="message_invalid">' . $data['message_invalid'] . '</span>';
+            echo '<span class="message_invalid">' . htmlspecialchars($data['message_invalid']) . '</span>';
             unset($data['message_invalid']);
         }
         ?>
       <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/detail/<?php
             if (isset($data['submit_result'])) {
-              echo $data['submit_result'];
+              echo htmlspecialchars($data['submit_result']);
               if ($data['submit_result'] == 'update')
               {
-                  echo '/'.$data['name_abbr'];
+                  echo '/'.htmlspecialchars($data['name_abbr']);
               }
             }?>">
         <label for="habit-name">Habit name (Required)</label>
         <input type="text" id="habit-name" name="habit-name" required
             <?php
-            if (isset($data['name']) && $data['name'] != '') echo 'value = "' . $data['name'] . '" ';
+            if (isset($data['name']) && $data['name'] != '') echo 'value = "' . htmlspecialchars($data['name']) . '" ';
             if (isset($data['name-invalid'])) echo 'class = "el_invalid"';?>>
         <label for="habit-abbr">Habit abbreviation (Unique) (Required)</label>
         <input type="text" id="habit-abbr" name="habit-abbr" maxlength="5" required
             <?php
             if (isset($data['submit_result']) && $data['submit_result'] == 'update') echo "disabled ";
-            if (isset($data['name_abbr']) && $data['name_abbr'] != '') echo 'value = "' . $data['name_abbr'] . '" ';
+            if (isset($data['name_abbr']) && $data['name_abbr'] != '') echo 'value = "' . htmlspecialchars($data['name_abbr']) . '" ';
             if (isset($data['abbr-invalid'])) echo 'class = "el_invalid"';?>>
         <label for="habit-desc">Habit description</label>
         <textarea id="habit-desc" name="habit-desc"><?php
-            if (isset($data['description']) && $data['description'] != '') echo $data['description'];?></textarea>
+            if (isset($data['description']) && $data['description'] != '') echo htmlspecialchars($data['description']);?></textarea>
         <label for="habit-color">Habit color (Required)</label>
         <input type="color" id="habit-color" name="habit-color"
             <?php
-            if (isset($data['color']) && $data['color'] != '') echo 'value = "' . $data['color'] . '" ';
+            if (isset($data['color']) && $data['color'] != '') echo 'value = "' . htmlspecialchars($data['color']) . '" ';
             if (isset($data['color-invalid'])) echo 'class = "el_invalid"';?>>
         <input type="submit" value="Save Habit">
           <?php
