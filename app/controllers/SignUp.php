@@ -85,6 +85,30 @@ class SignUp extends Controller
     }
 
     /**
+     * This method is used by ajax to check whether an email is available.
+     * @param $email
+     * @return string message to be shown on page.
+     */
+    public function checkEmailAvailable($email)
+    {
+        $conn = $this->connectDb();
+
+        $emailSql = "SELECT * FROM users WHERE email = '" . mysqli_real_escape_string($conn, $email) . "'";
+
+        $result = $conn->query($emailSql);
+
+        if ($result->num_rows == 0)
+        {
+            file_put_contents("email.txt", $email . "0");
+            echo "Email is available";
+        } else
+        {
+            file_put_contents("email.txt", $email . "1");
+            echo "Email has already been used";
+        }
+    }
+
+    /**
      * This method is used for password validation. It uses RegExp to check whether it contains at least 1 lowercase
      * letter, 1 uppercase letter, 1 number and is at least 8 chars long.
      * @param $password - to be checked.

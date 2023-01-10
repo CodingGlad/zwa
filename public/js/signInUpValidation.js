@@ -5,11 +5,22 @@
  */
 function validateEmail() {
     let email = document.querySelector("input[id=email]");
+    let emailValid = document.querySelector("[id=email-valid]");
     const regex = /^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+    if (emailValid != null) {
+        emailValid.remove();
+    }
 
     if (email.value.match(regex)) {
         email.classList.remove("input-error");
         email.classList.add("input-correct");
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/MojeProjekty/HabitJournal/public/signup/checkEmailAvailable/" + email.value, true);
+        xhr.send();
+
+        xhr.addEventListener("load", checkLoad);
     } else {
         email.classList.add("input-error");
         email.classList.remove("input-correct");
@@ -103,6 +114,46 @@ function enableButton() {
             button.setAttribute("disabled", "");
         }
     }
+}
+
+/**
+ * This method listens to xmlhttprequest and displays its response into DOM. It checks whether users email is available.
+ * @param event of xhr
+ */
+function checkLoad(event) {
+    let email = document.querySelector("[id=email]");
+    let emailValid = document.querySelector("[id=email-valid]");
+    let response = event.target.responseText;
+
+    if (response == "Email is available") {
+
+        if (emailValid == null) {
+            let div = document.createElement('div');
+            div.setAttribute("id", "email-valid");
+
+            div.textContent = "Email is available.";
+
+            email.after(div);
+        } else {
+            emailValid.value = "Email is available.";
+        }
+
+    } else if (response == "Email has already been used") {
+        email.classList.add("input-error");
+        email.classList.remove("input-correct");
+
+        if (emailValid != null) {
+            emailValid.value = "Email has already been used.";
+        } else {
+            let div = document.createElement('div');
+            div.setAttribute("id", "email-valid");
+
+            div.textContent = "Email has already been used.";
+
+            email.after(div);
+        }
+    }
+    enableButton();
 }
 
 /**
