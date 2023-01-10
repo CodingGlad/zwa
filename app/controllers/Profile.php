@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * Profile controller is used for viewing and updating profile information of user.
+ */
 class Profile extends Controller
 {
+    /**
+     * This method is used to show profile information in profile view.
+     * @return void
+     */
     public function index()
     {
         $conn = $this->connectDb();
@@ -15,6 +22,10 @@ class Profile extends Controller
         $conn->close();
     }
 
+    /**
+     * This method is used to update profile information provided by the user.
+     * @return void
+     */
     public function save()
     {
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
@@ -53,7 +64,12 @@ class Profile extends Controller
         $this->view('habitprofile', $data);
     }
 
+    /**
+     * This method is used for email format validation.
+     * @param $email - to be checked.
+     * @return false|int 1 if pattern matches, 0 if patter doesn't match, false if an error occured.
+     */
     public function validateEmail($email) {
-        return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);//TODO add for signup and close
+        return preg_match("^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
     }
 }
