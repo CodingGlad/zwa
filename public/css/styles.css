@@ -168,6 +168,10 @@ main > p {
     padding: 10px;
 }
 
+.habit-abbrev {
+    color: #818181;
+}
+
 .habit-wide-color {
     height: 10px;
     width: 45px;
@@ -186,6 +190,13 @@ main > p {
     width: 10px;
 
     border-radius: 10px;
+}
+
+.list-forms div {
+    display: flex;
+    gap: 5px;
+
+    padding-bottom: 3px;
 }
 
 /* HABIT LIST CSS*/
