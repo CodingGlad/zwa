@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * SignUp Controller is used for signing up new user and server side validation of email and password.
+ */
 class SignUp extends Controller
 {
+    /**
+     * This method handles signing up of every new user. If users data were incorrect, they are sent back with a
+     * specific message, otherwise welcoming page is shown.
+     * @return void
+     */
     public function index()
     {
         if (isset($_POST['password_check']) && isset($_POST['password']) && isset($_POST['email']))
@@ -53,8 +61,7 @@ class SignUp extends Controller
             {
                 $userId = uniqid();
                 $insertSql = "INSERT INTO users (id, email, password) VALUES ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
-                    mysqli_real_escape_string($conn, $data)['email'] ."', '" . password_hash(mysqli_real_escape_string($conn,$data['password'])
-                        , PASSWORD_DEFAULT) . "')";
+                    mysqli_real_escape_string($conn, $data)['email'] ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "')";
 
                 if ($conn->query($insertSql))
                 {
@@ -77,13 +84,24 @@ class SignUp extends Controller
         }
     }
 
+    /**
+     * This method is used for password validation. It uses RegExp to check whether it contains at least 1 lowercase
+     * letter, 1 uppercase letter, 1 number and is at least 8 chars long.
+     * @param $password - to be checked.
+     * @return bool true if password is valid, otherwise false.
+     */
     private function checkPassword($password)
     {
         $regex = "/(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*/";
         return strlen($password) >= 8 && preg_match($regex, $password);
     }
 
+    /**
+     * This method is used for email format validation.
+     * @param $email - to be checked.
+     * @return false|int 1 if pattern matches, 0 if patter doesn't match, false if an error occured.
+     */
     public function checkEmail($email) {
-        return preg_match("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
+        return preg_match("^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
     }
 }

@@ -1,11 +1,17 @@
 <?php
 
+/**
+ * App class handles usage of correct and existing controller, method and passing its parameters.
+ */
 class App
 {
     protected $controller = 'signin';
     protected $method = 'index';
     protected $params = [];
 
+    /**
+     * This is a constructor of App class that handles the selection of controller, method and passing their parameters.
+     */
     public function __construct()
     {
         session_start();
@@ -59,6 +65,9 @@ class App
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
+    /**This  is used for parsing url parameters that are used by __construct.
+     * @return array|false|string[] array of parameters passed by url.
+     */
     private function parseUrl()
     {
         if (isset($_GET['url']))
@@ -70,6 +79,10 @@ class App
         }
     }
 
+    /**This method is used for validation of a user that was already signed in before.
+     * @param $id - of signed user.
+     * @return bool|void true if id is valid, otherwise false.
+     */
     private function isIdValid($id)
     {
         $servername = "localhost";

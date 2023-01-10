@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * SignIn controller is used for signing in of a user based on provided credentials.
+ */
 class SignIn extends Controller
 {
+    /**
+     * This method handles signing in. It checks provided credentials. Views welcoming page if credentials
+     * were correct, otherwise returns credentials with an error message.
+     * @return void
+     */
     public function index()
     {
         if (isset($_POST['email']))

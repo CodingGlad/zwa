@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * Calendar controller used for correct implementation of calendar page and its days with habits.
+ */
 class Calendar extends Controller
 {
-    //TODO first return calendar for current month, then figure out a way of getting desired month
+    /**
+     * This method is used for passing an array of all days in a month with its associated habit occurrences.
+     * @return void
+     * @throws Exception in case of datetime error.
+     */
     public function index() {
 
         if (isset($_GET['dateSubmit']))
@@ -52,6 +59,12 @@ class Calendar extends Controller
         $this->view('habitCalendar', $datesWithHabits);
     }
 
+    /**
+     * This method handles getting all habit occurrences in desired date.
+     * @param $date - to get habits for.
+     * @param $conn - that is used for DB connection.
+     * @return array of all habit occurrences for passed date.
+     */
     private function getHabitsForDate($date, $conn) {
         $getSql = "SELECT color, id FROM habits h INNER JOIN occurences o 
             ON h.id_user = o.user_id AND h.name_abbr = o.habit_abbr WHERE o.date = '" . $date ."'";
