@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * Occurence controller is used to show, add and delete habit occurrences in habit calendar.
+ */
 class Occurence extends Controller
 {
+    /**
+     * This method handles showing of data for the possibility of habit occurrence addition.
+     * @param $message - if some information was passed to the method.
+     * @return void
+     */
     public function index($message = [])
     {
         $conn = $this->connectDb();
@@ -28,6 +36,10 @@ class Occurence extends Controller
         $conn->close();
     }
 
+    /**
+     * This method handles adding habit occurrence that was selected by the user.
+     * @return void
+     */
     public function add()
     {
         if (isset($_POST['habit-date']) && isset($_POST['selected-habit']))
@@ -56,6 +68,11 @@ class Occurence extends Controller
         }
     }
 
+    /**
+     * This method is used to show habit occurrence from calendar.
+     * @param $id - of habit that has occurred.
+     * @return void
+     */
     public function show($id = [])
     {
         if (!is_array($id))
@@ -72,11 +89,13 @@ class Occurence extends Controller
         {
             $this->view('habitoccurence', ['message_invalid' => 'Occurence was not found.']);
         }
-
-
-//        $this->index(['message_valid' => 'Habit occurrence has been deleted.']);
     }
 
+    /**
+     * This method handles removing an occurrence from database.
+     * @param $id - of occurrence to be removed.
+     * @return void
+     */
     public function remove($id = [])
     {
         if (!is_array($id))
