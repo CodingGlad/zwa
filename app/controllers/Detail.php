@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * Detail controller is used for show habit details, adding a new habit, updating and/or deleting it.
+ */
 class Detail extends Controller
 {
+    /**
+     * This method handles viewing of empty habit detail page so a habit can be added.
+     * @return void
+     */
     public function index()
     {
         $data['submit_result'] = 'add';
@@ -9,6 +16,11 @@ class Detail extends Controller
         $this->view('habitDetail', $data);
     }
 
+    /**
+     * This method handles viewing of filled habit detail with existing habit with the possibility of updating it.
+     * @param $habitAbbr - of habit to be shown.
+     * @return void
+     */
     public function show($habitAbbr)
     {
         $conn = $this->connectDb();
@@ -23,6 +35,11 @@ class Detail extends Controller
         $this->view('habitdetail', array_merge($data, $result));
     }
 
+    /**
+     * This method is used for updating data of existing habit.
+     * @param $habit_abbr - of habit to be updated.
+     * @return void
+     */
     public function update($habit_abbr)
     {
         if (isset($_POST['deletion'])){
@@ -73,6 +90,10 @@ class Detail extends Controller
         }
     }
 
+    /**
+     * This method is used for adding a new habit and its data.
+     * @return void
+     */
     public function add()
     {
         $data = [
@@ -114,6 +135,11 @@ class Detail extends Controller
         $conn->close();
     }
 
+    /**
+     * This method is used for deleting an existing habit based on the habit abbr provided from the user.
+     * @param $habit_abbr - of habit to be deleted.
+     * @return void
+     */
     public function delete($habit_abbr)
     {
         $conn = $this->connectDb();
@@ -128,6 +154,9 @@ class Detail extends Controller
         $conn->close();
     }
 
+    /**
+     * This method is used for viewing habit list.
+     */
     private function viewList($conn)
     {
         $listSelect = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] . "'";
@@ -136,6 +165,11 @@ class Detail extends Controller
         $this->view('habitlist', $result);
     }
 
+    /**
+     * This method is used to validate input data from habit detail.
+     * @param $data - to be validated.
+     * @return array of invalid inputs.
+     */
     private function validateInput($data)
     {
         $invalid = [];
