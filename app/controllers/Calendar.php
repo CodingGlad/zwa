@@ -53,8 +53,6 @@ class Calendar extends Controller
             $datesWithHabits[$formatted] = $this->getHabitsForDate($date->format('Y-m-d'), $conn);
         }
 
-        file_put_contents('calendar.txt', print_r($datesWithHabits, true));
-
         $conn->close();
         $this->view('habitCalendar', $datesWithHabits);
     }

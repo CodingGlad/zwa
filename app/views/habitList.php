@@ -85,9 +85,28 @@
         </div>
     </aside>
     <main>
-        <h2>
-            All Habits
-        </h2>
+        <div class="calendar-heading">
+            <h2>
+                All Habits
+            </h2>
+            <div class="list-forms">
+                <div>
+                    Sort list:
+                    <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/habitlist">
+                        <input type="submit" name="sort" value="By name">
+                        <input type="submit" name="sort" value="By abbreviation">
+                        <input type="submit" name="sort" value="By name reverse">
+                        <input type="submit" name="sort" value="By abbreviation reverse">
+                    </form>
+                </div>
+                <div>
+                    Filter list:
+                    <form method="get" action="http://localhost/MojeProjekty/HabitJournal/public/habitlist">
+                        <input type="submit" name="filter" value="Show with description only">
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="habit-list-container">
             <?php
             if (isset($data))
@@ -98,6 +117,7 @@
                           <div class="habit-flex-item">
                               <div class="habit-wide-color" style="background-color: ' . htmlspecialchars($item['color']) . '"></div> 
                               ' . htmlspecialchars($item['name']) . '
+                              <div class="habit-abbrev"># ' . $item['name_abbr'] . '</div>
                           </div>
                       </a>';
                 }
