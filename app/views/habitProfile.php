@@ -111,9 +111,6 @@
         </span>
         <input type="submit" value="Save Changes">
       </form>
-        <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/control">
-            <input type="submit" value="Add control user">
-        </form>
     </div>
   </main>
 </div>
