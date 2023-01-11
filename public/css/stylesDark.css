@@ -254,6 +254,15 @@ input {
 
 /* GENERAL CSS */
 
+main .message {
+    padding-bottom: 30px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .css-button {
     background-color: #292929;
     border: none;
