@@ -29,10 +29,17 @@ class Detail extends Controller
         $showSql = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] .
             "' AND name_abbr = '" . mysqli_real_escape_string($conn, $habitAbbr) ."'";
 
-        $result = $conn->query($showSql)->fetch_assoc();
+        $result = $conn->query($showSql);
+
+        if ($result->num_rows == 1)
+        {
+            $this->view('habitdetail', array_merge($data, $result->fetch_assoc()));
+        } else
+        {
+            $this->index();
+        }
 
         $conn->close();
-        $this->view('habitdetail', array_merge($data, $result));
     }
 
     /**
