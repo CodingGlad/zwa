@@ -70,6 +70,6 @@ class Profile extends Controller
      * @return false|int 1 if pattern matches, 0 if patter doesn't match, false if an error occured.
      */
     public function validateEmail($email) {
-        return preg_match("^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$^", $email);
+        return preg_match("^[\w.]+@[a-zA-Z_.]+?\.[a-zA-Z]{2,3}$^", $email);
     }
 }

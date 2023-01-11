@@ -1,16 +1,13 @@
 <?php
 
-/**
- * SignUp Controller is used for signing up new user and server side validation of email and password.
- */
-class SignUp extends Controller
+class Control extends Controller
 {
-    /**
-     * This method handles signing up of every new user. If users data were incorrect, they are sent back with a
-     * specific message, otherwise welcoming page is shown.
-     * @return void
-     */
     public function index()
+    {
+        $this->view('habitcontrol');
+    }
+
+    public function add()
     {
         if (isset($_POST['password_check']) && isset($_POST['password']) && isset($_POST['email']))
         {
@@ -31,8 +28,9 @@ class SignUp extends Controller
                 $data['emailValid'] = true;
             } else
             {
+                $data['message'] .= "Email is not in valid format.";
                 $data['emailValid'] = false;
-                $data['message'] .= "Email is not valid.";
+                $data['message_invalid'] = true;
             }
 
             if ($data['password'] == $data['password_check'] && $this->checkPassword($data['password']))
@@ -41,7 +39,8 @@ class SignUp extends Controller
             } else
             {
                 $data['passwordValid'] = false;
-                $data['message'] .= "Passwords do not match or do not fulfill our rules";
+                $data['message'] .= "Passwords do not match or they do not fulfill our rules.";
+                $data['message_invalid'] = true;
             }
 
             $emailSql = "SELECT email FROM users WHERE email = '" . mysqli_real_escape_string($conn,$data['email']) . "'";
@@ -49,60 +48,47 @@ class SignUp extends Controller
 
             if ($result->num_rows == 0)
             {
-                $data['emailValid'] = true;
+                if ($data['emailValid'])
+                {
+                    $data['emailValid'] = true;
+                }
             }
             else
             {
                 $data['emailValid'] = false;
-                $data['message'] .= "Email is already in use.";
+                $data['message'] .= "Email has already been used.";
+                $data['message_invalid'] = true;
             }
+
+            file_put_contents('wtf.txt', $data['emailValid'] . $data['passwordValid']);
 
             if ($data['emailValid'] && $data['passwordValid'])
             {
                 $userId = uniqid();
-                $insertSql = "INSERT INTO users (id, email, password) VALUES ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
-                    mysqli_real_escape_string($conn, $data['email']) ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "')";
+                $insertSql = "INSERT INTO users (id, email, password, permission) VALUES ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
+                    mysqli_real_escape_string($conn, $data['email']) ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "', 
+                    'control')";
 
                 if ($conn->query($insertSql))
                 {
-                    $_SESSION['id'] = $userId;
-                    $this->view('habitwelcome', $this->getPresentMonthCalendar($conn));
+                    $data['message'] .= "Control account has been created.";
+                    $data['message_valid'] = true;
+                    unset($data['email']);
                 } else
                 {
-                    $data['message'] .= "Account couldn't be created due to a problem on our server.";
+                    $data['message'] .= "Control account couldn't be created due to a problem on our server.";
+                    $data['message_invalid'] = true;
                 }
             }
 
             if (!($data['emailValid'] && $data['passwordValid']) || $data['message'] != '')
             {
-                $this->view('signup', $data);
+                $this->view('habitcontrol', $data);
             }
 
             $conn->close();
         } else {
-            $this->view('signup');
-        }
-    }
-
-    /**
-     * This method is used by ajax to check whether an email is available.
-     * @param $email
-     * @return string message to be shown on page.
-     */
-    public function checkEmailAvailable($email)
-    {
-        $conn = $this->connectDb();
-
-        $emailSql = "SELECT * FROM users WHERE email = '" . mysqli_real_escape_string($conn, $email) . "'";
-
-        $result = $conn->query($emailSql);
-
-        if ($result->num_rows == 0)
-        {
-            echo "Email is available";
-        } else
-        {
-            echo "Email has already been used";
+            $this->view('habitcontrol');
         }
     }
 

@@ -6,7 +6,7 @@
 function validateEmail() {
     let email = document.querySelector("input[id=email]");
     let emailValid = document.querySelector("[id=email-valid]");
-    const regex = /^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    const regex = /^[\w.]+@[a-zA-Z_.]+?\.[a-zA-Z]{2,3}$/;
 
     if (emailValid != null) {
         emailValid.remove();
@@ -16,11 +16,13 @@ function validateEmail() {
         email.classList.remove("input-error");
         email.classList.add("input-correct");
 
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost/MojeProjekty/HabitJournal/public/signup/checkEmailAvailable/" + email.value, true);
-        xhr.send();
+        if (isRetypePresent()) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost/MojeProjekty/HabitJournal/public/signup/checkEmailAvailable/" + email.value, true);
+            xhr.send();
 
-        xhr.addEventListener("load", checkLoad);
+            xhr.addEventListener("load", checkLoad);
+        }
     } else {
         email.classList.add("input-error");
         email.classList.remove("input-correct");
