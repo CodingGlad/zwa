@@ -31,6 +31,7 @@ class Occurence extends Controller
         {
             $result = $rows;
         }
+        $_SESSION['occurrence'] = uniqid();
 
         $this->view('habitoccurence', $result);
         $conn->close();
@@ -51,13 +52,21 @@ class Occurence extends Controller
                 mysqli_real_escape_string($conn, $_POST['selected-habit']) . "', '" .
                 mysqli_real_escape_string($conn, $_SESSION['id']) . "')";
 
-            if ($conn->query($occurenceInsertSql) === true)
+            if (isset($_SESSION['occurrence']) && isset($_POST['token']) && $_SESSION['occurrence'] == $_POST['token'])
             {
-                $message['message_valid'] = "Habit occurrence has been saved.";
+                if ($conn->query($occurenceInsertSql) === true)
+                {
+                    $message['message_valid'] = "Habit occurrence has been saved.";
+                    unset($_SESSION['occurrence']);
+                } else
+                {
+                    $message['message_invalid'] = "Habit occurrence couldn't be saved.";
+                }
             } else
             {
-                $message['message_invalid'] = "Habit occurrence couldn't be saved.";
+                $message['message_invalid'] = "Your token doesn't match.";
             }
+
             $conn->close();
 
             $this->index($message);
@@ -79,16 +88,25 @@ class Occurence extends Controller
         {
             $conn = $this->connectDb();
 
-            $deleteSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+            $occurrenceSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
 
-            $result = $conn->query($deleteSql);
+            $result = $conn->query($occurrenceSql);
             $conn->close();
 
-            $this->view('habitoccurenceshow', $result->fetch_assoc());
+            if ($result->num_rows == 1)
+            {
+                $_SESSION['occurrenceShow'] = uniqid();
+
+                $this->view('habitoccurenceshow', $result->fetch_assoc());
+            } else
+            {
+                $this->index(['message_invalid' => 'Occurrence was not found.']);
+            }
         } else
         {
-            $this->view('habitoccurence', ['message_invalid' => 'Occurence was not found.']);
+            $this->index(['message_invalid' => 'Occurrence was not found.']);
         }
+
     }
 
     /**
@@ -102,15 +120,34 @@ class Occurence extends Controller
         {
             $conn = $this->connectDb();
 
-            $deleteSql = "DELETE FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+            if (isset($_SESSION['occurrenceShow']) && isset($_POST['token']) && $_SESSION['occurrenceShow'] == $_POST['token'])
+            {
+                $occurrenceSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+                $result = $conn->query($occurrenceSql);
 
-            $conn->query($deleteSql);
+                if ($result->num_rows == 1)
+                {
+                    $deleteSql = "DELETE FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+
+                    $conn->query($deleteSql);
+                    unset($_SESSION['occurrenceShow']);
+                    $this->index(['message_valid' => 'Habit occurrence has been deleted.']);
+                } else
+                {
+                    $this->index(['message_invalid' => 'Occurrence was not found.']);
+                }
+            } else
+            {
+                $this->index(['message_invalid' => "Your token doesn't match."]);
+            }
+
+
+
             $conn->close();
 
-            $this->index(['message_valid' => 'Habit occurrence has been deleted.']);
         } else
         {
-            $this->view('habitoccurence', ['message_invalid' => 'Occurence was not found.']);
+            $this->index(['message_invalid' => 'Occurrence was not found.']);
         }
     }
 }

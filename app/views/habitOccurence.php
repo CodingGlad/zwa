@@ -107,7 +107,7 @@
                     <?php
                         if (isset($data))
                         {
-                            foreach ($data as $habit)
+                            foreach ($data as $key=>$habit)
                             {
                                 echo '<option value="' . htmlspecialchars($habit['name_abbr']) . '">' . htmlspecialchars($habit['name_abbr']) .
                                     '</option>';
@@ -117,6 +117,7 @@
                 </select>
                 <label for="habit-date">Set date (Required)</label>
                 <input type="date" id="habit-date" name="habit-date" required value="<?php echo date('Y-m-d')?>">
+                <input type="hidden" name="token" value="<?=(isset($_SESSION['occurrence']))?($_SESSION['occurrence']):('')?>">
                 <input type="submit" value="Save Habit">
             </form>
         </div>

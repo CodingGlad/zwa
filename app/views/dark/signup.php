@@ -21,20 +21,20 @@
         </div>
         <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signup">
             <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>" class="<?php
+            <input id="email" name="email" type="email" required value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>" class="<?php
             if (isset($data['emailValid']))
             {
                 echo ($data['emailValid'])?("input-correct"):("input-error");
             }
 
-            ?>">
+            ?>" pattern="^[\w.]+@[a-zA-Z_.]+?\.[a-zA-Z]{2,3}$">
             <label for="password">Password</label>
             <input id="password" name="password" type="password" required class="<?php
             if (isset($data['passwordValid']))
             {
                 echo ($data['passwordValid'])?("input-correct"):("input-error");
             }
-            ?>">
+            ?>" pattern="(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*">
             <div>
                 Password rules:<br>
                 <ul>
@@ -45,7 +45,7 @@
                 </ul><br>
             </div>
             <label for="password_check">Retype password</label>
-            <input id="password_check" name="password_check" type="password" required>
+            <input id="password_check" name="password_check" type="password" required pattern="(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*">
             <input id="submit" type="submit" value="Sign Up">
         </form>
         <?php

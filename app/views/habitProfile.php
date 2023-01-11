@@ -97,8 +97,8 @@
         <label for="email">E-mail (Required)</label>
         <input id="email" name="email" type="email" required value="<?=htmlspecialchars($data['email'])?>"
                <?php if (isset($data['email_invalid'])) echo 'class="el_invalid"'?>>
-        <label for="birthdate">Date of birth</label>
-        <input id="birthdate" name="birthdate" type="date" value="<?=htmlspecialchars($data['date_of_birth'])?>"
+        <label for="birthdate">Date of birth (Required)</label>
+        <input id="birthdate" name="birthdate" type="date" required value="<?=htmlspecialchars($data['date_of_birth'])?>"
                <?php if (isset($data['birth_invalid'])) echo 'class="el_invalid"'?>>
         <p>
           Gender

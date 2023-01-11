@@ -123,6 +123,7 @@
             <?php
             if (isset($data['color']) && $data['color'] != '') echo 'value = "' . htmlspecialchars($data['color']) . '" ';
             if (isset($data['color-invalid'])) echo 'class = "el_invalid"';?>>
+          <input type="hidden" name="token" value="<?=(isset($_SESSION['detail']))?($_SESSION['detail']):('')?>">
         <input type="submit" value="Save Habit">
           <?php
             if (isset($data['submit_result']) && $data['submit_result'] == 'update')
