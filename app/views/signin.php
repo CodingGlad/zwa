@@ -21,7 +21,8 @@
                 </div>
                 <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signin">
                     <label for="email">E-mail</label>
-                    <input id="email" name="email" type="email" required value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>">
+                    <input id="email" name="email" type="email" required value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>"
+                    pattern="^[\w.]+@[a-zA-Z_.]+?\.[a-zA-Z]{2,3}$">
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password" required>
                     <input id="submit" type="submit" value="Log In">

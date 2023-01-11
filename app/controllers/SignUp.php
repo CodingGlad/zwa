@@ -66,7 +66,7 @@ class SignUp extends Controller
                 if ($conn->query($insertSql))
                 {
                     $_SESSION['id'] = $userId;
-                    $this->view('habitwelcome', $this->getPresentMonthCalendar($conn));
+                    $this->view('habitwelcome');
                 } else
                 {
                     $data['message'] .= "Account couldn't be created due to a problem on our server.";
