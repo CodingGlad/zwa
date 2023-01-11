@@ -94,6 +94,7 @@
                 <input id="selected-habit" name="selected-habit" disabled value="<?php echo htmlspecialchars($data['habit_abbr'])?>">
                 <label for="habit-date">Date</label>
                 <input type="date" id="habit-date" name="habit-date" disabled value="<?php echo htmlspecialchars($data['date'])?>">
+                <input type="hidden" name="token" value="<?=(isset($_SESSION['occurrenceShow']))?($_SESSION['occurrenceShow']):('')?>">
                 <input type="submit" value="Delete Occurrence">
             </form>
         </div>
