@@ -17,7 +17,7 @@
 
 /* TOP BAR CSS */
 
-.top-bar {
+header {
     grid-row: 1;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -40,7 +40,7 @@
     padding-right: 10px;
 }
 
-.logo-container, .logo-title, .logo{
+.logo-container, h1, .logo{
     display: flex;
     align-items: center;
 }
@@ -50,7 +50,7 @@ div.logo > img {
     width: 35px;
 }
 
-.logo-title {
+h1 {
     margin-left: 5px;
 
     font-size: 25px;
@@ -89,13 +89,13 @@ aside h2 {
     border-bottom: 1px solid #d9d9d9;
 }
 
-.menu-item {
+.aside-item {
     padding: 5px 20px 5px;
 
     border-bottom: 1px solid #d9d9d9;
 }
 
-.menu-item a div {
+.aside-item a div {
     font-size: 18px;
 }
 
@@ -322,8 +322,12 @@ input:required {
     color: red;
 }
 
-@media screen and (max-width: 460px){
-    aside, .menu-item-text {
+aside p {
+    font-size: 18px;
+}
+
+@media screen and (max-width: 600px){
+    aside {
         display: none;
     }
 
@@ -349,7 +353,7 @@ input:required {
         display: none;
     }
 
-    .top-bar {
+    header {
         justify-content: center;
     }
 }
