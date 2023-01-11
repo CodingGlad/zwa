@@ -21,7 +21,7 @@
         </div>
         <form method="post" action="http://localhost/MojeProjekty/HabitJournal/public/signup">
             <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>" class="<?php
+            <input id="email" name="email" type="email" required value="<?=(isset($data['email']))?(htmlspecialchars($data['email'])):("")?>" class="<?php
             if (isset($data['emailValid']))
             {
                 echo ($data['emailValid'])?("input-correct"):("input-error");

@@ -12,6 +12,7 @@ class Detail extends Controller
     public function index()
     {
         $data['submit_result'] = 'add';
+        $_SESSION['detail'] = uniqid();
 
         $this->view('habitDetail', $data);
     }
@@ -25,6 +26,7 @@ class Detail extends Controller
     {
         $conn = $this->connectDb();
         $data['submit_result'] = 'update';
+        $_SESSION['detail'] = uniqid();
 
         $showSql = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] .
             "' AND name_abbr = '" . mysqli_real_escape_string($conn, $habitAbbr) ."'";
@@ -49,51 +51,61 @@ class Detail extends Controller
      */
     public function update($habit_abbr)
     {
-        if (isset($_POST['deletion'])){
-            $this->delete($habit_abbr);
-        } else
+        $data = [
+            'id' => $_SESSION['id'],
+            'name' => $_POST['habit-name'],
+            'name_abbr' => $habit_abbr,
+            'color' => $_POST['habit-color'],
+            'description' => $_POST['habit-desc']
+        ];
+        $invalid = $this->validateInput($data);
+
+        if (count($invalid) == 0)
         {
-            $data = [
-                'id' => $_SESSION['id'],
-                'name' => $_POST['habit-name'],
-                'name_abbr' => $habit_abbr,
-                'color' => $_POST['habit-color'],
-                'description' => $_POST['habit-desc']
-            ];
-
-            if($data['name'] != '' && $data['color'] != '')
+            if (isset($_SESSION['detail']) && isset($_POST['token']) && $_POST['token'] == $_SESSION['detail'])
             {
-                $conn = $this->connectDb();
-
-                $checkSql = "SELECT * FROM habits WHERE id_user = '" . $data['id'] . "' AND name_abbr = '" .
-                    mysqli_real_escape_string($conn, $data['name_abbr']) . "'";
-
-                if ($conn->query($checkSql)->num_rows == 1)
-                {
-                    $updateSql = "UPDATE habits SET name = '" . mysqli_real_escape_string($conn, $data['name']) .
-                        "', color = '" . mysqli_real_escape_string($conn, $data['color']) . "', description = '" .
-                        mysqli_real_escape_string($conn, $data['description']) . "' WHERE id_user = '" . $data['id'] .
-                        "' AND name_abbr = '" . mysqli_real_escape_string($conn, $data['name_abbr']) . "'";
-
-                    $conn->query($updateSql);
-
-                    $this->viewList($conn);
-
+                if (isset($_POST['deletion'])){
+                    $this->delete($habit_abbr);
                 } else {
-                    $data['message_invalid'] = 'This habit does not exist anymore.';
-                    $data['submit_result'] = 'update';
+                    if ($data['name'] != '' && $data['color'] != '') {
+                        $conn = $this->connectDb();
 
-                    $this->view('habitdetail', $data);
+                        $checkSql = "SELECT * FROM habits WHERE id_user = '" . $data['id'] . "' AND name_abbr = '" .
+                            mysqli_real_escape_string($conn, $data['name_abbr']) . "'";
+
+                        if ($conn->query($checkSql)->num_rows == 1) {
+                            $updateSql = "UPDATE habits SET name = '" . mysqli_real_escape_string($conn, $data['name']) .
+                                "', color = '" . mysqli_real_escape_string($conn, $data['color']) . "', description = '" .
+                                mysqli_real_escape_string($conn, $data['description']) . "' WHERE id_user = '" . $data['id'] .
+                                "' AND name_abbr = '" . mysqli_real_escape_string($conn, $data['name_abbr']) . "'";
+
+                            $conn->query($updateSql);
+
+                            unset($_SESSION['detail']);
+                            $this->viewList($conn);
+
+                        } else {
+                            $data['message_invalid'] = 'This habit does not exist anymore.';
+                            $data['submit_result'] = 'update';
+
+                            $this->view('habitdetail', $data);
+                        }
+                        $conn->close();
+                    } else {
+                        $data['message_invalid'] = 'Received values are not valid.';
+                        $data['submit_result'] = 'update';
+
+                        $this->view('habitdetail', $data);
+                    }
                 }
-
-                $conn->close();
             } else
             {
-                $data['message_invalid'] = 'Received values are not valid.';
+                $data['message_invalid'] = "Your token doesn't match.";
                 $data['submit_result'] = 'update';
 
                 $this->view('habitdetail', $data);
             }
+
         }
     }
 
@@ -123,6 +135,7 @@ class Detail extends Controller
             if ($results->num_rows != 0)
             {
                 $data['abbr-invalid'] = true;
+                $data['message_invalid'] = 'Habit abbreviation is not available.';
                 $this->view('habitdetail', $data);
             } else
             {
@@ -134,9 +147,6 @@ class Detail extends Controller
 
                 $this->viewList($conn);
             }
-        } else
-        {
-            $this->view('habitdetail', array_merge($data, $invalid));
         }
 
         $conn->close();
@@ -149,16 +159,23 @@ class Detail extends Controller
      */
     public function delete($habit_abbr)
     {
-        $conn = $this->connectDb();
+        if (isset($_SESSION['detail']) && isset($_POST['token']) && $_POST['token'] == $_SESSION['detail'])
+        {
+            $conn = $this->connectDb();
 
-        $deleteSql = "DELETE FROM habits WHERE id_user = '" . mysqli_real_escape_string($conn, $_SESSION['id']) .
-            "' AND name_abbr = '" . mysqli_real_escape_string($conn, $habit_abbr) . "'";
+            $deleteSql = "DELETE FROM habits WHERE id_user = '" . mysqli_real_escape_string($conn, $_SESSION['id']) .
+                "' AND name_abbr = '" . mysqli_real_escape_string($conn, $habit_abbr) . "'";
 
-        $conn->query($deleteSql);
+            $conn->query($deleteSql);
 
-        $this->viewList($conn);
+            $this->viewList($conn);
 
-        $conn->close();
+            $conn->close();
+        } else
+        {
+            $this->show($habit_abbr);
+        }
+
     }
 
     /**
@@ -168,6 +185,7 @@ class Detail extends Controller
     {
         $listSelect = "SELECT * FROM habits WHERE id_user = '" . $_SESSION['id'] . "'";
         $result = $conn->query($listSelect);
+        unset($_SESSION['detail']);
 
         $this->view('habitlist', $result);
     }

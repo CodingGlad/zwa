@@ -52,7 +52,7 @@ class Occurence extends Controller
                 mysqli_real_escape_string($conn, $_POST['selected-habit']) . "', '" .
                 mysqli_real_escape_string($conn, $_SESSION['id']) . "')";
 
-            if (isset($_SESSION['occurrence']) && $_SESSION['occurrence'] == $_POST['token'])
+            if (isset($_SESSION['occurrence']) && isset($_POST['token']) && $_SESSION['occurrence'] == $_POST['token'])
             {
                 if ($conn->query($occurenceInsertSql) === true)
                 {
@@ -120,7 +120,7 @@ class Occurence extends Controller
         {
             $conn = $this->connectDb();
 
-            if (isset($_SESSION['occurrenceShow']) && $_SESSION['occurrenceShow'] == $_POST['token'])
+            if (isset($_SESSION['occurrenceShow']) && isset($_POST['token']) && $_SESSION['occurrenceShow'] == $_POST['token'])
             {
                 $occurrenceSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
                 $result = $conn->query($occurrenceSql);
