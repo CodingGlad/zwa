@@ -79,16 +79,23 @@ class Occurence extends Controller
         {
             $conn = $this->connectDb();
 
-            $deleteSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+            $occurrenceSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
 
-            $result = $conn->query($deleteSql);
+            $result = $conn->query($occurrenceSql);
             $conn->close();
 
-            $this->view('habitoccurenceshow', $result->fetch_assoc());
+            if ($result->num_rows == 1)
+            {
+                $this->view('habitoccurenceshow', $result->fetch_assoc());
+            } else
+            {
+                $this->view('habitoccurence', ['message_invalid' => 'Occurrence was not found.']);
+            }
         } else
         {
-            $this->view('habitoccurence', ['message_invalid' => 'Occurence was not found.']);
+            $this->view('habitoccurence', ['message_invalid' => 'Occurrence was not found.']);
         }
+
     }
 
     /**
@@ -102,15 +109,26 @@ class Occurence extends Controller
         {
             $conn = $this->connectDb();
 
-            $deleteSql = "DELETE FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+            $occurrenceSql = "SELECT id, habit_abbr, date FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
 
-            $conn->query($deleteSql);
+            $result = $conn->query($occurrenceSql);
+
+            if ($result->num_rows == 1)
+            {
+                $deleteSql = "DELETE FROM occurences WHERE id = '" . mysqli_real_escape_string($conn, $id) . "'";
+
+                $conn->query($deleteSql);
+                $this->index(['message_valid' => 'Habit occurrence has been deleted.']);
+            } else
+            {
+                $this->view('habitoccurence', ['message_invalid' => 'Occurrence was not found.']);
+            }
+
             $conn->close();
 
-            $this->index(['message_valid' => 'Habit occurrence has been deleted.']);
         } else
         {
-            $this->view('habitoccurence', ['message_invalid' => 'Occurence was not found.']);
+            $this->view('habitoccurence', ['message_invalid' => 'Occurrence was not found.']);
         }
     }
 }
