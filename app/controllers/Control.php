@@ -65,9 +65,11 @@ class Control extends Controller
             if ($data['emailValid'] && $data['passwordValid'])
             {
                 $userId = uniqid();
-                $insertSql = "INSERT INTO users (id, email, password, permission) VALUES ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
-                    mysqli_real_escape_string($conn, $data['email']) ."', '" . password_hash($data['password'], PASSWORD_DEFAULT) . "', 
-                    'control')";
+                $insertSql = "INSERT INTO users (id, email, password, permission, control_calenndar) VALUES 
+                            ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
+                    mysqli_real_escape_string($conn, $data['email']) . "', '" .
+                    password_hash($data['password'], PASSWORD_DEFAULT) . "', 
+                    'control', '". $_SESSION['id'] . "')";
 
                 if ($conn->query($insertSql))
                 {
