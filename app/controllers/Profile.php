@@ -66,7 +66,7 @@ class Profile extends Controller
 
     /**
      * This method is used for email format validation.
-     * @param $email - to be checked.
+     * @param $email string to be checked.
      * @return false|int 1 if pattern matches, 0 if patter doesn't match, false if an error occured.
      */
     public function validateEmail($email) {

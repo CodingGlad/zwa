@@ -7,7 +7,7 @@ class Occurence extends Controller
 {
     /**
      * This method handles showing of data for the possibility of habit occurrence addition.
-     * @param $message - if some information was passed to the method.
+     * @param $message string if some information was passed to the method.
      * @return void
      */
     public function index($message = [])
@@ -79,7 +79,7 @@ class Occurence extends Controller
 
     /**
      * This method is used to show habit occurrence from calendar.
-     * @param $id - of habit that has occurred.
+     * @param $id string of habit that has occurred.
      * @return void
      */
     public function show($id = [])
@@ -111,7 +111,7 @@ class Occurence extends Controller
 
     /**
      * This method handles removing an occurrence from database.
-     * @param $id - of occurrence to be removed.
+     * @param $id string of occurrence to be removed.
      * @return void
      */
     public function remove($id = [])

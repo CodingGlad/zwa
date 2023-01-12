@@ -13,8 +13,8 @@ class Controller {
 
     /**
      * This method handles viewing of selected view by the controller.
-     * @param $view - to display
-     * @param $data - to insert
+     * @param $view string to display
+     * @param $data array to insert
      * @return void
      */
     public function view($view, $data = []) {
@@ -50,7 +50,7 @@ class Controller {
 
     /**
      * This method is used for checking whether user is admin or control across all controllers.
-     * @param $conn - db connection to use.
+     * @param $conn mysqli db connection to use.
      * @return bool true if user is control, otherwise false.
      */
     public function isUserControl($conn)
