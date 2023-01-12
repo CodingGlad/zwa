@@ -15,7 +15,7 @@
                 <a class="css-button" href="http://localhost/MojeProjekty/HabitJournal/public/calendar">
                     <div class="logo-container">
                         <div class="logo">
-                            <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Habit Journal Logo">
+                            <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Habit Journal Logo" height="150" width="150">
                         </div>
                         <h1>
                             Habit Journal
@@ -24,7 +24,7 @@
                 </a>
                 <div class="logout">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/logout" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/out.png" alt="logout-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/out.png" alt="logout-icon" height="24" width="24">
                         <div class="aside-item-text">
                             Log Out
                         </div>
@@ -37,7 +37,7 @@
                 </h2>
                 <div class="aside-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/calendar" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/calendar.png" alt="calendar-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/calendar.png" alt="calendar-icon" height="24" width="24">
                         <p>
                             Habit Calendar
                         </p>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="aside-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/habitlist" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png" alt="menu-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/menu.png" alt="menu-icon" height="24" width="24">
                         <p>
                             Habit List
                         </p>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="aside-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/detail" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/add.png" alt="add-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/add.png" alt="add-icon" height="24" width="24">
                         <p>
                             Add Habit
                         </p>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="aside-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/occurence" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/clock.png" alt="clock-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/clock.png" alt="clock-icon" height="24" width="24">
                         <p>
                             Add Occurence
                         </p>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="aside-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/profile" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/user.png" alt="user-icon" height="24" width="24">
                         <p>
                             Profile
                         </p>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="aside-item">
                     <a href="http://localhost/MojeProjekty/HabitJournal/public/switchthemes" class="css-button">
-                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon">
+                        <img src="http://localhost/MojeProjekty/HabitJournal/public/img/gear.png" alt="gear-icon" height="24" width="24">
                         <p>
                             Switch themes
                         </p>
