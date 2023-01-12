@@ -24,6 +24,26 @@ class SwitchThemes extends Controller
         {
             $_SESSION['theme'] = 'dark';
         }
-        $this->view('habitwelcome');
+
+        $this->viewCorrectPage();
+    }
+
+    /**
+     * This method shows the correct page after successfully switching themes.
+     * @return void
+     */
+    private function viewCorrectPage()
+    {
+        $conn = $this->connectDb();
+
+        if ($this->isUserControl($conn))
+        {
+            $this->view('control/habitwelcome');
+        } else
+        {
+            $this->view('habitwelcome');
+        }
+
+        $conn->close();
     }
 }

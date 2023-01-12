@@ -5,9 +5,19 @@
  */
 class App
 {
+    const DEFAULT_SIGNED_IN_CONTROLLER = 'calendar';
+    const DEFAULT_NOT_SIGNED_IN_CONTROLLER = 'signin';
+    const DEFAULT_CONTROL_INDEX_METHOD = 'indexControl';
+    const DEFAULT_METHOD = 'index';
+    const DEFAULT_CONTROL_CONTROLLER = 'calendar';
+    const DEFAULT_CONTROL_METHOD = 'show';
     protected $controller = 'signin';
     protected $method = 'index';
     protected $params = [];
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $db = "habitjournal";
 
     /**
      * This is a constructor of App class that handles the selection of controller, method and passing their parameters.
@@ -18,47 +28,13 @@ class App
 
         $url = $this->parseUrl();
 
-        if (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id'])) {
-            if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
-            {
-                if ($url[0] == 'signin' || $url[0] == 'signup')
-                {
-                    $this->controller = 'calendar';
-                } else
-                {
-                    $this->controller = $url[0];
-                }
-                unset($url[0]);
-            } else if (count($url) == 0)
-            {
-                $this->controller = 'calendar';
-            }
-        } else
-        {
-            if (isset($url[0]) && ($url[0] == 'signin' || $url[0] == 'signup'))
-            {
-                $this->controller = $url[0];
-                unset($url[0]);
-            } else
-            {
-                $this->controller = 'signin';
-            }
-        }
+        $this->chooseValidController($url);
 
         require_once '../app/controllers/' . $this->controller . '.php';
 
         $this->controller = new $this->controller;
 
-        if (isset($url[1]) && method_exists($this->controller, $url[1]))
-        {
-            if (($this->controller == 'signin' || $this->controller == 'signup') && isset($_SESSION['id']))
-            {
-                $this->controller = 'index';
-                unset($url[1]);
-            }
-            $this->method = $url[1];
-            unset($url[1]);
-        }
+        $this->chooseValidMethod($url);
 
         $this->params = $url ? array_values($url) : [];
 
@@ -85,12 +61,7 @@ class App
      */
     private function isIdValid($id)
     {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $db = "habitjournal";
-
-        $conn = new mysqli($servername, $username, $password, $db);
+        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
 
         if ($conn->connect_error)
         {
@@ -108,6 +79,154 @@ class App
         } else
         {
             return false;
+        }
+    }
+
+    /**
+     * This function handles the process of choosing correct controller based on provided information.
+     * @param $url - for accessing desired controller.
+     * @return void
+     */
+    private function chooseValidController(&$url)
+    {
+        if (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id']))
+        {
+            if ($this->isUserControl())
+            {
+                $this->controlUserController($url);
+            } else
+            {
+                $this->signedInUserController($url);
+            }
+        } else
+        {
+            $this->unknownUserController($url);
+        }
+    }
+
+    /**
+     * This function sets valid controller for already signed-in users.
+     * @param $url - for accessing desired controller.
+     * @return void
+     */
+    private function signedInUserController(&$url)
+    {
+        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
+        {
+            if ($url[0] == 'signin' || $url[0] == 'signup')
+            {
+                $this->controller = self::DEFAULT_SIGNED_IN_CONTROLLER;
+            } else
+            {
+                $this->controller = $url[0];
+            }
+            unset($url[0]);
+        } else if (count($url) == 0)
+        {
+            $this->controller = self::DEFAULT_SIGNED_IN_CONTROLLER;
+        }
+    }
+
+    /**
+     * This function sets valid controller unknown/not signed-in user.
+     * @param $url - for accessing desired controller.
+     * @return void
+     */
+    private function unknownUserController(&$url)
+    {
+        if (isset($url[0]) && ($url[0] == 'signin' || $url[0] == 'signup'))
+        {
+            $this->controller = $url[0];
+            unset($url[0]);
+        } else
+        {
+            $this->controller = self::DEFAULT_NOT_SIGNED_IN_CONTROLLER;
+        }
+    }
+
+    /**
+     * This function sets valid controller for already signed-in users.
+     * @param $url - for accessing method desired method.
+     * @return void
+     */
+    private function chooseValidMethod(&$url)
+    {
+        if ($this->isUserControl())
+        {
+            $this->chooseValidControlMethod($url);
+        } else
+        {
+            if (isset($url[1]) && method_exists($this->controller, $url[1]))
+            {
+                if (($this->controller == 'signin' || $this->controller == 'signup') &&
+                    (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id'])))
+                {
+                    $this->method = self::DEFAULT_METHOD;
+                } else
+                {
+                    $this->method = $url[1];
+                }
+                unset($url[1]);
+            }
+        }
+    }
+
+    private function chooseValidControlMethod(&$url)
+    {
+        if (method_exists($this->controller, self::DEFAULT_CONTROL_METHOD))
+        {
+            $this->method = self::DEFAULT_CONTROL_METHOD;
+        } elseif (method_exists($this->controller, self::DEFAULT_CONTROL_INDEX_METHOD))
+        {
+            $this->method = self::DEFAULT_CONTROL_INDEX_METHOD;
+        } else
+        {
+            $this->method = self::DEFAULT_METHOD;
+        }
+        unset($url[1]);
+    }
+
+    /**
+     * This method checks whether user is a control user across App class.
+     * @return bool|void true if user is control, otherwise false.
+     */
+    private function isUserControl()
+    {
+        if (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id']))
+        {
+            $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
+            if ($conn->connect_error)
+            {
+                die();
+            }
+            $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
+            $result = $conn->query($controlSql);
+
+            return $result->num_rows == 1;
+        } else
+        {
+            return false;
+        }
+
+    }
+
+    /**
+     * This function sets valid controller for control users.
+     * @param $url - for accessing method desired controller.
+     * @return void
+     */
+    private function controlUserController(&$url)
+    {
+        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
+        {
+            if (($url[0] == 'logout' || $url[0] == 'switchthemes'))
+            {
+                $this->controller = $url[0];
+            } else
+            {
+                $this->controller = self::DEFAULT_CONTROL_CONTROLLER;
+            }
+            unset($url[0]);
         }
     }
 }
