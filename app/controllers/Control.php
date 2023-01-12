@@ -1,14 +1,23 @@
 <?php
-//TODO comment
+
+/**
+ * Control controller is used for basic methods that correlate with creation or manipulation with control user.
+ */
 class Control extends Controller
 {
-    //TODO comment
+    /**
+     * This method views page for addition of control user.
+     * @return void
+     */
     public function index()
     {
         $this->view('habitcontrol');
     }
 
-    //TODO comment
+    /**
+     * This method handles the addition of control user.
+     * @return void
+     */
     public function add()
     {
         if (isset($_POST['password_check']) && isset($_POST['password']) && isset($_POST['email']))

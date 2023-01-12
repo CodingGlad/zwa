@@ -28,6 +28,10 @@ class SwitchThemes extends Controller
         $this->viewCorrectPage();
     }
 
+    /**
+     * This method shows the correct page after successfully switching themes.
+     * @return void
+     */
     private function viewCorrectPage()
     {
         $conn = $this->connectDb();

@@ -48,6 +48,11 @@ class Controller {
         return $conn;
     }
 
+    /**
+     * This method is used for checking whether user is admin or control across all controllers.
+     * @param $conn - db connection to use.
+     * @return bool true if user is control, otherwise false.
+     */
     public function isUserControl($conn)
     {
         $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";

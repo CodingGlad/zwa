@@ -186,8 +186,9 @@ class App
         unset($url[1]);
     }
 
-    /**TODO comment
-     * @return bool|void
+    /**
+     * This method checks whether user is a control user across App class.
+     * @return bool|void true if user is control, otherwise false.
      */
     private function isUserControl()
     {
