@@ -60,12 +60,10 @@ class Control extends Controller
                 $data['message_invalid'] = true;
             }
 
-            file_put_contents('wtf.txt', $data['emailValid'] . $data['passwordValid']);
-
             if ($data['emailValid'] && $data['passwordValid'])
             {
                 $userId = uniqid();
-                $insertSql = "INSERT INTO users (id, email, password, permission, control_calenndar) VALUES 
+                $insertSql = "INSERT INTO users (id, email, password, permission, control_calendar) VALUES 
                             ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
                     mysqli_real_escape_string($conn, $data['email']) . "', '" .
                     password_hash($data['password'], PASSWORD_DEFAULT) . "', 
