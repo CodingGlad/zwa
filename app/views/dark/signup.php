@@ -13,7 +13,7 @@
 <div class="page-container">
     <main class="login-container">
         <div class="login-top">
-            <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Logo">
+            <img src="http://localhost/MojeProjekty/HabitJournal/public/img/logoZwa2.png" alt="Logo" height="150" width="150">
             Habit Journal
         </div>
         <div class="login-text">
