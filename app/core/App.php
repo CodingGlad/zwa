@@ -80,6 +80,11 @@ class App
         }
     }
 
+    /**
+     * This function handles the process of choosing correct controller based on provided information.
+     * @param $url - for accessing desired controller.
+     * @return void
+     */
     private function chooseValidController(&$url)
     {
         if (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id']))
@@ -91,6 +96,11 @@ class App
         }
     }
 
+    /**
+     * This function sets valid controller for already signed-in users.
+     * @param $url - for accessing desired controller.
+     * @return void
+     */
     private function signedInUser(&$url)
     {
         if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
@@ -109,6 +119,11 @@ class App
         }
     }
 
+    /**
+     * This function sets valid controller unknown/not signed-in user.
+     * @param $url - for accessing desired controller.
+     * @return void
+     */
     private function unknownUser(&$url)
     {
         if (isset($url[0]) && ($url[0] == 'signin' || $url[0] == 'signup'))
@@ -121,6 +136,11 @@ class App
         }
     }
 
+    /**
+     * This function sets valid controller for already signed-in users.
+     * @param $url - for accessing method desired method.
+     * @return void
+     */
     private function chooseValidMethod(&$url)
     {
         if (isset($url[1]) && method_exists($this->controller, $url[1]))
