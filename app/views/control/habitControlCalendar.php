@@ -66,23 +66,22 @@
         </div>
         <div class="calendar-container">
             <?php
-            echo 'This is control kokotko';
-            //            foreach($data as $key=>$habits)
-            //            {
-            //                echo '<div class="calendar-item">
-            //                                    <div class="date">' . htmlspecialchars($key) . '</div>
-            //                                    <div class="circle-container">';
-            //
-            //                foreach ($habits as $habit)
-            //                {
-            //                    echo '<a href="http://localhost/MojeProjekty/HabitJournal/public/occurence/show/' .
-            //                        htmlspecialchars($habit['id']) . '" class="color-circle" style="background-color: ' . htmlspecialchars($habit['color']) .'"></a>';
-            //                }
-            //
-            //                echo '
-            //                                    </div>
-            //                                  </div>';
-            //            }
+            foreach($data as $key=>$habits)
+            {
+                echo '<div class="calendar-item">
+                                    <div class="date">' . htmlspecialchars($key) . '</div>
+                                    <div class="circle-container">';
+
+                foreach ($habits as $habit)
+                {
+                    echo '<div href="http://localhost/MojeProjekty/HabitJournal/public/occurence/show/' .
+                        htmlspecialchars($habit['id']) . '" class="color-circle" style="background-color: ' . htmlspecialchars($habit['color']) .'"></div>';
+                }
+
+                echo '
+                                    </div>
+                                  </div>';
+            }
             ?>
         </div>
     </main>

@@ -30,17 +30,9 @@ class SwitchThemes extends Controller
 
     private function viewCorrectPage()
     {
-        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
+        $conn = $this->connectDb();
 
-        if ($conn->connect_error)
-        {
-            die();
-        }
-
-        $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
-        $result = $conn->query($controlSql);
-
-        if ($result->num_rows == 1)
+        if ($this->isUserControl($conn))
         {
             $this->view('control/habitwelcome');
         } else

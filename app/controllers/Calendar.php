@@ -53,8 +53,14 @@ class Calendar extends Controller
             $datesWithHabits[$formatted] = $this->getHabitsForDate($date->format('Y-m-d'), $conn);
         }
 
+        if ($this->isUserControl($conn))
+        {
+            $this->view('control/habitControlCalendar', $datesWithHabits);
+        } else
+        {
+            $this->view('habitCalendar', $datesWithHabits);
+        }
         $conn->close();
-        $this->view('habitCalendar', $datesWithHabits);
     }
 
     /**
@@ -66,6 +72,17 @@ class Calendar extends Controller
     private function getHabitsForDate($date, $conn) {
         $getSql = "SELECT color, id FROM habits h INNER JOIN occurences o 
             ON h.id_user = o.user_id AND h.name_abbr = o.habit_abbr WHERE o.date = '" . $date ."'";
+
+        if ($this->isUserControl($conn))
+        {
+            $controlIdSql = "SELECT control_calendar FROM users WHERE id = '" . $_SESSION['id'] . "'";
+            $controlId  = $conn->query($controlIdSql)->fetch_assoc();
+
+            $getSql .= " AND h.id_user = '" . $controlId['control_calendar'] . "'";
+        } else
+        {
+            $getSql .= " AND h.id_user = '" . $_SESSION['id'] . "'";
+        }
 
         $results =  $conn->query($getSql);
 

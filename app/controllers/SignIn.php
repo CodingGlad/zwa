@@ -31,10 +31,7 @@ class SignIn extends Controller
                 {
                     $_SESSION['id'] = $user['id'];
 
-                    $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
-                    $result = $conn->query($controlSql);
-
-                    if ($result->num_rows == 1)
+                    if ($this->isUserControl($conn))
                     {
                         $this->view('control/habitwelcome');
                     } else

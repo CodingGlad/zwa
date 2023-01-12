@@ -9,7 +9,7 @@ class App
     const DEFAULT_NOT_SIGNED_IN_CONTROLLER = 'signin';
     const DEFAULT_CONTROL_INDEX_METHOD = 'indexControl';
     const DEFAULT_METHOD = 'index';
-    const DEFAULT_CONTROL_CONTROLLER = 'control';
+    const DEFAULT_CONTROL_CONTROLLER = 'calendar';
     const DEFAULT_CONTROL_METHOD = 'show';
     protected $controller = 'signin';
     protected $method = 'index';

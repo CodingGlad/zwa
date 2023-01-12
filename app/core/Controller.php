@@ -36,7 +36,8 @@ class Controller {
      * This method establishes connection to used database.
      * @return mysqli|void connection to the database or void, when connection was not established.
      */
-    public function connectDb() {
+    public function connectDb()
+    {
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
 
         if ($conn->connect_error)
@@ -45,5 +46,11 @@ class Controller {
         }
 
         return $conn;
+    }
+
+    public function isUserControl($conn)
+    {
+        $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
+        return $conn->query($controlSql)->num_rows == 1;
     }
 }
