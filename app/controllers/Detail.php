@@ -19,7 +19,7 @@ class Detail extends Controller
 
     /**
      * This method handles viewing of filled habit detail with existing habit with the possibility of updating it.
-     * @param $habitAbbr - of habit to be shown.
+     * @param $habitAbbr string of habit to be shown.
      * @return void
      */
     public function show($habitAbbr)
@@ -46,7 +46,7 @@ class Detail extends Controller
 
     /**
      * This method is used for updating data of existing habit.
-     * @param $habit_abbr - of habit to be updated.
+     * @param $habit_abbr string of habit to be updated.
      * @return void
      */
     public function update($habit_abbr)
@@ -154,7 +154,7 @@ class Detail extends Controller
 
     /**
      * This method is used for deleting an existing habit based on the habit abbr provided from the user.
-     * @param $habit_abbr - of habit to be deleted.
+     * @param $habit_abbr string of habit to be deleted.
      * @return void
      */
     public function delete($habit_abbr)
@@ -192,7 +192,7 @@ class Detail extends Controller
 
     /**
      * This method is used to validate input data from habit detail.
-     * @param $data - to be validated.
+     * @param $data array to be validated.
      * @return array of invalid inputs.
      */
     private function validateInput($data)

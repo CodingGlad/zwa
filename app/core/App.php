@@ -56,7 +56,7 @@ class App
     }
 
     /**This method is used for validation of a user that was already signed in before.
-     * @param $id - of signed user.
+     * @param $id string of signed user.
      * @return bool|void true if id is valid, otherwise false.
      */
     private function isIdValid($id)
@@ -84,7 +84,7 @@ class App
 
     /**
      * This function handles the process of choosing correct controller based on provided information.
-     * @param $url - for accessing desired controller.
+     * @param $url array for accessing desired controller.
      * @return void
      */
     private function chooseValidController(&$url)
@@ -106,7 +106,7 @@ class App
 
     /**
      * This function sets valid controller for already signed-in users.
-     * @param $url - for accessing desired controller.
+     * @param $url array for accessing desired controller.
      * @return void
      */
     private function signedInUserController(&$url)
@@ -129,7 +129,7 @@ class App
 
     /**
      * This function sets valid controller unknown/not signed-in user.
-     * @param $url - for accessing desired controller.
+     * @param $url array for accessing desired controller.
      * @return void
      */
     private function unknownUserController(&$url)
@@ -146,7 +146,7 @@ class App
 
     /**
      * This function sets valid controller for already signed-in users.
-     * @param $url - for accessing method desired method.
+     * @param $url array for accessing method desired method.
      * @return void
      */
     private function chooseValidMethod(&$url)
@@ -212,7 +212,7 @@ class App
 
     /**
      * This function sets valid controller for control users.
-     * @param $url - for accessing method desired controller.
+     * @param $url array for accessing method desired controller.
      * @return void
      */
     private function controlUserController(&$url)

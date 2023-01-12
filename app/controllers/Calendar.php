@@ -65,8 +65,8 @@ class Calendar extends Controller
 
     /**
      * This method handles getting all habit occurrences in desired date.
-     * @param $date - to get habits for.
-     * @param $conn - that is used for DB connection.
+     * @param $date string to get habits for.
+     * @param $conn mysqli that is used for DB connection.
      * @return array of all habit occurrences for passed date.
      */
     private function getHabitsForDate($date, $conn) {

@@ -115,7 +115,7 @@ class Control extends Controller
     /**
      * This method is used for password validation. It uses RegExp to check whether it contains at least 1 lowercase
      * letter, 1 uppercase letter, 1 number and is at least 8 chars long.
-     * @param $password - to be checked.
+     * @param $password string to be checked.
      * @return bool true if password is valid, otherwise false.
      */
     private function checkPassword($password)
@@ -126,7 +126,7 @@ class Control extends Controller
 
     /**
      * This method is used for email format validation.
-     * @param $email - to be checked.
+     * @param $email string to be checked.
      * @return false|int 1 if pattern matches, 0 if patter doesn't match, false if an error occured.
      */
     private function checkEmail($email) {
