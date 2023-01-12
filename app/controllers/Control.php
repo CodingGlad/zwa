@@ -1,12 +1,14 @@
 <?php
-
+//TODO comment
 class Control extends Controller
 {
+    //TODO comment
     public function index()
     {
         $this->view('habitcontrol');
     }
 
+    //TODO comment
     public function add()
     {
         if (isset($_POST['password_check']) && isset($_POST['password']) && isset($_POST['email']))
@@ -93,6 +95,15 @@ class Control extends Controller
     }
 
     /**
+     * This method is used for viewing of control calendar for control user.
+     * @return void
+     */
+    public function show()
+    {
+        $this->view('control/habitControlCalendar');
+    }
+
+    /**
      * This method is used for password validation. It uses RegExp to check whether it contains at least 1 lowercase
      * letter, 1 uppercase letter, 1 number and is at least 8 chars long.
      * @param $password - to be checked.
@@ -109,7 +120,7 @@ class Control extends Controller
      * @param $email - to be checked.
      * @return false|int 1 if pattern matches, 0 if patter doesn't match, false if an error occured.
      */
-    public function checkEmail($email) {
+    private function checkEmail($email) {
         return preg_match("^[\w.]+@[a-zA-Z_.]+?\.[a-zA-Z]{2,3}$^", $email);
     }
 }
