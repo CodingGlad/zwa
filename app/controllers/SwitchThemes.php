@@ -24,6 +24,30 @@ class SwitchThemes extends Controller
         {
             $_SESSION['theme'] = 'dark';
         }
-        $this->view('habitwelcome');
+
+        $this->viewCorrectPage();
+    }
+
+    private function viewCorrectPage()
+    {
+        $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
+
+        if ($conn->connect_error)
+        {
+            die();
+        }
+
+        $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
+        $result = $conn->query($controlSql);
+
+        if ($result->num_rows == 1)
+        {
+            $this->view('control/habitwelcome');
+        } else
+        {
+            $this->view('habitwelcome');
+        }
+
+        $conn->close();
     }
 }

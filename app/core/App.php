@@ -7,6 +7,7 @@ class App
 {
     const DEFAULT_SIGNED_IN_CONTROLLER = 'calendar';
     const DEFAULT_NOT_SIGNED_IN_CONTROLLER = 'signin';
+    const DEFAULT_CONTROL_INDEX_METHOD = 'indexControl';
     const DEFAULT_METHOD = 'index';
     const DEFAULT_CONTROL_CONTROLLER = 'control';
     const DEFAULT_CONTROL_METHOD = 'show';
@@ -97,7 +98,6 @@ class App
             {
                 $this->signedInUserController($url);
             }
-
         } else
         {
             $this->unknownUserController($url);
@@ -173,9 +173,12 @@ class App
 
     private function chooseValidControlMethod(&$url)
     {
-        if (method_exists($this->controller, 'show'))
+        if (method_exists($this->controller, self::DEFAULT_CONTROL_METHOD))
         {
             $this->method = self::DEFAULT_CONTROL_METHOD;
+        } elseif (method_exists($this->controller, self::DEFAULT_CONTROL_INDEX_METHOD))
+        {
+            $this->method = self::DEFAULT_CONTROL_INDEX_METHOD;
         } else
         {
             $this->method = self::DEFAULT_METHOD;
@@ -191,22 +194,14 @@ class App
         if (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id']))
         {
             $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-
             if ($conn->connect_error)
             {
                 die();
             }
-
             $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
             $result = $conn->query($controlSql);
 
-            if ($result->num_rows == 1)
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+            return $result->num_rows == 1;
         } else
         {
             return false;

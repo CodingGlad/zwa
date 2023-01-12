@@ -30,7 +30,17 @@ class SignIn extends Controller
                 if (password_verify($_POST['password'], $user['password']))
                 {
                     $_SESSION['id'] = $user['id'];
-                    $this->view('habitwelcome');
+
+                    $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
+                    $result = $conn->query($controlSql);
+
+                    if ($result->num_rows == 1)
+                    {
+                        $this->view('control/habitwelcome');
+                    } else
+                    {
+                        $this->view('habitwelcome');
+                    }
                 } else
                 {
                     $this->view('signin', ['message' => 'Password is incorrect.', 'email' => $_POST['email']]);

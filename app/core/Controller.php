@@ -12,7 +12,7 @@ class Controller {
     protected $db = "habitjournal";
 
     /**
-     * This method handles viewing of selected view by the conroller.
+     * This method handles viewing of selected view by the controller.
      * @param $view - to display
      * @param $data - to insert
      * @return void
