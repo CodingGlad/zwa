@@ -14,10 +14,10 @@ class App
     protected $controller = 'signin';
     protected $method = 'index';
     protected $params = [];
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $db = "habitjournal";
+    private $servername = "store5.rosti.cz";
+    private $username = "testicek_2352";
+    private $password = "ASFasd1233";
+    private $db = "testicek_2352";
 
     /**
      * This is a constructor of App class that handles the selection of controller, method and passing their parameters.

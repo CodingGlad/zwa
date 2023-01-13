@@ -9,10 +9,10 @@ class Controller {
     const DEFAULT_THEME = 'light';
     const LIGHT_THEME = 'light';
     const DARK_THEME = 'dark';
-    protected $servername = "localhost";
-    protected $username = "root";
-    protected $password = "";
-    protected $db = "habitjournal";
+    protected $servername = "store5.rosti.cz";
+    protected $username = "testicek_2352";
+    protected $password = "ASFasd1233";
+    protected $db = "testicek_2352";
 
     /**
      * This method handles viewing of selected view by the controller.
