@@ -131,6 +131,7 @@
                     echo '<div class="message '. $class .'">' . htmlspecialchars($data['message']) . '</div>';
                 }
                 ?>
+                <input type="hidden" name="token" value="<?=(isset($_SESSION['control']))?($_SESSION['control']):('')?>">
                 <input id="submit" type="submit" value="Add control user">
             </form>
         </div>

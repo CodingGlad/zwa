@@ -11,6 +11,8 @@ class Control extends Controller
      */
     public function index()
     {
+        $_SESSION['control'] = uniqid();
+
         $this->view('habitcontrol');
     }
 
@@ -20,86 +22,78 @@ class Control extends Controller
      */
     public function add()
     {
-        if (isset($_POST['password_check']) && isset($_POST['password']) && isset($_POST['email']))
-        {
+        if (isset($_POST['password_check']) && isset($_POST['password']) && isset($_POST['email'])) {
             $data = ['email' => $_POST['email'],
                 'password' => $_POST['password'],
                 'password_check' => $_POST['password_check'],
                 'message' => ''];
 
-            $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
+            if (isset($_SESSION['control']) && isset($_POST['token']) && $_SESSION['control'] == $_POST['token']) {
 
-            if ($conn->connect_error)
-            {
-                die();
-            }
+                $conn = $this->connectDb();
 
-            if ($this->checkEmail($data['email']))
-            {
-                $data['emailValid'] = true;
-            } else
-            {
-                $data['message'] .= "Email is not in valid format.";
-                $data['emailValid'] = false;
-                $data['message_invalid'] = true;
-            }
-
-            if ($data['password'] == $data['password_check'] && $this->checkPassword($data['password']))
-            {
-                $data['passwordValid'] = true;
-            } else
-            {
-                $data['passwordValid'] = false;
-                $data['message'] .= "Passwords do not match or they do not fulfill our rules.";
-                $data['message_invalid'] = true;
-            }
-
-            $emailSql = "SELECT email FROM users WHERE email = '" . mysqli_real_escape_string($conn,$data['email']) . "'";
-            $result = $conn->query($emailSql);
-
-            if ($result->num_rows == 0)
-            {
-                if ($data['emailValid'])
-                {
+                if ($this->checkEmail($data['email'])) {
                     $data['emailValid'] = true;
-                }
-            }
-            else
-            {
-                $data['emailValid'] = false;
-                $data['message'] .= "Email has already been used.";
-                $data['message_invalid'] = true;
-            }
-
-            if ($data['emailValid'] && $data['passwordValid'])
-            {
-                $userId = uniqid();
-                $insertSql = "INSERT INTO users (id, email, password, permission, control_calendar) VALUES 
-                            ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
-                    mysqli_real_escape_string($conn, $data['email']) . "', '" .
-                    password_hash($data['password'], PASSWORD_DEFAULT) . "', 
-                    'control', '". $_SESSION['id'] . "')";
-
-                if ($conn->query($insertSql))
-                {
-                    $data['message'] .= "Control account has been created.";
-                    $data['message_valid'] = true;
-                    unset($data['email']);
-                } else
-                {
-                    $data['message'] .= "Control account couldn't be created due to a problem on our server.";
+                } else {
+                    $data['message'] .= "Email is not in valid format.";
+                    $data['emailValid'] = false;
                     $data['message_invalid'] = true;
                 }
-            }
 
-            if (!($data['emailValid'] && $data['passwordValid']) || $data['message'] != '')
-            {
+                if ($data['password'] == $data['password_check'] && $this->checkPassword($data['password'])) {
+                    $data['passwordValid'] = true;
+                } else {
+                    $data['passwordValid'] = false;
+                    $data['message'] .= "Passwords do not match or they do not fulfill our rules.";
+                    $data['message_invalid'] = true;
+                }
+
+                $emailSql = "SELECT email FROM users WHERE email = '" . mysqli_real_escape_string($conn, $data['email']) . "'";
+                $result = $conn->query($emailSql);
+
+                if ($result->num_rows == 0) {
+                    if ($data['emailValid']) {
+                        $data['emailValid'] = true;
+                    }
+                } else {
+                    $data['emailValid'] = false;
+                    $data['message'] .= "Email has already been used.";
+                    $data['message_invalid'] = true;
+                }
+
+                if ($data['emailValid'] && $data['passwordValid']) {
+                    $userId = uniqid();
+                    $insertSql = "INSERT INTO users (id, email, password, permission, control_calendar) VALUES 
+                            ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
+                        mysqli_real_escape_string($conn, $data['email']) . "', '" .
+                        password_hash($data['password'], PASSWORD_DEFAULT) . "', 
+                    'control', '" . $_SESSION['id'] . "')";
+
+                    if ($conn->query($insertSql)) {
+                        $data['message'] .= "Control account has been created.";
+                        $data['message_valid'] = true;
+                        unset($data['email']);
+                    } else {
+                        $data['message'] .= "Control account couldn't be created due to a problem on our server.";
+                        $data['message_invalid'] = true;
+                    }
+                }
+
+                if (!($data['emailValid'] && $data['passwordValid']) || $data['message'] != '') {
+                    unset($_SESSION['control']);
+                    $this->view('habitcontrol', $data);
+                }
+
+                $conn->close();
+            } else {
+                $data['message'] = "Your token doesn't match";
+                $data['message_invalid'] = true;
+
                 $this->view('habitcontrol', $data);
             }
-
-            $conn->close();
-        } else {
-            $this->view('habitcontrol');
+        } else
+        {
+            $this->index();
         }
     }
 
