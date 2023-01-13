@@ -6,36 +6,37 @@
 class SwitchThemes extends Controller
 {
     /**
-     * This method handles viewing of settings page.
+     * This method handles switching themes based on value from DB.
      * @return void
      */
     public function index()
     {
-        if (isset($_SESSION['theme']))
+        $conn = $this->connectDb();
+        $currentTheme = $this->getThemeFromDB($conn);
+
+        $updateSql = "UPDATE users SET theme = '";
+
+        if ($currentTheme == self::LIGHT_THEME)
         {
-            if ($_SESSION['theme'] == 'dark')
-            {
-                $_SESSION['theme'] = 'light';
-            } elseif ($_SESSION['theme'] == 'light')
-            {
-                $_SESSION['theme'] = 'dark';
-            }
+            $updateSql .= self::DARK_THEME . "' ";
         } else
         {
-            $_SESSION['theme'] = 'dark';
+            $updateSql .= self::LIGHT_THEME . "' ";
         }
 
-        $this->viewCorrectPage();
+        $updateSql .= "WHERE id = '" . $_SESSION['id'] . "'";
+
+        $conn->query($updateSql);
+
+        $this->viewCorrectPage($conn);
     }
 
     /**
      * This method shows the correct page after successfully switching themes.
      * @return void
      */
-    private function viewCorrectPage()
+    private function viewCorrectPage(&$conn)
     {
-        $conn = $this->connectDb();
-
         if ($this->isUserControl($conn))
         {
             $this->view('control/habitwelcome');
