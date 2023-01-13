@@ -1,5 +1,5 @@
 <?php
 
-require_once '../app/init.php';
+require_once '/home/wodecjak/www/app/init.php';
 
 $app = new App();

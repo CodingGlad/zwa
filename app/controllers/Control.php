@@ -13,7 +13,7 @@ class Control extends Controller
     {
         $_SESSION['control'] = uniqid();
 
-        $this->view('habitcontrol');
+        $this->view('habitControl');
     }
 
     /**
@@ -67,7 +67,7 @@ class Control extends Controller
                             ('" . mysqli_real_escape_string($conn, $userId) . "', '" .
                         mysqli_real_escape_string($conn, $data['email']) . "', '" .
                         password_hash($data['password'], PASSWORD_DEFAULT) . "', 
-                    'control', '" . $_SESSION['id'] . "')";
+                    'contr', '" . $_SESSION['id'] . "')";
 
                     if ($conn->query($insertSql)) {
                         $data['message'] .= "Control account has been created.";
@@ -80,8 +80,7 @@ class Control extends Controller
                 }
 
                 if (!($data['emailValid'] && $data['passwordValid']) || $data['message'] != '') {
-                    unset($_SESSION['control']);
-                    $this->view('habitcontrol', $data);
+                    $this->view('habitControl', $data);
                 }
 
                 $conn->close();
@@ -89,7 +88,7 @@ class Control extends Controller
                 $data['message'] = "Your token doesn't match";
                 $data['message_invalid'] = true;
 
-                $this->view('habitcontrol', $data);
+                $this->view('habitControl', $data);
             }
         } else
         {

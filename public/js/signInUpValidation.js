@@ -18,7 +18,7 @@ function validateEmail() {
 
         if (isRetypePresent()) {
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://habitjournal-6101.rostiapp.cz/public/signup/checkEmailAvailable/" + email.value, true);
+            xhr.open("POST", "http://wa.toad.cz/~wodecjak/public/signup/checkEmailAvailable/" + email.value, true);
             xhr.send();
 
             xhr.addEventListener("load", checkLoad);

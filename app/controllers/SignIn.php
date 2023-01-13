@@ -15,15 +15,12 @@ class SignIn extends Controller
         if (isset($_POST['email']))
         {
             $conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-
             if ($conn->connect_error)
             {
                 die();
             }
-
             $sql = "SELECT * FROM users WHERE email = '" . mysqli_real_escape_string($conn, $_POST['email']) . "'";
             $result = $conn->query($sql);
-
             if ($result->num_rows == 1) {
                 $user = $result->fetch_assoc();
 
@@ -33,10 +30,10 @@ class SignIn extends Controller
 
                     if ($this->isUserControl($conn))
                     {
-                        $this->view('control/habitwelcome');
+                        $this->view('control/habitWelcome');
                     } else
                     {
-                        $this->view('habitwelcome');
+                        $this->view('habitWelcome');
                     }
                 } else
                 {

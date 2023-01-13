@@ -17,7 +17,7 @@ class Profile extends Controller
 
         $result = $conn->query($profileSql);
 
-        $this->view('habitprofile', $result->fetch_assoc());
+        $this->view('habitProfile', $result->fetch_assoc());
 
         $conn->close();
     }
@@ -61,7 +61,7 @@ class Profile extends Controller
         }
 
         $conn->close();
-        $this->view('habitprofile', $data);
+        $this->view('habitProfile', $data);
     }
 
     /**

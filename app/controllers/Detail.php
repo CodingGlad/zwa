@@ -35,7 +35,7 @@ class Detail extends Controller
 
         if ($result->num_rows == 1)
         {
-            $this->view('habitdetail', array_merge($data, $result->fetch_assoc()));
+            $this->view('habitDetail', array_merge($data, $result->fetch_assoc()));
         } else
         {
             $this->index();
@@ -88,14 +88,14 @@ class Detail extends Controller
                             $data['message_invalid'] = 'This habit does not exist anymore.';
                             $data['submit_result'] = 'update';
 
-                            $this->view('habitdetail', $data);
+                            $this->view('habitDetail', $data);
                         }
                         $conn->close();
                     } else {
                         $data['message_invalid'] = 'Received values are not valid.';
                         $data['submit_result'] = 'update';
 
-                        $this->view('habitdetail', $data);
+                        $this->view('habitDetail', $data);
                     }
                 }
             } else
@@ -103,7 +103,7 @@ class Detail extends Controller
                 $data['message_invalid'] = "Your token doesn't match.";
                 $data['submit_result'] = 'update';
 
-                $this->view('habitdetail', $data);
+                $this->view('habitDetail', $data);
             }
 
         }
@@ -136,7 +136,7 @@ class Detail extends Controller
             {
                 $data['abbr-invalid'] = true;
                 $data['message_invalid'] = 'Habit abbreviation is not available.';
-                $this->view('habitdetail', $data);
+                $this->view('habitDetail', $data);
             } else
             {
                 $saveSql = "INSERT INTO habits VALUES ('". $data['id'] . "', '" .
@@ -187,7 +187,7 @@ class Detail extends Controller
         $result = $conn->query($listSelect);
         unset($_SESSION['detail']);
 
-        $this->view('habitlist', $result);
+        $this->view('habitList', $result);
     }
 
     /**

@@ -33,7 +33,7 @@ class Occurence extends Controller
         }
         $_SESSION['occurrence'] = uniqid();
 
-        $this->view('habitoccurence', $result);
+        $this->view('habitOccurence', $result);
         $conn->close();
     }
 
@@ -97,7 +97,7 @@ class Occurence extends Controller
             {
                 $_SESSION['occurrenceShow'] = uniqid();
 
-                $this->view('habitoccurenceshow', $result->fetch_assoc());
+                $this->view('habitOccurenceShow', $result->fetch_assoc());
             } else
             {
                 $this->index(['message_invalid' => 'Occurrence was not found.']);

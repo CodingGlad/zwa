@@ -9,10 +9,10 @@ class Controller {
     const DEFAULT_THEME = 'light';
     const LIGHT_THEME = 'light';
     const DARK_THEME = 'dark';
-    protected $servername = "store5.rosti.cz";
-    protected $username = "testicek_2352";
-    protected $password = "ASFasd1233";
-    protected $db = "testicek_2352";
+    protected $servername = "localhost";
+    protected $username = "wodecjak";
+    protected $password = "webove aplikace";
+    protected $db = "wodecjak";
 
     /**
      * This method handles viewing of selected view by the controller.
@@ -27,10 +27,10 @@ class Controller {
 
         if ($currentTheme == self::DARK_THEME)
         {
-            require_once '../app/views/dark/' . $view . '.php';
+            require_once '/home/wodecjak/www/app/views/dark/' . $view . '.php';
         } elseif ($currentTheme == self::LIGHT_THEME)
         {
-            require_once '../app/views/' . $view . '.php';
+            require_once '/home/wodecjak/www/app/views/' . $view . '.php';
         }
     }
 
