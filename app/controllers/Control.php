@@ -11,6 +11,8 @@ class Control extends Controller
      */
     public function index()
     {
+        $_SESSION['control'] = uniqid();
+
         $this->view('habitcontrol');
     }
 
