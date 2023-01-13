@@ -290,13 +290,12 @@ form span {
     margin-bottom: 20px;
 }
 
-input:required {
-    ;
+.input-error {
+    border: 2px solid red;
 }
 
-.color {
-    background-color: red;
-    size: 5px 5px;
+.input-correct {
+    border: 2px solid #09ce00;
 }
 
 .el_invalid {

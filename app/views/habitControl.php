@@ -135,6 +135,7 @@
             </form>
         </div>
     </main>
+    <script src="http://localhost/MojeProjekty/HabitJournal/public/js/controlOnSubmit.js"></script>
 </div>
 </body>
 </html>
