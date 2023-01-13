@@ -97,14 +97,14 @@
                     echo ($data['emailValid'])?("input-correct"):("input-error");
                 }
 
-                ?>">
+                ?>" pattern="^[\w.]+@[a-zA-Z_.]+?\.[a-zA-Z]{2,3}$">
                 <label for="password">Password</label>
                 <input id="password" name="password" type="password" required class="<?php
                 if (isset($data['passwordValid']))
                 {
                     echo ($data['passwordValid'])?("input-correct"):("input-error");
                 }
-                ?>">
+                ?>" pattern="(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*">
                 <div> <!-- TODO csrf for control user -->
                     Password rules:<br>
                     <ul>
@@ -115,7 +115,7 @@
                     </ul><br>
                 </div>
                 <label for="password_check">Retype password</label>
-                <input id="password_check" name="password_check" type="password" required>
+                <input id="password_check" name="password_check" type="password" required pattern="(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*">
                 <?php
                 if ((isset($data['message']) && $data['message'] != ""))
                 {
