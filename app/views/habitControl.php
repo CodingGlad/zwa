@@ -105,7 +105,7 @@
                     echo ($data['passwordValid'])?("input-correct"):("input-error");
                 }
                 ?>" pattern="(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*">
-                <div> <!-- TODO csrf for control user -->
+                <div>
                     Password rules:<br>
                     <ul>
                         <li>At least 8 characters</li>

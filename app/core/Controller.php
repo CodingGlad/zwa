@@ -6,6 +6,9 @@
  */
 class Controller {
 
+    const DEFAULT_THEME = 'light';
+    const LIGHT_THEME = 'light';
+    const DARK_THEME = 'dark';
     protected $servername = "localhost";
     protected $username = "root";
     protected $password = "";
@@ -18,16 +21,15 @@ class Controller {
      * @return void
      */
     public function view($view, $data = []) {
-        if (isset($_SESSION['theme']))
+        $conn = $this->connectDb();
+
+        $currentTheme = $this->getThemeFromDB($conn);
+
+        if ($currentTheme == self::DARK_THEME)
         {
-            if ($_SESSION['theme'] == 'dark')
-            {
-                require_once '../app/views/dark/' . $view . '.php';
-            } elseif ($_SESSION['theme'] == 'light')
-            {
-                require_once '../app/views/' . $view . '.php';
-            }
-        } else {
+            require_once '../app/views/dark/' . $view . '.php';
+        } elseif ($currentTheme == self::LIGHT_THEME)
+        {
             require_once '../app/views/' . $view . '.php';
         }
     }
@@ -57,5 +59,33 @@ class Controller {
     {
         $controlSql = "SELECT * FROM users WHERE id = '" . $_SESSION['id'] . "' AND permission = 'contr'";
         return $conn->query($controlSql)->num_rows == 1;
+    }
+
+    /**
+     * This method returns theme value associated with user from DB.
+     * @param $conn mysqli to be used for querying.
+     * @return mixed|string representation of chosen theme.
+     */
+    public function getThemeFromDB(&$conn)
+    {
+        if (isset($_SESSION['id']))
+        {
+            $themeSql = "SELECT theme FROM users WHERE id = '" . $_SESSION['id'] . "'";
+
+            $result = $conn->query($themeSql);
+
+            if ($result->num_rows == 1)
+            {
+                $row = $result->fetch_assoc();
+
+                return $row['theme'];
+            } else
+            {
+                return self::DEFAULT_THEME;
+            }
+        } else
+        {
+            return self::DEFAULT_THEME;
+        }
     }
 }
