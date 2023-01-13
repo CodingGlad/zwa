@@ -5,19 +5,19 @@
  */
 class App
 {
-    const DEFAULT_SIGNED_IN_CONTROLLER = 'calendar';
-    const DEFAULT_NOT_SIGNED_IN_CONTROLLER = 'signin';
+    const DEFAULT_SIGNED_IN_CONTROLLER = 'Calendar';
+    const DEFAULT_NOT_SIGNED_IN_CONTROLLER = 'SignIn';
     const DEFAULT_CONTROL_INDEX_METHOD = 'indexControl';
     const DEFAULT_METHOD = 'index';
-    const DEFAULT_CONTROL_CONTROLLER = 'calendar';
+    const DEFAULT_CONTROL_CONTROLLER = 'Calendar';
     const DEFAULT_CONTROL_METHOD = 'show';
-    protected $controller = 'signin';
+    protected $controller = 'SignIn';
     protected $method = 'index';
     protected $params = [];
     private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $db = "habitjournal";
+    private $username = "wodecjak";
+    private $password = "webove aplikace";
+    private $db = "wodecjak";
 
     /**
      * This is a constructor of App class that handles the selection of controller, method and passing their parameters.
@@ -30,7 +30,7 @@ class App
 
         $this->chooseValidController($url);
 
-        require_once '../app/controllers/' . $this->controller . '.php';
+        require_once '/home/wodecjak/www/app/controllers/' . $this->controller . '.php';
 
         $this->controller = new $this->controller;
 
@@ -111,9 +111,9 @@ class App
      */
     private function signedInUserController(&$url)
     {
-        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
+        if (isset($url[0]) && file_exists('/home/wodecjak/www/app/controllers/' . $url[0] . '.php'))
         {
-            if ($url[0] == 'signin' || $url[0] == 'signup')
+            if ($url[0] == 'SingIn' || $url[0] == 'SignUp')
             {
                 $this->controller = self::DEFAULT_SIGNED_IN_CONTROLLER;
             } else
@@ -134,7 +134,7 @@ class App
      */
     private function unknownUserController(&$url)
     {
-        if (isset($url[0]) && ($url[0] == 'signin' || $url[0] == 'signup'))
+        if (isset($url[0]) && ($url[0] == 'SignIn' || $url[0] == 'SignUp'))
         {
             $this->controller = $url[0];
             unset($url[0]);
@@ -158,7 +158,7 @@ class App
         {
             if (isset($url[1]) && method_exists($this->controller, $url[1]))
             {
-                if (($this->controller == 'signin' || $this->controller == 'signup') &&
+                if (($this->controller == 'SignIn' || $this->controller == 'SignUp') &&
                     (isset($_SESSION['id']) && $this->isIdValid($_SESSION['id'])))
                 {
                     $this->method = self::DEFAULT_METHOD;
@@ -217,9 +217,9 @@ class App
      */
     private function controlUserController(&$url)
     {
-        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php'))
+        if (isset($url[0]) && file_exists('/home/wodecjak/www/app/controllers/' . $url[0] . '.php'))
         {
-            if (($url[0] == 'logout' || $url[0] == 'switchthemes'))
+            if (($url[0] == 'LogOut' || $url[0] == 'SwitchThemes'))
             {
                 $this->controller = $url[0];
             } else

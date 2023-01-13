@@ -41,6 +41,6 @@ class HabitList extends Controller
         $result = $conn->query($listSelect);
 
         $conn->close();
-        $this->view('habitlist', $result);
+        $this->view('habitList', $result);
     }
 }

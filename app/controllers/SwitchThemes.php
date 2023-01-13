@@ -39,10 +39,10 @@ class SwitchThemes extends Controller
     {
         if ($this->isUserControl($conn))
         {
-            $this->view('control/habitwelcome');
+            $this->view('control/habitWelcome');
         } else
         {
-            $this->view('habitwelcome');
+            $this->view('habitWelcome');
         }
 
         $conn->close();
